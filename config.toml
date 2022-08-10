@@ -1,4 +1,4 @@
-baseURL = "https://jadenhsiao.github.io/blog"
+baseURL = "https://jadenhsiao.github.io/"
 DefaultContentLanguage = "zh" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "en-us"
 title = "JadenHsiao"
