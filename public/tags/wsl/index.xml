@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WSL on JadenHsiao</title>
-    <link>https://jadenhsiao.gitee.io/tags/wsl/</link>
+    <link>https://jadenhsiao.github.io/blog/tags/wsl/</link>
     <description>Recent content in WSL on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Sun, 29 Aug 2021 21:12:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Aug 2021 21:12:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.github.io/blog/tags/wsl/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Ubuntu 安装 Swift</title>
-      <link>https://jadenhsiao.gitee.io/post/ubuntu-install-swift/</link>
+      <link>https://jadenhsiao.github.io/blog/post/ubuntu-install-swift/</link>
       <pubDate>Sun, 29 Aug 2021 21:12:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/ubuntu-install-swift/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/ubuntu-install-swift/</guid>
       <description>Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；
  笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。
 一、安装对应 Linux 所需的依赖 Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。
@@ -26,10 +26,10 @@
     
     <item>
       <title>Windows10 安装 Windows Subsystem for Linux</title>
-      <link>https://jadenhsiao.gitee.io/post/windows10-install-wsl/</link>
+      <link>https://jadenhsiao.github.io/blog/post/windows10-install-wsl/</link>
       <pubDate>Sat, 28 Aug 2021 00:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/windows10-install-wsl/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/windows10-install-wsl/</guid>
       <description>适用于 Linux 的 Windows 子系统可让开发人员按原样运行 GNU/Linux 环境 - 包括大多数命令行工具、实用工具和应用程序 - 且不会产生传统虚拟机或双启动设置开销。
  上面这段是微软官方对于 Windows 子系统的简介，通过 WSL ，可以在 Windows 10 上安装诸如 Ubuntu、Kali、Debian等Linux的发行版，接下来，我将简单分享下安装 WSL 的流程和如何开启远程登录访问。
 一、开启 WSL 支持  WSL 作为拓展功能存在于 Windows 10 ，因此它不是默认开启的，需要我们手动启用该功能。
