@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html><head>
+<title>Yii2使用技巧（六）- 文件上传兼容WPS</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Yii2使用技巧（六）- 文件上传兼容WPS" />
+<meta property="og:description" content="在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
+ 通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
+一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
+&lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &#34;docx&#34; =&gt; &#34;application/zip&#34;,  &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;,  &#34;xlsx&#34; =&gt; &#34;application/zip&#34;,  &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;);   if ($this-&gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&gt;extra[$extension] == $mimeType){  return true;  }   if (!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jadenhsiao.gitee.io/post/yii2-skills-part-six/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-20T14:00:28+08:00" />
+<meta property="article:modified_time" content="2022-07-20T14:00:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Yii2使用技巧（六）- 文件上传兼容WPS"/>
+<meta name="twitter:description" content="在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
+ 通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
+一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
+&lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &#34;docx&#34; =&gt; &#34;application/zip&#34;,  &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;,  &#34;xlsx&#34; =&gt; &#34;application/zip&#34;,  &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;);   if ($this-&gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&gt;extra[$extension] == $mimeType){  return true;  }   if (!"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://jadenhsiao.gitee.io/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e9%87%8d%e5%86%99%e4%b8%8a%e4%bc%a0%e6%a0%a1%e9%aa%8c%e7%b1%bb" onclick="onNavClick(`#一重写上传校验类-nav`)" id="一重写上传校验类-nav">
+									一、重写上传校验类
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e8%a1%a8%e5%8d%95%e6%a8%a1%e5%9e%8b%e4%b8%ad%e8%b0%83%e7%94%a8" onclick="onNavClick(`#二表单模型中调用-nav`)" id="二表单模型中调用-nav">
+									二、表单模型中调用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e9%87%8d%e5%86%99%e4%b8%8a%e4%bc%a0%e6%a0%a1%e9%aa%8c%e7%b1%bb" onclick="onNavClick(`#一重写上传校验类-nav`)" id="一重写上传校验类-nav">
+									一、重写上传校验类
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e8%a1%a8%e5%8d%95%e6%a8%a1%e5%9e%8b%e4%b8%ad%e8%b0%83%e7%94%a8" onclick="onNavClick(`#二表单模型中调用-nav`)" id="二表单模型中调用-nav">
+									二、表单模型中调用
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.gitee.io/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://jadenhsiao.gitee.io/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Yii2使用技巧（六）- 文件上传兼容WPS
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-07-20 14:00
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[PHP Yii]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">PHP</a>
+                                &nbsp;
+                            
+                                <a href="/tags/yii">Yii</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <blockquote>
+<p>在业务开发中，对于用户上传的文件需要进行安全校验，<em>Yii</em>本身提供了<em>FileValidator</em>的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。</p>
+</blockquote>
+<p>通过断点调试，得知<em>FileValidator</em>是通过获取上传文件的<em>MimeType</em>和后缀，然后将后置通过<em>yiisoft/yii2/helpers/mimeTypes.php</em>中返回的数组获取到对应<em>Yii</em>设定的<em>MimeType</em>，对比是否一致，如果不一致则抛出校验错误。</p>
+<h2 id="一重写上传校验类">一、重写上传校验类</h2>
+<p>因此重写的思路就是在<em>Yii</em>进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">namespace</span> app\validators;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> yii\validators\FileValidator <span style="color:#8b008b;font-weight:bold">as</span> Base;
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> yii\helpers\FileHelper;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">FileValidator</span> <span style="color:#8b008b;font-weight:bold">extends</span> Base
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">protected</span> <span style="color:#00688b">$extra</span> = [
+</span></span><span style="display:flex;"><span>        <span style="color:#cd5555">&#34;docx&#34;</span> =&gt; <span style="color:#cd5555">&#34;application/zip&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#cd5555">&#34;et&#34;</span> =&gt; <span style="color:#cd5555">&#34;application/vnd.ms-excel&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#cd5555">&#34;xlsx&#34;</span> =&gt; <span style="color:#cd5555">&#34;application/zip&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#cd5555">&#34;ett&#34;</span> =&gt; <span style="color:#cd5555">&#34;application/vnd.ms-excel&#34;</span>
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">protected</span> <span style="color:#8b008b;font-weight:bold">function</span> <span style="color:#008b45">validateExtension</span>(<span style="color:#00688b">$file</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$extension</span> = mb_strtolower(<span style="color:#00688b">$file</span>-&gt;<span style="color:#658b00">extension</span>, <span style="color:#cd5555">&#39;UTF-8&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> (<span style="color:#00688b">$this</span>-&gt;<span style="color:#658b00">checkExtensionByMimeType</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">$mimeType</span> = FileHelper::<span style="color:#658b00">getMimeType</span>(<span style="color:#00688b">$file</span>-&gt;<span style="color:#658b00">tempName</span>, <span style="color:#8b008b;font-weight:bold">null</span>, <span style="color:#8b008b;font-weight:bold">false</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">if</span> (<span style="color:#00688b">$mimeType</span> === <span style="color:#8b008b;font-weight:bold">null</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#8b008b;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">$extensionsByMimeType</span> = FileHelper::<span style="color:#658b00">getExtensionsByMimeType</span>(<span style="color:#00688b">$mimeType</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">if</span>(<span style="color:#00688b">$this</span>-&gt;<span style="color:#658b00">extra</span>[<span style="color:#00688b">$extension</span>] == <span style="color:#00688b">$mimeType</span>){
+</span></span><span style="display:flex;"><span>                <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#8b008b;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">if</span> (!in_array(<span style="color:#00688b">$extension</span>, <span style="color:#00688b">$extensionsByMimeType</span>, <span style="color:#8b008b;font-weight:bold">true</span>)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#8b008b;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">if</span> (!in_array(<span style="color:#00688b">$extension</span>, <span style="color:#00688b">$this</span>-&gt;<span style="color:#658b00">extensions</span>, <span style="color:#8b008b;font-weight:bold">true</span>)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#8b008b;font-weight:bold">false</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#8b008b;font-weight:bold">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面的代码块中，<code>$extra</code>是我们对于WPS的文件设定的额外校验规则，在方法<code>validateExtension</code>中，判断后缀名和<em>MimeType</em>是否一致是的话就放行。</p>
+<h2 id="二表单模型中调用">二、表单模型中调用</h2>
+<p>在调用时要引用我们重写的工具类，在表单校验规则中指定为<code>FileValidator::className()</code>，而不是原先的<code>file</code>；</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> yii\base\Model;
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> yii\helper\ArrayHelper;
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> app\validators\FileValidator;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">class</span> <span style="color:#008b45;font-weight:bold">Example</span> <span style="color:#8b008b;font-weight:bold">extends</span> Model{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">public</span> <span style="color:#8b008b;font-weight:bold">function</span> <span style="color:#008b45">rules</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$parent_rules</span> = <span style="color:#8b008b;font-weight:bold">parent</span>::<span style="color:#658b00">rules</span>(); <span style="color:#228b22">// TODO: Change the autogenerated stub
+</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$rules</span> = [
+</span></span><span style="display:flex;"><span>            [
+</span></span><span style="display:flex;"><span>                <span style="color:#cd5555">&#39;files&#39;</span>,
+</span></span><span style="display:flex;"><span>                FileValidator::<span style="color:#658b00">className</span>(),
+</span></span><span style="display:flex;"><span>                <span style="color:#cd5555">&#39;skipOnEmpty&#39;</span> =&gt; <span style="color:#8b008b;font-weight:bold">false</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#cd5555">&#39;extensions&#39;</span> =&gt; <span style="color:#cd5555">&#39;png,jpg,jpeg,gif,doc,dot,docx,xls,xlt,xlsx,xlsm,ppt,pot,pps,pptx,pdf&#39;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>        ];
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">return</span> ArrayHelper::<span style="color:#658b00">merge</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">$parent_rules</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">$rules</span>
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-07-20</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://jadenhsiao.gitee.io/post/rising-temperature/">
+			下回<br>LeetCode - （MySQL）上升的温度
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://jadenhsiao.gitee.io/post/unique-number-of-occurrences/">
+			上回<br>LeetCode - （算法）独一无二的出现次数
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Swift on JadenHsiao</title>
+    <link>https://jadenhsiao.gitee.io/categories/swift/</link>
+    <description>Recent content in Swift on JadenHsiao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Tue, 31 Aug 2021 22:38:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/categories/swift/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu 安装 Vapor</title>
+      <link>https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/</link>
+      <pubDate>Tue, 31 Aug 2021 22:38:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/</guid>
+      <description>Apple 公司的 Swift 不仅能够编写 MacOS 、IOS 端的应用，还能基于 SwiftNIO 编写服务端，在 Swift 服务端的阵营里，有 Kitura、perfect、Vapor 。
+ 而今天，我将给大家介绍一款服务端框架 Vapor，他在 github 收获高达 20.6k star 的服务端框架，同时支持 JWT、MySQL、Redis、MongoDB种种我们服务端开发所需要的组件，并且设计思路来源于 Laravel/Lumen（php开发者狂喜😆😆），同时拥有活跃的社区，并且随着 Swift 版本在不断地更新，所以，我毅然决然选择 Vapor 作为我 Swift 开发服务端的框架。
+因为我的 MacOS 系统版本是 Majove，同时平常更加倾向于使用 Windows，所以就选择了 WSL 作为 Vapor 的开发环境，使用的是 Ubuntu18.04，接下来，将先介绍下在 Ubuntu 下如何安装 Vapor。
+ 到 Vapor 的 github 项目主页上下载源码；  进入到 toolbox，执行 swift build -c release --disable-sandbox --enable-test-discovery进行源码编译，在执行 mv .build/release/vapor /usr/local/bin 移动到执行目录；  执行 vapor --help，如和上图所示，即为安装完成；  执行 vapor new hello -n，创建第一个 Vapor 项目，看到如此大的水蒸气图案💧，就证明创建完成了；  执行 swift build，编译 Vapor 项目文件；  启动项目，这时候看到命令行提示使用 127.</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 安装 Swift</title>
+      <link>https://jadenhsiao.gitee.io/post/ubuntu-install-swift/</link>
+      <pubDate>Sun, 29 Aug 2021 21:12:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/ubuntu-install-swift/</guid>
+      <description>Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；
+ 笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。
+一、安装对应 Linux 所需的依赖 Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。
+二、下载对应系统版本的 Swift 源码包和秘钥文件 依照不同的系统提供了不同的源码包和校验秘钥，这里我们将下载 Ubuntu 18.04 的源码包和秘钥文件
+首先，使用 wget 下载 Swift 源码包；
+下载完成后，执行 tar -xzf 解压源码包；
+下载秘钥文件。
+三、配置到环境变量 在 Root 身份下，执行 cd /etc ，进入到 etc 目录，然后执行 vim profile，编辑该文件；在该文件的添加 export PATH=/swift/usr/bin:&amp;quot;${PATH}&amp;quot;，其中 swift 的运行目录就根据你解压的路径来决定。</description>
+    </item>
+    
+  </channel>
+</rss>

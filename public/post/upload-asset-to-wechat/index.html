@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html><head>
+<title>微信开发技巧之文件上传</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="微信开发技巧之文件上传" />
+<meta property="og:description" content="微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的指引是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl 请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。
+ 下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：
+public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt($ch, CURLOPT_URL, $url);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  curl_setopt(  $ch,  CURLOPT_POSTFIELDS,  $data  );  $headers = array();  $headers[] = &#39;Content-Type: multipart/form-data&#39;;  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);   $output = curl_exec($ch);  curl_close($ch);  return $output; } 上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &#39;Content-Type: multipart/form-data&#39; 。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-04-16T00:26:28+08:00" />
+<meta property="article:modified_time" content="2022-04-16T00:26:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="微信开发技巧之文件上传"/>
+<meta name="twitter:description" content="微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的指引是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl 请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。
+ 下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：
+public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt($ch, CURLOPT_URL, $url);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  curl_setopt(  $ch,  CURLOPT_POSTFIELDS,  $data  );  $headers = array();  $headers[] = &#39;Content-Type: multipart/form-data&#39;;  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);   $output = curl_exec($ch);  curl_close($ch);  return $output; } 上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &#39;Content-Type: multipart/form-data&#39; 。"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://jadenhsiao.gitee.io/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.gitee.io/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://jadenhsiao.gitee.io/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    微信开发技巧之文件上传
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-04-16 00:26
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[PHP WeChat]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">PHP</a>
+                                &nbsp;
+                            
+                                <a href="/tags/wechat">WeChat</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <blockquote>
+<p>微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的<a href="https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html">指引</a>是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl  请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。</p>
+</blockquote>
+<p>下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">public</span> <span style="color:#8b008b;font-weight:bold">function</span> <span style="color:#008b45">httpUploadFile</span>( <span style="color:#00688b">$url</span>,<span style="color:#00688b">$data</span> )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#00688b">$ch</span> = curl_init();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_URL, <span style="color:#00688b">$url</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_RETURNTRANSFER, <span style="color:#b452cd">1</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_POST, <span style="color:#b452cd">1</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_POST, <span style="color:#b452cd">1</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_RETURNTRANSFER, <span style="color:#b452cd">1</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_CONNECTTIMEOUT, <span style="color:#b452cd">5</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_SSL_VERIFYPEER, <span style="color:#8b008b;font-weight:bold">FALSE</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_SSL_VERIFYHOST, <span style="color:#8b008b;font-weight:bold">false</span>);
+</span></span><span style="display:flex;"><span>    curl_setopt(
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$ch</span>,
+</span></span><span style="display:flex;"><span>        CURLOPT_POSTFIELDS,
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$data</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    <span style="color:#00688b">$headers</span> = <span style="color:#8b008b;font-weight:bold">array</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#00688b">$headers</span>[] = <span style="color:#cd5555">&#39;Content-Type: multipart/form-data&#39;</span>;
+</span></span><span style="display:flex;"><span>    curl_setopt(<span style="color:#00688b">$ch</span>, CURLOPT_HTTPHEADER, <span style="color:#00688b">$headers</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00688b">$output</span> = curl_exec(<span style="color:#00688b">$ch</span>);
+</span></span><span style="display:flex;"><span>    curl_close(<span style="color:#00688b">$ch</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#00688b">$output</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 <code>'Content-Type: multipart/form-data'</code> 。</p>
+<p>第二部分就是发送请求的 FORM 表单内容了：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#00688b">$data</span> = [
+</span></span><span style="display:flex;"><span>	<span style="color:#cd5555">&#39;media&#39;</span>=&gt;<span style="color:#8b008b;font-weight:bold">new</span> CURLFile(realpath(<span style="color:#00688b">$file</span>)),
+</span></span><span style="display:flex;"><span>	<span style="color:#cd5555">&#39;type&#39;</span> =&gt; <span style="color:#cd5555">&#39;image&#39;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>这里的 media 就是接口需要的字段，因为本人的开发环境是 php7.4 所以必须要使用 CURLFile 封装发送的文件，这里调用类传递的第一个参数是文件的真实路径，同时他还能指定文件的 MineType，还有文件上传的名称；</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">array</span>(<span style="color:#b452cd">4</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#cd5555">&#39;type&#39;</span> =&gt;
+</span></span><span style="display:flex;"><span>  string(<span style="color:#b452cd">5</span>) <span style="color:#cd5555">&#34;image&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#cd5555">&#39;media_id&#39;</span> =&gt;
+</span></span><span style="display:flex;"><span>  string(<span style="color:#b452cd">64</span>) <span style="color:#cd5555">&#34;fOfJIy2-XlOS0HWDJcvEy1CAt4nRpphJUS2sIagHCcOnpGo8hN4dqHZ9ZlDzdlOg&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#cd5555">&#39;created_at&#39;</span> =&gt;
+</span></span><span style="display:flex;"><span>  int(<span style="color:#b452cd">1649911169</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#cd5555">&#39;item&#39;</span> =&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#8b008b;font-weight:bold">array</span>(<span style="color:#b452cd">0</span>) {
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面就是请求成功后返回的结果集了，然后本地就可以使用 media_id 来获取到资源文件了。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-04-16</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://jadenhsiao.gitee.io/post/clear-website-trojan/">
+			下回<br>记录一次清理网站挂马
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://jadenhsiao.gitee.io/post/yii2-skills-part-two/">
+			上回<br>Yii2使用技巧（二）- 在Yii上使用MongoDB
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

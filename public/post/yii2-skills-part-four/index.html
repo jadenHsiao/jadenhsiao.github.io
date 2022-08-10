@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html><head>
+<title>Yii2使用技巧（四）- 将Yii整合到GatewayWorker</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Yii2使用技巧（四）- 将Yii整合到GatewayWorker" />
+<meta property="og:description" content=" Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
+ 一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
+二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
+ 上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
+&lt;?php  //...  require_once __DIR__ . &#39;/../../vendor/autoload.php&#39;;  defined(&#39;YII_DEBUG&#39;) or define(&#39;YII_DEBUG&#39;, true); defined(&#39;YII_ENV&#39;) or define(&#39;YII_ENV&#39;, &#39;dev&#39;);  $config = require(__DIR__ . &#39;/../../config/web-socket.php&#39;); require(__DIR__ . &#39;/../../vendor/yiisoft/yii2/Yii.php&#39;);  (new \yii\web\Application($config))-&gt;run();  if(!defined(&#39;GLOBAL_START&#39;)) {  Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
+三、用Yii的编码风格编写GatewayWorker的业务代码 在Applications目录下的Events.php中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。
+注意：引用类时需要使用完全限定名称，例如use \app\models\Example;
+参考链接  在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jadenhsiao.gitee.io/post/yii2-skills-part-four/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-07-18T15:29:28+08:00" />
+<meta property="article:modified_time" content="2022-07-18T15:29:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Yii2使用技巧（四）- 将Yii整合到GatewayWorker"/>
+<meta name="twitter:description" content=" Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
+ 一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
+二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
+ 上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
+&lt;?php  //...  require_once __DIR__ . &#39;/../../vendor/autoload.php&#39;;  defined(&#39;YII_DEBUG&#39;) or define(&#39;YII_DEBUG&#39;, true); defined(&#39;YII_ENV&#39;) or define(&#39;YII_ENV&#39;, &#39;dev&#39;);  $config = require(__DIR__ . &#39;/../../config/web-socket.php&#39;); require(__DIR__ . &#39;/../../vendor/yiisoft/yii2/Yii.php&#39;);  (new \yii\web\Application($config))-&gt;run();  if(!defined(&#39;GLOBAL_START&#39;)) {  Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
+三、用Yii的编码风格编写GatewayWorker的业务代码 在Applications目录下的Events.php中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。
+注意：引用类时需要使用完全限定名称，例如use \app\models\Example;
+参考链接  在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker  "/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://jadenhsiao.gitee.io/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e4%b8%8b%e8%bd%bdgatewayworker" onclick="onNavClick(`#一下载gatewayworker-nav`)" id="一下载gatewayworker-nav">
+									一、下载GatewayWorker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e4%bf%ae%e6%94%b9start_businessworkerphp" onclick="onNavClick(`#二修改start_businessworkerphp-nav`)" id="二修改start_businessworkerphp-nav">
+									二、修改start_businessworker.php
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e7%94%a8yii%e7%9a%84%e7%bc%96%e7%a0%81%e9%a3%8e%e6%a0%bc%e7%bc%96%e5%86%99gatewayworker%e7%9a%84%e4%b8%9a%e5%8a%a1%e4%bb%a3%e7%a0%81" onclick="onNavClick(`#三用yii的编码风格编写gatewayworker的业务代码-nav`)" id="三用yii的编码风格编写gatewayworker的业务代码-nav">
+									三、用Yii的编码风格编写GatewayWorker的业务代码
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83%e9%93%be%e6%8e%a5" onclick="onNavClick(`#参考链接-nav`)" id="参考链接-nav">
+									参考链接
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e4%b8%8b%e8%bd%bdgatewayworker" onclick="onNavClick(`#一下载gatewayworker-nav`)" id="一下载gatewayworker-nav">
+									一、下载GatewayWorker
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e4%bf%ae%e6%94%b9start_businessworkerphp" onclick="onNavClick(`#二修改start_businessworkerphp-nav`)" id="二修改start_businessworkerphp-nav">
+									二、修改start_businessworker.php
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e7%94%a8yii%e7%9a%84%e7%bc%96%e7%a0%81%e9%a3%8e%e6%a0%bc%e7%bc%96%e5%86%99gatewayworker%e7%9a%84%e4%b8%9a%e5%8a%a1%e4%bb%a3%e7%a0%81" onclick="onNavClick(`#三用yii的编码风格编写gatewayworker的业务代码-nav`)" id="三用yii的编码风格编写gatewayworker的业务代码-nav">
+									三、用Yii的编码风格编写GatewayWorker的业务代码
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%8f%82%e8%80%83%e9%93%be%e6%8e%a5" onclick="onNavClick(`#参考链接-nav`)" id="参考链接-nav">
+									参考链接
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.gitee.io/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://jadenhsiao.gitee.io/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Yii2使用技巧（四）- 将Yii整合到GatewayWorker
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-07-18 15:29
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[PHP Yii]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">PHP</a>
+                                &nbsp;
+                            
+                                <a href="/tags/yii">Yii</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <blockquote>
+<p><em>Yii</em>作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于<em>WorkerMan</em>的<em>GatewayWorker</em>，来处理业务里需要的<em>WebSocket</em>；但是我又想在<em>GatewayWorker</em>中使用<em>Yii</em>的例如<em>Active Record</em>、<em>ArrayHelper</em>等上手的特性，所以本篇文章将对于如何整个进行说明。</p>
+</blockquote>
+<h2 id="一下载gatewayworker">一、下载<em>GatewayWorker</em></h2>
+<p>这里提供了<a href="https://www.workerman.net/doc/gateway-worker/README.html">下载<em>GatewayWorker</em></a>的链接地址，下载后，将压缩包的内容解压到<em>Yii2</em>的项目目录内。</p>
+<h2 id="二修改start_businessworkerphp">二、修改<em>start_businessworker.php</em></h2>
+<blockquote>
+<p>BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。</p>
+</blockquote>
+<p>上述这段引用是<em>WorkerMan</em>对于该生命周期中，业务逻辑处理所在位置的说明；所以<em>Yii</em>的操作就在这个环节上；打开<em>Applications</em>目录，修改<em>start_businessworker.php</em>，加入以下代码块：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">//...
+</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">require_once</span> <span style="color:#00688b">__DIR__</span> . <span style="color:#cd5555">&#39;/../../vendor/autoload.php&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>defined(<span style="color:#cd5555">&#39;YII_DEBUG&#39;</span>) <span style="color:#8b008b;font-weight:bold">or</span> define(<span style="color:#cd5555">&#39;YII_DEBUG&#39;</span>, <span style="color:#8b008b;font-weight:bold">true</span>);
+</span></span><span style="display:flex;"><span>defined(<span style="color:#cd5555">&#39;YII_ENV&#39;</span>) <span style="color:#8b008b;font-weight:bold">or</span> define(<span style="color:#cd5555">&#39;YII_ENV&#39;</span>, <span style="color:#cd5555">&#39;dev&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00688b">$config</span> = <span style="color:#8b008b;font-weight:bold">require</span>(<span style="color:#00688b">__DIR__</span> . <span style="color:#cd5555">&#39;/../../config/web-socket.php&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">require</span>(<span style="color:#00688b">__DIR__</span> . <span style="color:#cd5555">&#39;/../../vendor/yiisoft/yii2/Yii.php&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#8b008b;font-weight:bold">new</span> \yii\web\Application(<span style="color:#00688b">$config</span>))-&gt;<span style="color:#658b00">run</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">if</span>(!defined(<span style="color:#cd5555">&#39;GLOBAL_START&#39;</span>))
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    Worker::<span style="color:#658b00">runAll</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>在<code>Worker::runAll()</code>，前面先引用<em>composer</em>的自加载，然后<code>$config</code>可以自己定义配置文件，再引入<em>Yii</em>的核心文件，最后一步将其实例化即可，其实这个流程就和<em>Yii</em>框架本身<em>public/index.php</em>是一致的。</p>
+<h2 id="三用yii的编码风格编写gatewayworker的业务代码">三、用<em>Yii</em>的编码风格编写<em>GatewayWorker</em>的业务代码</h2>
+<p>在<em>Applications</em>目录下的<em>Events.php</em>中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。</p>
+<p>注意：引用类时需要使用完全限定名称，例如<code>use \app\models\Example;</code></p>
+<h2 id="参考链接">参考链接</h2>
+<ul>
+<li><a href="https://www.yiiframework.com/doc/guide/2.0/zh-cn/tutorial-yii-integration#using-yii-in-others">在第三方系统内使用 Yii</a></li>
+<li><a href="https://www.php.net/manual/zh/language.namespaces.dynamic.php">命名空间和动态语言特征</a></li>
+<li><a href="https://www.workerman.net/doc/gateway-worker/README.html">GatewayWorker</a></li>
+</ul>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-07-18</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://jadenhsiao.gitee.io/post/yii2-skills-part-five/">
+			下回<br>Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://jadenhsiao.gitee.io/post/yii2-skills-part-three/">
+			上回<br>Yii2使用技巧（三）- 优雅处理业务错误
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

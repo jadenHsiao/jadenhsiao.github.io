@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WeChat on JadenHsiao</title>
+    <link>https://jadenhsiao.gitee.io/tags/wechat/</link>
+    <description>Recent content in WeChat on JadenHsiao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Sat, 16 Apr 2022 00:26:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/tags/wechat/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>微信开发技巧之文件上传</title>
+      <link>https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/</link>
+      <pubDate>Sat, 16 Apr 2022 00:26:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/</guid>
+      <description>微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的指引是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl 请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。
+ 下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：
+public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt($ch, CURLOPT_URL, $url);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  curl_setopt(  $ch,  CURLOPT_POSTFIELDS,  $data  );  $headers = array();  $headers[] = &amp;#39;Content-Type: multipart/form-data&amp;#39;;  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);   $output = curl_exec($ch);  curl_close($ch);  return $output; } 上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &#39;Content-Type: multipart/form-data&#39; 。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html><head>
+<title>Ubuntu 安装 Swift</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Ubuntu 安装 Swift" />
+<meta property="og:description" content="Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；
+ 笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。
+一、安装对应 Linux 所需的依赖 Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。
+二、下载对应系统版本的 Swift 源码包和秘钥文件 依照不同的系统提供了不同的源码包和校验秘钥，这里我们将下载 Ubuntu 18.04 的源码包和秘钥文件
+首先，使用 wget 下载 Swift 源码包；
+下载完成后，执行 tar -xzf 解压源码包；
+下载秘钥文件。
+三、配置到环境变量 在 Root 身份下，执行 cd /etc ，进入到 etc 目录，然后执行 vim profile，编辑该文件；在该文件的添加 export PATH=/swift/usr/bin:&quot;${PATH}&quot;，其中 swift 的运行目录就根据你解压的路径来决定。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jadenhsiao.gitee.io/post/ubuntu-install-swift/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-29T21:12:28+08:00" />
+<meta property="article:modified_time" content="2021-08-29T21:12:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 安装 Swift"/>
+<meta name="twitter:description" content="Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；
+ 笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。
+一、安装对应 Linux 所需的依赖 Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。
+二、下载对应系统版本的 Swift 源码包和秘钥文件 依照不同的系统提供了不同的源码包和校验秘钥，这里我们将下载 Ubuntu 18.04 的源码包和秘钥文件
+首先，使用 wget 下载 Swift 源码包；
+下载完成后，执行 tar -xzf 解压源码包；
+下载秘钥文件。
+三、配置到环境变量 在 Root 身份下，执行 cd /etc ，进入到 etc 目录，然后执行 vim profile，编辑该文件；在该文件的添加 export PATH=/swift/usr/bin:&quot;${PATH}&quot;，其中 swift 的运行目录就根据你解压的路径来决定。"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://jadenhsiao.gitee.io/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e5%ae%89%e8%a3%85%e5%af%b9%e5%ba%94-linux-%e6%89%80%e9%9c%80%e7%9a%84%e4%be%9d%e8%b5%96" onclick="onNavClick(`#一安装对应-linux-所需的依赖-nav`)" id="一安装对应-linux-所需的依赖-nav">
+									一、安装对应 Linux 所需的依赖
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e4%b8%8b%e8%bd%bd%e5%af%b9%e5%ba%94%e7%b3%bb%e7%bb%9f%e7%89%88%e6%9c%ac%e7%9a%84-swift-%e6%ba%90%e7%a0%81%e5%8c%85%e5%92%8c%e7%a7%98%e9%92%a5%e6%96%87%e4%bb%b6" onclick="onNavClick(`#二下载对应系统版本的-swift-源码包和秘钥文件-nav`)" id="二下载对应系统版本的-swift-源码包和秘钥文件-nav">
+									二、下载对应系统版本的 Swift 源码包和秘钥文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e9%85%8d%e7%bd%ae%e5%88%b0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" onclick="onNavClick(`#三配置到环境变量-nav`)" id="三配置到环境变量-nav">
+									三、配置到环境变量
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%9b%e5%af%bc%e5%85%a5-pgp-%e7%a7%98%e9%92%a5%e5%88%b0%e7%b3%bb%e7%bb%9f%e5%92%8c%e6%a0%a1%e9%aa%8c-pgp-%e7%a7%98%e9%92%a5" onclick="onNavClick(`#四导入-pgp-秘钥到系统和校验-pgp-秘钥-nav`)" id="四导入-pgp-秘钥到系统和校验-pgp-秘钥-nav">
+									四、导入 PGP 秘钥到系统和校验 PGP 秘钥
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%94%e6%a0%a1%e9%aa%8c%e5%ae%89%e8%a3%85%e7%bb%93%e6%9e%9c" onclick="onNavClick(`#五校验安装结果-nav`)" id="五校验安装结果-nav">
+									五、校验安装结果
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e5%ae%89%e8%a3%85%e5%af%b9%e5%ba%94-linux-%e6%89%80%e9%9c%80%e7%9a%84%e4%be%9d%e8%b5%96" onclick="onNavClick(`#一安装对应-linux-所需的依赖-nav`)" id="一安装对应-linux-所需的依赖-nav">
+									一、安装对应 Linux 所需的依赖
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e4%b8%8b%e8%bd%bd%e5%af%b9%e5%ba%94%e7%b3%bb%e7%bb%9f%e7%89%88%e6%9c%ac%e7%9a%84-swift-%e6%ba%90%e7%a0%81%e5%8c%85%e5%92%8c%e7%a7%98%e9%92%a5%e6%96%87%e4%bb%b6" onclick="onNavClick(`#二下载对应系统版本的-swift-源码包和秘钥文件-nav`)" id="二下载对应系统版本的-swift-源码包和秘钥文件-nav">
+									二、下载对应系统版本的 Swift 源码包和秘钥文件
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e9%85%8d%e7%bd%ae%e5%88%b0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" onclick="onNavClick(`#三配置到环境变量-nav`)" id="三配置到环境变量-nav">
+									三、配置到环境变量
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%9b%e5%af%bc%e5%85%a5-pgp-%e7%a7%98%e9%92%a5%e5%88%b0%e7%b3%bb%e7%bb%9f%e5%92%8c%e6%a0%a1%e9%aa%8c-pgp-%e7%a7%98%e9%92%a5" onclick="onNavClick(`#四导入-pgp-秘钥到系统和校验-pgp-秘钥-nav`)" id="四导入-pgp-秘钥到系统和校验-pgp-秘钥-nav">
+									四、导入 PGP 秘钥到系统和校验 PGP 秘钥
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%94%e6%a0%a1%e9%aa%8c%e5%ae%89%e8%a3%85%e7%bb%93%e6%9e%9c" onclick="onNavClick(`#五校验安装结果-nav`)" id="五校验安装结果-nav">
+									五、校验安装结果
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.gitee.io/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://jadenhsiao.gitee.io/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Ubuntu 安装 Swift
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2021-08-29 21:12
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[WSL Swift]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/wsl">WSL</a>
+                                &nbsp;
+                            
+                                <a href="/tags/swift">Swift</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <blockquote>
+<p>Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；</p>
+</blockquote>
+<p>笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。</p>
+<h2 id="一安装对应-linux-所需的依赖">一、安装对应 Linux 所需的依赖</h2>
+<p><img src="/images/Snipaste_2021-08-29_22-04-09.png" alt="不同的 Linux 发行版所需安装的依赖"></p>
+<p>Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。</p>
+<p><img src="/images/Snipaste_2021-08-29_13-55-58.png" alt="执行安装依赖"></p>
+<h2 id="二下载对应系统版本的-swift-源码包和秘钥文件">二、下载对应系统版本的 Swift 源码包和秘钥文件</h2>
+<p><img src="/images/Snipaste_2021-08-29_22-20-35.png" alt="不同系统的源码包和秘钥"></p>
+<p>依照不同的系统提供了不同的源码包和校验秘钥，这里我们将下载 Ubuntu 18.04 的源码包和秘钥文件</p>
+<p><img src="/images/Snipaste_2021-08-29_13-59-49.png" alt="下载源码包"></p>
+<p>首先，使用 wget 下载 Swift 源码包；</p>
+<p><img src="/images/Snipaste_2021-08-29_14-10-53.png" alt="解压源码包"></p>
+<p>下载完成后，执行 <code>tar -xzf</code> 解压源码包；</p>
+<p><img src="/images/Snipaste_2021-08-29_14-55-03.png" alt="下载秘钥文件"></p>
+<p>下载秘钥文件。</p>
+<h2 id="三配置到环境变量">三、配置到环境变量</h2>
+<p><img src="/images/Snipaste_2021-08-29_14-32-11.png" alt="配置环境变量"></p>
+<p>在 Root 身份下，执行 <code>cd /etc </code>，进入到 etc 目录，然后执行 <code>vim profile</code>，编辑该文件；在该文件的添加 <code>export PATH=/swift/usr/bin:&quot;${PATH}&quot;</code>，其中 swift 的运行目录就根据你解压的路径来决定。</p>
+<h2 id="四导入-pgp-秘钥到系统和校验-pgp-秘钥">四、导入 PGP 秘钥到系统和校验 PGP 秘钥</h2>
+<p><img src="/images/Snipaste_2021-08-29_14-39-32.png" alt="导入 PGP 秘钥到系统"></p>
+<p>按照官方指引，执行以下两个命令都可以进行导入秘钥：</p>
+<pre tabindex="0"><code>gpg --keyserver hkp://pool.sks-keyservers.net \
+      --recv-keys \
+      &#39;7463 A81A 4B2E EA1B 551F  FBCF D441 C977 412B 37AD&#39; \
+      &#39;1BE1 E29A 084C B305 F397  D62A 9F59 7F4D 21A5 6D5F&#39; \
+      &#39;A3BA FD35 56A5 9079 C068  94BD 63BC 1CFE 91D3 06C6&#39; \
+      &#39;5E4D F843 FB06 5D7F 7E24  FBA2 EF54 30F0 71E1 B235&#39; \
+      &#39;8513 444E 2DA3 6B7C 1659  AF4D 7638 F1FB 2B2B 08C4&#39; \
+      &#39;A62A E125 BBBF BB96 A6E0  42EC 925C C1CC ED3D 1561&#39; \
+      &#39;8A74 9566 2C3C D4AE 18D9  5637 FAF6 989E 1BC1 6FEA&#39;
+</code></pre><p>或者：</p>
+<pre tabindex="0"><code>wget -q -O - https://swift.org/keys/all-keys.asc | \
+  gpg --import -
+</code></pre><p><img src="/images/Snipaste_2021-08-29_14-55-53.png" alt="校验秘钥"></p>
+<p>进入到第一步所下载秘钥包的目录，执行 <code>gpg --verify swift-&lt;VERSION&gt;-&lt;PLATFORM&gt;.tar.gz.sig</code>，完成校验。</p>
+<h2 id="五校验安装结果">五、校验安装结果</h2>
+<p><img src="/images/Snipaste_2021-08-29_15-00-15.png" alt="导入 PGP 秘钥到系统"></p>
+<p>执行 <code>swift --version</code>，如上图一样即为安装完成。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2021-08-29</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/">
+			下回<br>Ubuntu 安装 Vapor
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://jadenhsiao.gitee.io/post/windows10-install-wsl/">
+			上回<br>Windows10 安装 Windows Subsystem for Linux
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>
