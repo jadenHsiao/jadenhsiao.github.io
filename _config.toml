@@ -1,0 +1,22 @@
+baseURL = "https://jadenHsiao.gitee.io"
+languageCode = "zh-cn"
+title = "JadenChannel"
+copyright = "Copyright right infomation."
+themesdir = "themes"
+#theme = "hugo-theme-mini-master"
+theme = "Diary"
+Paginate=15 
+MetaDataFormat = "toml"
+PaginatePath="page"
+pygmentsuseclasses = true
+disqusShortname = "jadenHsiao"
+googleAnalytics='google analytics code'
+hasCJKLanguage = true
+preserveTaxonomyNames = false
+disablePathToLower =false 
+enableEmoji = true
+enableInlineShortcodes = true
+enableRobotsTXT = true
+[author]
+name = "jadenHsiao"
+homepage = "https://github.com/nodejh"
