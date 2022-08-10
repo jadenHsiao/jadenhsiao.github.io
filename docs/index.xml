@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JadenHsiao</title>
-    <link>https://jadenhsiao.github.io/blog/</link>
+    <link>https://jadenhsiao.github.io/</link>
     <description>Recent content on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
     <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate>
     
-        <atom:link href="https://jadenhsiao.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://jadenhsiao.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     
         <item>
         <title>LeetCode - （算法）最后一个单词的长度</title>
-        <link>https://jadenhsiao.github.io/blog/post/length-of-last-word/</link>
+        <link>https://jadenhsiao.github.io/post/length-of-last-word/</link>
         <pubDate>Tue, 09 Aug 2022 22:15:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/length-of-last-word/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/length-of-last-word/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/classic/problems/length-of-last-word/description/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/length-of-last-word/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/length-of-last-word/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/classic/problems/length-of-last-word/description/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;给你一个字符串  &lt;code&gt;s&lt;/code&gt;，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中  &lt;strong&gt;最后一个&lt;/strong&gt;  单词的长度。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;单词&lt;/strong&gt;  是指仅由字母组成、不包含任何空格字符的最大子字符串。&lt;/p&gt;
 &lt;blockquote&gt;
@@ -63,18 +63,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：把字符串参数从后面往前判断，如果是空格就跳过，如果已经出现了非空格字符串就继续往前移动，直到前面是空格，再统计长度即可。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/length-of-last-word/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/length-of-last-word/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （算法）实现 strStr()</title>
-        <link>https://jadenhsiao.github.io/blog/post/implement-strstr/</link>
+        <link>https://jadenhsiao.github.io/post/implement-strstr/</link>
         <pubDate>Sun, 07 Aug 2022 16:48:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/implement-strstr/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/implement-strstr/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/implement-strstr&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/implement-strstr/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/implement-strstr/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/implement-strstr&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;实现 strStr() 函数。&lt;/p&gt;
 &lt;p&gt;给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回  -1 。&lt;/p&gt;
 &lt;p&gt;说明：&lt;/p&gt;
@@ -123,18 +123,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：把查询的字符串当作数组，进行遍历，当字符和目标字符的第一个字符相同的情况下，进行后面字符的匹配，对应长度匹配字符相同后，就返回出现的第一个字符；如果目标为空字符就返回0；如果目标字符长度大于查询的字符串，就返回-1。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/implement-strstr/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/implement-strstr/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （MySQL）游戏玩法分析 I</title>
-        <link>https://jadenhsiao.github.io/blog/post/game-play-analysis-i/</link>
+        <link>https://jadenhsiao.github.io/post/game-play-analysis-i/</link>
         <pubDate>Sun, 07 Aug 2022 13:08:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/game-play-analysis-i/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/game-play-analysis-i/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/game-play-analysis-i/comments/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/game-play-analysis-i/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/game-play-analysis-i/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/game-play-analysis-i/comments/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;使用到下面的 Activity 表，表的主键是 (player_id, event_date)。
 这张表展示了一些游戏玩家在游戏平台上的行为活动。
 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：&lt;/p&gt;
@@ -245,18 +245,18 @@ Activity 表：&lt;/p&gt;
 &lt;p&gt;解答：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;select&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;player_id,&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;min&lt;/span&gt;(event_date)&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;as&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;first_login&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;from&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;Activity&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;group&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;by&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;player_id;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;先将登录的时间根据用户ID进行分组，然后在获取的结果集根据分组内的最小值进行输出，就可以获得用户第一次登陆的日期。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/game-play-analysis-i/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/game-play-analysis-i/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （MySQL）连续出现的数字</title>
-        <link>https://jadenhsiao.github.io/blog/post/consecutive-numbers/</link>
+        <link>https://jadenhsiao.github.io/post/consecutive-numbers/</link>
         <pubDate>Sun, 07 Aug 2022 03:27:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/consecutive-numbers/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/consecutive-numbers/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/consecutive-numbers/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/consecutive-numbers/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/consecutive-numbers/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/consecutive-numbers/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;使用到下面的 Logs 表，id 是这个表的主键，表的结构如下：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -389,18 +389,18 @@ MySQL 5.7 下使用联表查询：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;	&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;AND&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;(&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;	&lt;/span&gt;a.num&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;b.num)&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在 MySQL 8.0 中，使用了新特性的开窗函数&lt;code&gt;lead&lt;/code&gt;，用于获取到每条记录后面一条记录的num，左表是获取到当前记录的id、num，同时还有下一条的num，还有下下一条的id；再进行联表 Logs 表，联表的条件是拿下下一条的id和右表连接，获取到下下一条的 num，条件为每一条记录的num和下一条的num还有下下一条的num相同即可，最后一样进行去重。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/consecutive-numbers/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/consecutive-numbers/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （MySQL）删除重复的电子邮箱</title>
-        <link>https://jadenhsiao.github.io/blog/post/delete-duplicate-emails/</link>
+        <link>https://jadenhsiao.github.io/post/delete-duplicate-emails/</link>
         <pubDate>Fri, 05 Aug 2022 08:27:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/delete-duplicate-emails/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/delete-duplicate-emails/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/delete-duplicate-emails/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/delete-duplicate-emails/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/delete-duplicate-emails/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/delete-duplicate-emails/&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;使用到下面的 Person 表，id 是这个表的主键，该表包含邮箱地址，表的结构如下：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -487,18 +487,18 @@ Person 表：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;group&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;by&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;a.email&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;&lt;/span&gt;);&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我的结题思路是先将表的邮箱地址进行去重，然后取出每一项的最小值 ID，删除的时候去排除这些最小值 ID 即可。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/delete-duplicate-emails/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/delete-duplicate-emails/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （MySQL）上升的温度</title>
-        <link>https://jadenhsiao.github.io/blog/post/rising-temperature/</link>
+        <link>https://jadenhsiao.github.io/post/rising-temperature/</link>
         <pubDate>Wed, 03 Aug 2022 13:11:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/rising-temperature/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/rising-temperature/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/rising-temperature&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/rising-temperature/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/rising-temperature/ -&lt;p&gt;&lt;a href=&#34;https://leetcode.cn/problems/rising-temperature&#34;&gt;题目链接&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;使用到下面的 Weather 表，id 是这个表的主键，该表包含特定日期的温度信息，表的结构如下：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -588,18 +588,18 @@ Weather 表：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;on&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;date_sub(w.recordDate,&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#658b00&#34;&gt;interval&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;day&lt;/span&gt;)&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;=&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;cw.recordDate&lt;span style=&#34;color:#bbb&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;where&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;(w.Temperature-cw.Temperature)&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&amp;gt;&lt;span style=&#34;color:#bbb&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#bbb&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;我的解题思路主要是对表自身进行连接，再用&lt;code&gt;date_sub&lt;/code&gt;来获取前一天，判断是否存在于连接表，再筛选出比前一天温度高的 ID 即可，该题目考察对日期函数的熟悉，难度相对来说比较简单。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/rising-temperature/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/rising-temperature/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Yii2使用技巧（六）- 文件上传兼容WPS</title>
-        <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/</link>
+        <link>https://jadenhsiao.github.io/post/yii2-skills-part-six/</link>
         <pubDate>Wed, 20 Jul 2022 14:00:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/ -&lt;blockquote&gt;
+        <guid>https://jadenhsiao.github.io/post/yii2-skills-part-six/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/yii2-skills-part-six/ -&lt;blockquote&gt;
 &lt;p&gt;在业务开发中，对于用户上传的文件需要进行安全校验，&lt;em&gt;Yii&lt;/em&gt;本身提供了&lt;em&gt;FileValidator&lt;/em&gt;的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;通过断点调试，得知&lt;em&gt;FileValidator&lt;/em&gt;是通过获取上传文件的&lt;em&gt;MimeType&lt;/em&gt;和后缀，然后将后置通过&lt;em&gt;yiisoft/yii2/helpers/mimeTypes.php&lt;/em&gt;中返回的数组获取到对应&lt;em&gt;Yii&lt;/em&gt;设定的&lt;em&gt;MimeType&lt;/em&gt;，对比是否一致，如果不一致则抛出校验错误。&lt;/p&gt;
@@ -685,18 +685,18 @@ Weather 表：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://jadenhsiao.github.io/post/yii2-skills-part-six/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （算法）独一无二的出现次数</title>
-        <link>https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/</link>
+        <link>https://jadenhsiao.github.io/post/unique-number-of-occurrences/</link>
         <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/ -&lt;p&gt;给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/unique-number-of-occurrences/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/unique-number-of-occurrences/ -&lt;p&gt;给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。&lt;/p&gt;
 &lt;p&gt;如果每个数的出现次数都是独一无二的，就返回 true；否则返回 false。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;示例 1：&lt;/p&gt;
@@ -720,18 +720,18 @@ Weather 表：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;false&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：先用array_count_values获取到数组内每一项出现的次数，再对上一步的结果进行去重，如果去重结果和上一步的结果数量一致，则每一项出现次数都是独一无二。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/unique-number-of-occurrences/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （算法）两数之和</title>
-        <link>https://jadenhsiao.github.io/blog/post/two-sum/</link>
+        <link>https://jadenhsiao.github.io/post/two-sum/</link>
         <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/two-sum/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/two-sum/ -&lt;p&gt;给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/two-sum/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/two-sum/ -&lt;p&gt;给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。&lt;/p&gt;
 &lt;p&gt;你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;示例:&lt;/p&gt;
@@ -766,18 +766,18 @@ Weather 表：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：题目要求是在一个给定数组内找出两个相加为给定值，因此将该给定的数组进行遍历后再遍历，遍历时两个值是不能相等的，同时相加的结果为给定的值，遍历出来后会出现下标是一样的情况但是位置不同，所以要对结果进行去重，确保可以去重得先对每一次获得的结果进行升序，再进行去重就可以得到最终的结果。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/two-sum/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/two-sum/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>LeetCode - （算法）搜索插入位置</title>
-        <link>https://jadenhsiao.github.io/blog/post/search-insert-position/</link>
+        <link>https://jadenhsiao.github.io/post/search-insert-position/</link>
         <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/blog/post/search-insert-position/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/blog/post/search-insert-position/ -&lt;p&gt;给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。&lt;/p&gt;
+        <guid>https://jadenhsiao.github.io/post/search-insert-position/</guid>
+        <description>JadenHsiao https://jadenhsiao.github.io/post/search-insert-position/ -&lt;p&gt;给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。&lt;/p&gt;
 &lt;p&gt;你可以假设数组中无重复元素。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;示例 1:&lt;/p&gt;
@@ -819,7 +819,7 @@ Weather 表：&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：本题主要是位置查找问题，如果在数组内就返回对应的下标，比最小值的小就返回第一个值的下标，比最大值的大就返回最大值插入的位置，否则就返回插入的位置，因此，先跟最小的比较，再跟最大的比较，如果都不成立就走遍历，从遍历里当前的和往前一位的比较，如果在中间就直接取前一位的位置。&lt;/p&gt;
-- https://jadenhsiao.github.io/blog/post/search-insert-position/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://jadenhsiao.github.io/post/search-insert-position/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     

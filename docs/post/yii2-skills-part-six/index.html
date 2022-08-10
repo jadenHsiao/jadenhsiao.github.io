@@ -22,7 +22,7 @@
 一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
 &lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &#34;docx&#34; =&gt; &#34;application/zip&#34;,  &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;,  &#34;xlsx&#34; =&gt; &#34;application/zip&#34;,  &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;);   if ($this-&gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&gt;extra[$extension] == $mimeType){  return true;  }   if (!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://jadenhsiao.github.io/post/yii2-skills-part-six/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-07-20T14:00:28+08:00" />
 <meta property="article:modified_time" content="2022-07-20T14:00:28+08:00" /><meta property="og:site_name" content="My Blog" />
 
@@ -44,7 +44,7 @@
 
 
 
-<link type="text/css" rel="stylesheet" href="/blog/vendor/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
 
 
   
@@ -54,14 +54,14 @@
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.github.io/blog/scss/journal.scss" integrity="" media="screen">
+<link rel="stylesheet" href="https://jadenhsiao.github.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.github.io/blog/scss/dark-mode.scss" integrity="" media="screen">
+<link rel="stylesheet" href="https://jadenhsiao.github.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
 
 
-<script src="/blog/vendor/js/loadCSS.js"></script>
+<script src="/vendor/js/loadCSS.js"></script>
 <script>
   loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
 </script>
@@ -71,7 +71,7 @@
 
 
 
-  <script src="/blog/js/toc.js"></script>
+  <script src="/js/toc.js"></script>
 
 
 
@@ -90,7 +90,7 @@
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://jadenhsiao.github.io/blog">
+    <a class="a-block nav-head false" href="https://jadenhsiao.github.io/">
     
         <div class="nav-title">
             JadenHsiao
@@ -112,7 +112,7 @@
             
             
             
-            <a class="a-block nav-link-item active" href="/blog/post">
+            <a class="a-block nav-link-item active" href="/post">
                 文章内容
             </a>
             
@@ -122,7 +122,7 @@
             
             
             
-            <a class="a-block nav-link-item false" href="/blog/categories">
+            <a class="a-block nav-link-item false" href="/categories">
                 分类列表
             </a>
             
@@ -132,7 +132,7 @@
             
             
             
-            <a class="a-block nav-link-item false" href="/blog/about">
+            <a class="a-block nav-link-item false" href="/about">
                 关于作者
             </a>
             
@@ -142,7 +142,7 @@
             
             
             
-            <a class="a-block nav-link-item false" href="/blog/index.xml">
+            <a class="a-block nav-link-item false" href="/index.xml">
                 RSS Feed
             </a>
             
@@ -258,7 +258,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item active" href="/blog/post">
+                <a class="a-block drawer-menu-item active" href="/post">
                     文章内容
                 </a>
                 
@@ -268,7 +268,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/blog/categories">
+                <a class="a-block drawer-menu-item false" href="/categories">
                     分类列表
                 </a>
                 
@@ -278,7 +278,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/blog/about">
+                <a class="a-block drawer-menu-item false" href="/about">
                     关于作者
                 </a>
                 
@@ -288,7 +288,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/blog/index.xml">
+                <a class="a-block drawer-menu-item false" href="/index.xml">
                     RSS Feed
                 </a>
                 
@@ -368,7 +368,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 menu
             </i>
         </button>
-        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.github.io/blog">
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.github.io/">
             JadenHsiao
         </a>
         
@@ -382,7 +382,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </nav>
 <div class="single-column-header-container" id="pageHead"
      v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://jadenhsiao.github.io/blog">
+    <a href="https://jadenhsiao.github.io/">
         <div class="single-column-header-title">JadenHsiao</div>
         
         <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
@@ -415,17 +415,17 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/blog/categories/">[PHP Yii]</a>
+                                <a href="/categories/">[PHP Yii]</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/blog/tags/php">PHP</a>
+                                <a href="/tags/php">PHP</a>
                                 &nbsp;
                             
-                                <a href="/blog/tags/yii">Yii</a>
+                                <a href="/tags/yii">Yii</a>
                                 &nbsp;
                             
                         
@@ -536,13 +536,13 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="https://jadenhsiao.github.io/blog/post/rising-temperature/">
+                <a class="newer-posts" href="https://jadenhsiao.github.io/post/rising-temperature/">
 			下回<br>LeetCode - （MySQL）上升的温度
                 </a>
                 
                 
                 
-                <a class="older-posts" href="https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/">
+                <a class="older-posts" href="https://jadenhsiao.github.io/post/unique-number-of-occurrences/">
 			上回<br>LeetCode - （算法）独一无二的出现次数
                 </a>
                 
@@ -578,6 +578,6 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </div>
             </div>
     
-    <script src="/blog/js/journal.js"></script>
+    <script src="/js/journal.js"></script>
     </body>
 </html>

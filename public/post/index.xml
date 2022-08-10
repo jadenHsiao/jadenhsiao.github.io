@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on JadenHsiao</title>
-    <link>https://jadenhsiao.github.io/blog/post/</link>
+    <link>https://jadenhsiao.github.io/post/</link>
     <description>Recent content in Posts on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.github.io/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LeetCode - （算法）最后一个单词的长度</title>
-      <link>https://jadenhsiao.github.io/blog/post/length-of-last-word/</link>
+      <link>https://jadenhsiao.github.io/post/length-of-last-word/</link>
       <pubDate>Tue, 09 Aug 2022 22:15:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/length-of-last-word/</guid>
+      <guid>https://jadenhsiao.github.io/post/length-of-last-word/</guid>
       <description>题目链接
 给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
 单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
@@ -25,10 +25,10 @@
     
     <item>
       <title>LeetCode - （算法）实现 strStr()</title>
-      <link>https://jadenhsiao.github.io/blog/post/implement-strstr/</link>
+      <link>https://jadenhsiao.github.io/post/implement-strstr/</link>
       <pubDate>Sun, 07 Aug 2022 16:48:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/implement-strstr/</guid>
+      <guid>https://jadenhsiao.github.io/post/implement-strstr/</guid>
       <description>题目链接
 实现 strStr() 函数。
 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 -1 。
@@ -45,10 +45,10 @@
     
     <item>
       <title>LeetCode - （MySQL）游戏玩法分析 I</title>
-      <link>https://jadenhsiao.github.io/blog/post/game-play-analysis-i/</link>
+      <link>https://jadenhsiao.github.io/post/game-play-analysis-i/</link>
       <pubDate>Sun, 07 Aug 2022 13:08:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/game-play-analysis-i/</guid>
+      <guid>https://jadenhsiao.github.io/post/game-play-analysis-i/</guid>
       <description>题目链接
 使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
    Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
@@ -60,10 +60,10 @@ CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_pl
     
     <item>
       <title>LeetCode - （MySQL）连续出现的数字</title>
-      <link>https://jadenhsiao.github.io/blog/post/consecutive-numbers/</link>
+      <link>https://jadenhsiao.github.io/post/consecutive-numbers/</link>
       <pubDate>Sun, 07 Aug 2022 03:27:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/consecutive-numbers/</guid>
+      <guid>https://jadenhsiao.github.io/post/consecutive-numbers/</guid>
       <description>题目链接
 使用到下面的 Logs 表，id 是这个表的主键，表的结构如下：
    Column Name Type     id int   num varchar    创建和填充数据：
@@ -76,10 +76,10 @@ CreatetableIfNotExistsLogs(idint,numint)TruncatetableLogsinsertintoLogs(id,num)v
     
     <item>
       <title>LeetCode - （MySQL）删除重复的电子邮箱</title>
-      <link>https://jadenhsiao.github.io/blog/post/delete-duplicate-emails/</link>
+      <link>https://jadenhsiao.github.io/post/delete-duplicate-emails/</link>
       <pubDate>Fri, 05 Aug 2022 08:27:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/delete-duplicate-emails/</guid>
+      <guid>https://jadenhsiao.github.io/post/delete-duplicate-emails/</guid>
       <description>题目链接
 使用到下面的 Person 表，id 是这个表的主键，该表包含邮箱地址，表的结构如下：
    Column Name Type     id int   email varchar    创建和填充数据：
@@ -93,10 +93,10 @@ CreatetableIfNotExistsPerson(Idint,Emailvarchar(255))TruncatetablePersoninsertin
     
     <item>
       <title>LeetCode - （MySQL）上升的温度</title>
-      <link>https://jadenhsiao.github.io/blog/post/rising-temperature/</link>
+      <link>https://jadenhsiao.github.io/post/rising-temperature/</link>
       <pubDate>Wed, 03 Aug 2022 13:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/rising-temperature/</guid>
+      <guid>https://jadenhsiao.github.io/post/rising-temperature/</guid>
       <description>题目链接
 使用到下面的 Weather 表，id 是这个表的主键，该表包含特定日期的温度信息，表的结构如下：
    Column Name Type     id int   recordDate date   temperature int    创建和填充数据：
@@ -107,10 +107,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>Yii2使用技巧（六）- 文件上传兼容WPS</title>
-      <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/</link>
+      <link>https://jadenhsiao.github.io/post/yii2-skills-part-six/</link>
       <pubDate>Wed, 20 Jul 2022 14:00:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-six/</guid>
+      <guid>https://jadenhsiao.github.io/post/yii2-skills-part-six/</guid>
       <description>在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
  通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
 一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
@@ -119,10 +119,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>LeetCode - （算法）独一无二的出现次数</title>
-      <link>https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/</link>
+      <link>https://jadenhsiao.github.io/post/unique-number-of-occurrences/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/unique-number-of-occurrences/</guid>
+      <guid>https://jadenhsiao.github.io/post/unique-number-of-occurrences/</guid>
       <description>给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。
 如果每个数的出现次数都是独一无二的，就返回 true；否则返回 false。
  示例 1：
@@ -137,10 +137,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>LeetCode - （算法）两数之和</title>
-      <link>https://jadenhsiao.github.io/blog/post/two-sum/</link>
+      <link>https://jadenhsiao.github.io/post/two-sum/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/two-sum/</guid>
+      <guid>https://jadenhsiao.github.io/post/two-sum/</guid>
       <description>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
  示例:
@@ -151,10 +151,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>LeetCode - （算法）搜索插入位置</title>
-      <link>https://jadenhsiao.github.io/blog/post/search-insert-position/</link>
+      <link>https://jadenhsiao.github.io/post/search-insert-position/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/search-insert-position/</guid>
+      <guid>https://jadenhsiao.github.io/post/search-insert-position/</guid>
       <description>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 你可以假设数组中无重复元素。
  示例 1:
@@ -169,10 +169,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>LeetCode - （算法）整数反转</title>
-      <link>https://jadenhsiao.github.io/blog/post/reverse-integer/</link>
+      <link>https://jadenhsiao.github.io/post/reverse-integer/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/reverse-integer/</guid>
+      <guid>https://jadenhsiao.github.io/post/reverse-integer/</guid>
       <description>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
  示例 1:
 输入: 123 输出: 321
@@ -187,10 +187,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>LeetCode - （算法）最大间距</title>
-      <link>https://jadenhsiao.github.io/blog/post/maximum-gap/</link>
+      <link>https://jadenhsiao.github.io/post/maximum-gap/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/maximum-gap/</guid>
+      <guid>https://jadenhsiao.github.io/post/maximum-gap/</guid>
       <description>给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。
 如果数组元素个数小于 2，则返回 0。
  示例 1:
@@ -203,10 +203,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台</title>
-      <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-five/</link>
+      <link>https://jadenhsiao.github.io/post/yii2-skills-part-five/</link>
       <pubDate>Tue, 19 Jul 2022 15:29:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-five/</guid>
+      <guid>https://jadenhsiao.github.io/post/yii2-skills-part-five/</guid>
       <description>Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。使用它可以帮助我们记录下错误信息，官方提供的phpSDK,只需几行代码，就可以把他整合到Yii中，本篇文章是技巧三的延续。
  一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
 二、创建项目 注册完成后进入到控制台，点击右上角进入创建项目界面；
@@ -219,10 +219,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>Yii2使用技巧（四）- 将Yii整合到GatewayWorker</title>
-      <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-four/</link>
+      <link>https://jadenhsiao.github.io/post/yii2-skills-part-four/</link>
       <pubDate>Mon, 18 Jul 2022 15:29:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-four/</guid>
+      <guid>https://jadenhsiao.github.io/post/yii2-skills-part-four/</guid>
       <description> Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
  一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
 二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
@@ -235,10 +235,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>Yii2使用技巧（三）- 优雅处理业务错误</title>
-      <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-three/</link>
+      <link>https://jadenhsiao.github.io/post/yii2-skills-part-three/</link>
       <pubDate>Mon, 18 Jul 2022 09:50:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-three/</guid>
+      <guid>https://jadenhsiao.github.io/post/yii2-skills-part-three/</guid>
       <description>错误提示是程序运行重要的一环，可以让开发者及时知晓出错的位置和原因，但是在编码的时候，因拦截错误所编写的大量try catch会让代码后期难以维护，所以这里将会针对Yii，对程序的错误提示进行统一处理。
  一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
 &amp;lt;?php namespace app\modules\example\exception;  class ErrorCodes {   /** * 错误码列表 * @return array */  public static function errorCodeList()  {   return [   401 =&amp;gt; &amp;#34;Access Token 无效&amp;#34;,  403 =&amp;gt; &amp;#34;该 App ID 已被封禁，请联系管理员&amp;#34;,  429 =&amp;gt; &amp;#34;请求次数过多，请稍后再试&amp;#34;,  500 =&amp;gt; &amp;#34;服务器内容错误&amp;#34;,   // TODO 其他的错误信息可以根据错误码内容写入  101001 =&amp;gt; &amp;#34;生成 Access Token 失败&amp;#34;,   ];   }  } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。</description>
@@ -246,10 +246,10 @@ CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableW
     
     <item>
       <title>记录一次清理网站挂马</title>
-      <link>https://jadenhsiao.github.io/blog/post/clear-website-trojan/</link>
+      <link>https://jadenhsiao.github.io/post/clear-website-trojan/</link>
       <pubDate>Sat, 28 May 2022 10:54:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/clear-website-trojan/</guid>
+      <guid>https://jadenhsiao.github.io/post/clear-website-trojan/</guid>
       <description>某一天，上班上到一半，老板拿着某度APP，过来技术部，跟我们说，公司网站被挂马了，上面全部是菠菜广告；听到老板反馈后，立马开始排查，但是使用普通浏览器访问又看不到内容；于是乎就有下面清理历程了。
  问题一：只有某度APP打开才复现问题？ 很明显就是针对于某度，因为某度会对站点进行爬取收录（这方面涉及到了SEO相关），而且从挂马内容看都是搜索热词；直接浏览器打开看不到内容，具有隐秘性；对此，我找了个某度爬虫的请求头，然后使用chrome的一款可以修改请求头的拓展 ModHeader，来看下能不能复现内容。
 上面这张图就是使用 ModHeader，把请求的 User-Agent 修改为某度的爬虫请求头，然后请求被挂马的站点，发现问题复现了，下面的文本就是某度的 UA 请求头。
@@ -262,10 +262,10 @@ data:;base64,PD9waHAKQG9iX3N0YXJ0ICgpOwpAc2V0X3RpbWVfbGltaXQoMCk7CmVycm9yX3JlcG9
     
     <item>
       <title>微信开发技巧之文件上传</title>
-      <link>https://jadenhsiao.github.io/blog/post/upload-asset-to-wechat/</link>
+      <link>https://jadenhsiao.github.io/post/upload-asset-to-wechat/</link>
       <pubDate>Sat, 16 Apr 2022 00:26:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/upload-asset-to-wechat/</guid>
+      <guid>https://jadenhsiao.github.io/post/upload-asset-to-wechat/</guid>
       <description>微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的指引是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl 请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。
  下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：
 public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt($ch, CURLOPT_URL, $url);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  curl_setopt(  $ch,  CURLOPT_POSTFIELDS,  $data  );  $headers = array();  $headers[] = &amp;#39;Content-Type: multipart/form-data&amp;#39;;  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);   $output = curl_exec($ch);  curl_close($ch);  return $output; } 上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &#39;Content-Type: multipart/form-data&#39; 。</description>
@@ -273,10 +273,10 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
     
     <item>
       <title>Yii2使用技巧（二）- 在Yii上使用MongoDB</title>
-      <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-two/</link>
+      <link>https://jadenhsiao.github.io/post/yii2-skills-part-two/</link>
       <pubDate>Mon, 21 Mar 2022 00:26:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-two/</guid>
+      <guid>https://jadenhsiao.github.io/post/yii2-skills-part-two/</guid>
       <description>公司项目的主线业务使用的是 MySQL ，但是在日志系统使用的是非关系型数据库 MongoDB ，而 Yii2 本身的 Active Record 是支持的，所以使用技巧二将针对 Yii2 上 MongoDB 的使用方法做一系列讲解。
  一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &amp;quot;yiisoft/yii2-mongodb&amp;quot;: &amp;quot;~2.1.0&amp;quot; ，再执行 composer update ，将拓展包安装包项目内。
 二、将组件添加到 Yii 配置 因为本人使用的是 basic 版，所以就直接在项目的 config/web.php 文件的 components 关联数组内添加一下代码：
@@ -285,10 +285,10 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
     
     <item>
       <title>Yii2使用技巧（一）- 数组辅助工具</title>
-      <link>https://jadenhsiao.github.io/blog/post/yii2-skills-part-one/</link>
+      <link>https://jadenhsiao.github.io/post/yii2-skills-part-one/</link>
       <pubDate>Wed, 16 Mar 2022 23:36:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/yii2-skills-part-one/</guid>
+      <guid>https://jadenhsiao.github.io/post/yii2-skills-part-one/</guid>
       <description>因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。
  一、数组筛选（\yii\helper\ArrayHelper::filter） 该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。
 从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。
@@ -297,10 +297,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Ubuntu 安装 Vapor</title>
-      <link>https://jadenhsiao.github.io/blog/post/ubuntu-install-vapor/</link>
+      <link>https://jadenhsiao.github.io/post/ubuntu-install-vapor/</link>
       <pubDate>Tue, 31 Aug 2021 22:38:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/ubuntu-install-vapor/</guid>
+      <guid>https://jadenhsiao.github.io/post/ubuntu-install-vapor/</guid>
       <description>Apple 公司的 Swift 不仅能够编写 MacOS 、IOS 端的应用，还能基于 SwiftNIO 编写服务端，在 Swift 服务端的阵营里，有 Kitura、perfect、Vapor 。
  而今天，我将给大家介绍一款服务端框架 Vapor，他在 github 收获高达 20.6k star 的服务端框架，同时支持 JWT、MySQL、Redis、MongoDB种种我们服务端开发所需要的组件，并且设计思路来源于 Laravel/Lumen（php开发者狂喜😆😆），同时拥有活跃的社区，并且随着 Swift 版本在不断地更新，所以，我毅然决然选择 Vapor 作为我 Swift 开发服务端的框架。
 因为我的 MacOS 系统版本是 Majove，同时平常更加倾向于使用 Windows，所以就选择了 WSL 作为 Vapor 的开发环境，使用的是 Ubuntu18.04，接下来，将先介绍下在 Ubuntu 下如何安装 Vapor。
@@ -309,10 +309,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Ubuntu 安装 Swift</title>
-      <link>https://jadenhsiao.github.io/blog/post/ubuntu-install-swift/</link>
+      <link>https://jadenhsiao.github.io/post/ubuntu-install-swift/</link>
       <pubDate>Sun, 29 Aug 2021 21:12:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/ubuntu-install-swift/</guid>
+      <guid>https://jadenhsiao.github.io/post/ubuntu-install-swift/</guid>
       <description>Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；
  笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。
 一、安装对应 Linux 所需的依赖 Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。
@@ -325,10 +325,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Windows10 安装 Windows Subsystem for Linux</title>
-      <link>https://jadenhsiao.github.io/blog/post/windows10-install-wsl/</link>
+      <link>https://jadenhsiao.github.io/post/windows10-install-wsl/</link>
       <pubDate>Sat, 28 Aug 2021 00:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/windows10-install-wsl/</guid>
+      <guid>https://jadenhsiao.github.io/post/windows10-install-wsl/</guid>
       <description>适用于 Linux 的 Windows 子系统可让开发人员按原样运行 GNU/Linux 环境 - 包括大多数命令行工具、实用工具和应用程序 - 且不会产生传统虚拟机或双启动设置开销。
  上面这段是微软官方对于 Windows 子系统的简介，通过 WSL ，可以在 Windows 10 上安装诸如 Ubuntu、Kali、Debian等Linux的发行版，接下来，我将简单分享下安装 WSL 的流程和如何开启远程登录访问。
 一、开启 WSL 支持  WSL 作为拓展功能存在于 Windows 10 ，因此它不是默认开启的，需要我们手动启用该功能。
@@ -337,10 +337,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Cygwin安装apt-cyg</title>
-      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-apt-cyg/</link>
+      <link>https://jadenhsiao.github.io/post/cygwin-install-apt-cyg/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-apt-cyg/</guid>
+      <guid>https://jadenhsiao.github.io/post/cygwin-install-apt-cyg/</guid>
       <description>在Linux系统下，如果我们需要一些软件包的话，可以使用软件包管理进行下载、安装；例如在Ubuntu下的apt-get，又或者在CentOS下的yum，都能帮助我们快速的下载安装软件包，同时又能自动安装软件包对应的依赖包，从而提高我们的开发效率。
  既然Cygwin是模拟Linux的运行环境，所以，毫无例外，它也提供了软件包管理工具apt-cyg，下面，我就简单分享下安装apt-cyg的方法。
 一、执行下载apt-cyg可执行文件 创建一个下载目录，在该目录下执行指令，wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg。
@@ -349,10 +349,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Cygwin安装composer</title>
-      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-composer/</link>
+      <link>https://jadenhsiao.github.io/post/cygwin-install-composer/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-composer/</guid>
+      <guid>https://jadenhsiao.github.io/post/cygwin-install-composer/</guid>
       <description>A Dependency Manager for PHP
  上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。
 一、下载composer并且移动到可执行目录  在下载目录使用wget下载composer.phar  wget https://install.phpcomposer.com/composer.phar
@@ -363,10 +363,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Cygwin安装phpredis拓展</title>
-      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-phpredis/</link>
+      <link>https://jadenhsiao.github.io/post/cygwin-install-phpredis/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-phpredis/</guid>
+      <guid>https://jadenhsiao.github.io/post/cygwin-install-phpredis/</guid>
       <description>phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据
  这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
 一、下载phpredis源码包 在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。
@@ -378,10 +378,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Cygwin为php安装mongodb拓展</title>
-      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-mongodb-plugin/</link>
+      <link>https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-mongodb-plugin/</guid>
+      <guid>https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/</guid>
       <description>The purpose of this driver is to provide exceptionally thin glue between MongoDB and PHP, implementing only fundamental and performance-critical components necessary to build a fully-functional MongoDB driver.
  上面的引用是摘抄自mongodb拓展在pecl站点的描述，大致的意思就是该拓展为php和mongodb提供粘合剂功能，实现php链接和操作mongodb。下面就简单分享下Cygwin安装php的mongodb拓展的方法。
 一、下载mongodb拓展源码包 进入pecl，搜索mongodb，因为我使用的环境是Cygwin提供的php7.3.7版本，所以选择搜索结果的mongodb，这里看到两个mongodb相关的拓展，第二个的mongo是php5.x所使用的，这里不做深入探讨。
@@ -393,10 +393,10 @@ public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt
     
     <item>
       <title>Windows10安装Cygwin</title>
-      <link>https://jadenhsiao.github.io/blog/post/windows10-install-cygwin/</link>
+      <link>https://jadenhsiao.github.io/post/windows10-install-cygwin/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/blog/post/windows10-install-cygwin/</guid>
+      <guid>https://jadenhsiao.github.io/post/windows10-install-cygwin/</guid>
       <description>What Is Cygwin? Get that Linux feeling - on Windows
  这个是Cygwin项目主页上的简介，安装它，可以得到一个类似Linux的Shell环境，在其中你可以使用绝大部分Linux软件和功能。如Gcc,Make,Vim,Emacs等等，作为一个php开发者，使用Cygwin的目的是为了运行Swoole，接下来，我将简单分享下安装Cygwin的流程和我们安装swoole需要的组件包。
 一、从项目主页下载Cygwin安装包 这个安装包不单单只是安装Cygwin，还能用来安装我们需要的组件包。

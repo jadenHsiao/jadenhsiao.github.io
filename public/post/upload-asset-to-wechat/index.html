@@ -21,7 +21,7 @@
  下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：
 public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt($ch, CURLOPT_URL, $url);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_POST, 1);  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  curl_setopt(  $ch,  CURLOPT_POSTFIELDS,  $data  );  $headers = array();  $headers[] = &#39;Content-Type: multipart/form-data&#39;;  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);   $output = curl_exec($ch);  curl_close($ch);  return $output; } 上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &#39;Content-Type: multipart/form-data&#39; 。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jadenhsiao.github.io/blog/post/upload-asset-to-wechat/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://jadenhsiao.github.io/post/upload-asset-to-wechat/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-04-16T00:26:28+08:00" />
 <meta property="article:modified_time" content="2022-04-16T00:26:28+08:00" /><meta property="og:site_name" content="My Blog" />
 
@@ -42,7 +42,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
 
 
 
-<link type="text/css" rel="stylesheet" href="/blog/vendor/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
 
 
   
@@ -52,14 +52,14 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.github.io/blog/scss/journal.scss" integrity="" media="screen">
+<link rel="stylesheet" href="https://jadenhsiao.github.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.github.io/blog/scss/dark-mode.scss" integrity="" media="screen">
+<link rel="stylesheet" href="https://jadenhsiao.github.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
 
 
-<script src="/blog/vendor/js/loadCSS.js"></script>
+<script src="/vendor/js/loadCSS.js"></script>
 <script>
   loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
 </script>
@@ -69,7 +69,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
 
 
 
-  <script src="/blog/js/toc.js"></script>
+  <script src="/js/toc.js"></script>
 
 
 
@@ -88,7 +88,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://jadenhsiao.github.io/blog">
+    <a class="a-block nav-head false" href="https://jadenhsiao.github.io/">
     
         <div class="nav-title">
             JadenHsiao
@@ -110,7 +110,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
             
             
             
-            <a class="a-block nav-link-item active" href="/blog/post">
+            <a class="a-block nav-link-item active" href="/post">
                 文章内容
             </a>
             
@@ -120,7 +120,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
             
             
             
-            <a class="a-block nav-link-item false" href="/blog/categories">
+            <a class="a-block nav-link-item false" href="/categories">
                 分类列表
             </a>
             
@@ -130,7 +130,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
             
             
             
-            <a class="a-block nav-link-item false" href="/blog/about">
+            <a class="a-block nav-link-item false" href="/about">
                 关于作者
             </a>
             
@@ -140,7 +140,7 @@ public function httpUploadFile( $url,$data ) { 	$ch = curl_init();   curl_setopt
             
             
             
-            <a class="a-block nav-link-item false" href="/blog/index.xml">
+            <a class="a-block nav-link-item false" href="/index.xml">
                 RSS Feed
             </a>
             
@@ -201,7 +201,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item active" href="/blog/post">
+                <a class="a-block drawer-menu-item active" href="/post">
                     文章内容
                 </a>
                 
@@ -211,7 +211,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/blog/categories">
+                <a class="a-block drawer-menu-item false" href="/categories">
                     分类列表
                 </a>
                 
@@ -221,7 +221,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/blog/about">
+                <a class="a-block drawer-menu-item false" href="/about">
                     关于作者
                 </a>
                 
@@ -231,7 +231,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/blog/index.xml">
+                <a class="a-block drawer-menu-item false" href="/index.xml">
                     RSS Feed
                 </a>
                 
@@ -256,7 +256,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 menu
             </i>
         </button>
-        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.github.io/blog">
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.github.io/">
             JadenHsiao
         </a>
         
@@ -270,7 +270,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </nav>
 <div class="single-column-header-container" id="pageHead"
      v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://jadenhsiao.github.io/blog">
+    <a href="https://jadenhsiao.github.io/">
         <div class="single-column-header-title">JadenHsiao</div>
         
         <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
@@ -303,17 +303,17 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/blog/categories/">[PHP WeChat]</a>
+                                <a href="/categories/">[PHP WeChat]</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/blog/tags/php">PHP</a>
+                                <a href="/tags/php">PHP</a>
                                 &nbsp;
                             
-                                <a href="/blog/tags/wechat">WeChat</a>
+                                <a href="/tags/wechat">WeChat</a>
                                 &nbsp;
                             
                         
@@ -386,13 +386,13 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="https://jadenhsiao.github.io/blog/post/clear-website-trojan/">
+                <a class="newer-posts" href="https://jadenhsiao.github.io/post/clear-website-trojan/">
 			下回<br>记录一次清理网站挂马
                 </a>
                 
                 
                 
-                <a class="older-posts" href="https://jadenhsiao.github.io/blog/post/yii2-skills-part-two/">
+                <a class="older-posts" href="https://jadenhsiao.github.io/post/yii2-skills-part-two/">
 			上回<br>Yii2使用技巧（二）- 在Yii上使用MongoDB
                 </a>
                 
@@ -428,6 +428,6 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </div>
             </div>
     
-    <script src="/blog/js/journal.js"></script>
+    <script src="/js/journal.js"></script>
     </body>
 </html>
