@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>算法 on JadenHsiao</title>
-    <link>https://jadenhsiao.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+    <link>https://www.jytype.cn/tags/%E7%AE%97%E6%B3%95/</link>
     <description>Recent content in 算法 on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate><atom:link href="https://www.jytype.cn/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LeetCode - （算法）最后一个单词的长度</title>
-      <link>https://jadenhsiao.github.io/post/length-of-last-word/</link>
+      <link>https://www.jytype.cn/post/length-of-last-word/</link>
       <pubDate>Tue, 09 Aug 2022 22:15:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/length-of-last-word/</guid>
+      <guid>https://www.jytype.cn/post/length-of-last-word/</guid>
       <description>题目链接
 给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
 单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
@@ -25,10 +25,10 @@
     
     <item>
       <title>LeetCode - （算法）实现 strStr()</title>
-      <link>https://jadenhsiao.github.io/post/implement-strstr/</link>
+      <link>https://www.jytype.cn/post/implement-strstr/</link>
       <pubDate>Sun, 07 Aug 2022 16:48:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/implement-strstr/</guid>
+      <guid>https://www.jytype.cn/post/implement-strstr/</guid>
       <description>题目链接
 实现 strStr() 函数。
 给你两个字符串 haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。如果不存在，则返回 -1 。
@@ -45,10 +45,10 @@
     
     <item>
       <title>LeetCode - （算法）独一无二的出现次数</title>
-      <link>https://jadenhsiao.github.io/post/unique-number-of-occurrences/</link>
+      <link>https://www.jytype.cn/post/unique-number-of-occurrences/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/unique-number-of-occurrences/</guid>
+      <guid>https://www.jytype.cn/post/unique-number-of-occurrences/</guid>
       <description>给你一个整数数组 arr，请你帮忙统计数组中每个数的出现次数。
 如果每个数的出现次数都是独一无二的，就返回 true；否则返回 false。
  示例 1：
@@ -63,10 +63,10 @@
     
     <item>
       <title>LeetCode - （算法）两数之和</title>
-      <link>https://jadenhsiao.github.io/post/two-sum/</link>
+      <link>https://www.jytype.cn/post/two-sum/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/two-sum/</guid>
+      <guid>https://www.jytype.cn/post/two-sum/</guid>
       <description>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
 你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
  示例:
@@ -77,10 +77,10 @@
     
     <item>
       <title>LeetCode - （算法）搜索插入位置</title>
-      <link>https://jadenhsiao.github.io/post/search-insert-position/</link>
+      <link>https://www.jytype.cn/post/search-insert-position/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/search-insert-position/</guid>
+      <guid>https://www.jytype.cn/post/search-insert-position/</guid>
       <description>给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 你可以假设数组中无重复元素。
  示例 1:
@@ -95,10 +95,10 @@
     
     <item>
       <title>LeetCode - （算法）整数反转</title>
-      <link>https://jadenhsiao.github.io/post/reverse-integer/</link>
+      <link>https://www.jytype.cn/post/reverse-integer/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/reverse-integer/</guid>
+      <guid>https://www.jytype.cn/post/reverse-integer/</guid>
       <description>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
  示例 1:
 输入: 123 输出: 321
@@ -113,10 +113,10 @@
     
     <item>
       <title>LeetCode - （算法）最大间距</title>
-      <link>https://jadenhsiao.github.io/post/maximum-gap/</link>
+      <link>https://www.jytype.cn/post/maximum-gap/</link>
       <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/maximum-gap/</guid>
+      <guid>https://www.jytype.cn/post/maximum-gap/</guid>
       <description>给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。
 如果数组元素个数小于 2，则返回 0。
  示例 1:

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>网络安全 on JadenHsiao</title>
-    <link>https://jadenhsiao.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
+    <link>https://www.jytype.cn/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</link>
     <description>Recent content in 网络安全 on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Sat, 28 May 2022 10:54:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.github.io/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 May 2022 10:54:28 +0800</lastBuildDate><atom:link href="https://www.jytype.cn/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>记录一次清理网站挂马</title>
-      <link>https://jadenhsiao.github.io/post/clear-website-trojan/</link>
+      <link>https://www.jytype.cn/post/clear-website-trojan/</link>
       <pubDate>Sat, 28 May 2022 10:54:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.github.io/post/clear-website-trojan/</guid>
+      <guid>https://www.jytype.cn/post/clear-website-trojan/</guid>
       <description>某一天，上班上到一半，老板拿着某度APP，过来技术部，跟我们说，公司网站被挂马了，上面全部是菠菜广告；听到老板反馈后，立马开始排查，但是使用普通浏览器访问又看不到内容；于是乎就有下面清理历程了。
  问题一：只有某度APP打开才复现问题？ 很明显就是针对于某度，因为某度会对站点进行爬取收录（这方面涉及到了SEO相关），而且从挂马内容看都是搜索热词；直接浏览器打开看不到内容，具有隐秘性；对此，我找了个某度爬虫的请求头，然后使用chrome的一款可以修改请求头的拓展 ModHeader，来看下能不能复现内容。
 上面这张图就是使用 ModHeader，把请求的 User-Agent 修改为某度的爬虫请求头，然后请求被挂马的站点，发现问题复现了，下面的文本就是某度的 UA 请求头。

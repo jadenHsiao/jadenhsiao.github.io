@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JadenHsiao</title>
-    <link>https://jadenhsiao.github.io/</link>
+    <link>https://www.jytype.cn/</link>
     <description>Recent content on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
     <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate>
     
-        <atom:link href="https://jadenhsiao.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://www.jytype.cn/index.xml" rel="self" type="application/rss+xml" />
     
     
     
         <item>
         <title>Ubuntu 安装 Swift</title>
-        <link>https://jadenhsiao.github.io/post/ubuntu-install-swift/</link>
+        <link>https://www.jytype.cn/post/ubuntu-install-swift/</link>
         <pubDate>Sun, 29 Aug 2021 21:12:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/ubuntu-install-swift/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/ubuntu-install-swift/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/ubuntu-install-swift/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/ubuntu-install-swift/ -&lt;blockquote&gt;
 &lt;p&gt;Apple 公司的 Swift 不仅在 MacOS 上运行，还支持在 Windows、Linux 编写程序；&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;笔者本人日常的开发环境为 Windows，但是 Windows 安装 Swift 需要安装 Visual Studio，这件庞然大物平时比较少用，所以就不打算直接在 Windows 上安装，本人的电脑上已经安装了 Ubuntu ，所以就选择在 WSL 环境安装 Swift，接下来，我将简单分享下在 Ubuntu 安装 Swift 的流程。&lt;/p&gt;
 &lt;h2 id=&#34;一安装对应-linux-所需的依赖&#34;&gt;一、安装对应 Linux 所需的依赖&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_22-04-09.png&#34; alt=&#34;不同的 Linux 发行版所需安装的依赖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_22-04-09.png&#34; alt=&#34;不同的 Linux 发行版所需安装的依赖&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Swift 的官网说明了，在不同的 Linux 发行版下所需要的依赖，而我的 WSL 所安装的 Linux 发行版为 Ubuntu 18.04，所以对应选择安装依赖。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_13-55-58.png&#34; alt=&#34;执行安装依赖&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_13-55-58.png&#34; alt=&#34;执行安装依赖&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;二下载对应系统版本的-swift-源码包和秘钥文件&#34;&gt;二、下载对应系统版本的 Swift 源码包和秘钥文件&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_22-20-35.png&#34; alt=&#34;不同系统的源码包和秘钥&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_22-20-35.png&#34; alt=&#34;不同系统的源码包和秘钥&#34;&gt;&lt;/p&gt;
 &lt;p&gt;依照不同的系统提供了不同的源码包和校验秘钥，这里我们将下载 Ubuntu 18.04 的源码包和秘钥文件&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_13-59-49.png&#34; alt=&#34;下载源码包&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_13-59-49.png&#34; alt=&#34;下载源码包&#34;&gt;&lt;/p&gt;
 &lt;p&gt;首先，使用 wget 下载 Swift 源码包；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_14-10-53.png&#34; alt=&#34;解压源码包&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_14-10-53.png&#34; alt=&#34;解压源码包&#34;&gt;&lt;/p&gt;
 &lt;p&gt;下载完成后，执行 &lt;code&gt;tar -xzf&lt;/code&gt; 解压源码包；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_14-55-03.png&#34; alt=&#34;下载秘钥文件&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_14-55-03.png&#34; alt=&#34;下载秘钥文件&#34;&gt;&lt;/p&gt;
 &lt;p&gt;下载秘钥文件。&lt;/p&gt;
 &lt;h2 id=&#34;三配置到环境变量&#34;&gt;三、配置到环境变量&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_14-32-11.png&#34; alt=&#34;配置环境变量&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_14-32-11.png&#34; alt=&#34;配置环境变量&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在 Root 身份下，执行 &lt;code&gt;cd /etc &lt;/code&gt;，进入到 etc 目录，然后执行 &lt;code&gt;vim profile&lt;/code&gt;，编辑该文件；在该文件的添加 &lt;code&gt;export PATH=/swift/usr/bin:&amp;quot;${PATH}&amp;quot;&lt;/code&gt;，其中 swift 的运行目录就根据你解压的路径来决定。&lt;/p&gt;
 &lt;h2 id=&#34;四导入-pgp-秘钥到系统和校验-pgp-秘钥&#34;&gt;四、导入 PGP 秘钥到系统和校验 PGP 秘钥&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_14-39-32.png&#34; alt=&#34;导入 PGP 秘钥到系统&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_14-39-32.png&#34; alt=&#34;导入 PGP 秘钥到系统&#34;&gt;&lt;/p&gt;
 &lt;p&gt;按照官方指引，执行以下两个命令都可以进行导入秘钥：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;gpg --keyserver hkp://pool.sks-keyservers.net \
       --recv-keys \
@@ -54,51 +54,51 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者：&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;wget -q -O - https://swift.org/keys/all-keys.asc | \
   gpg --import -
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_14-55-53.png&#34; alt=&#34;校验秘钥&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_14-55-53.png&#34; alt=&#34;校验秘钥&#34;&gt;&lt;/p&gt;
 &lt;p&gt;进入到第一步所下载秘钥包的目录，执行 &lt;code&gt;gpg --verify swift-&amp;lt;VERSION&amp;gt;-&amp;lt;PLATFORM&amp;gt;.tar.gz.sig&lt;/code&gt;，完成校验。&lt;/p&gt;
 &lt;h2 id=&#34;五校验安装结果&#34;&gt;五、校验安装结果&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-29_15-00-15.png&#34; alt=&#34;导入 PGP 秘钥到系统&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-29_15-00-15.png&#34; alt=&#34;导入 PGP 秘钥到系统&#34;&gt;&lt;/p&gt;
 &lt;p&gt;执行 &lt;code&gt;swift --version&lt;/code&gt;，如上图一样即为安装完成。&lt;/p&gt;
-- https://jadenhsiao.github.io/post/ubuntu-install-swift/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/post/ubuntu-install-swift/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Windows10 安装 Windows Subsystem for Linux</title>
-        <link>https://jadenhsiao.github.io/post/windows10-install-wsl/</link>
+        <link>https://www.jytype.cn/post/windows10-install-wsl/</link>
         <pubDate>Sat, 28 Aug 2021 00:33:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/windows10-install-wsl/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/windows10-install-wsl/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/windows10-install-wsl/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/windows10-install-wsl/ -&lt;blockquote&gt;
 &lt;p&gt;适用于 Linux 的 Windows 子系统可让开发人员按原样运行 GNU/Linux 环境 - 包括大多数命令行工具、实用工具和应用程序 - 且不会产生传统虚拟机或双启动设置开销。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;上面这段是微软官方对于 Windows 子系统的简介，通过 WSL ，可以在 Windows 10 上安装诸如 Ubuntu、Kali、Debian等Linux的发行版，接下来，我将简单分享下安装 WSL 的流程和如何开启远程登录访问。&lt;/p&gt;
 &lt;h2 id=&#34;一开启-wsl-支持&#34;&gt;一、开启 WSL 支持 &lt;/h2&gt;
 &lt;p&gt;WSL 作为拓展功能存在于 Windows 10 ，因此它不是默认开启的，需要我们手动启用该功能。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_00-36-42.png&#34; alt=&#34;开启 WSL 支持步骤一&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_00-36-42.png&#34; alt=&#34;开启 WSL 支持步骤一&#34;&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;使用 &lt;em&gt;Win&lt;/em&gt; + &lt;em&gt;R&lt;/em&gt;  键，启动“运行”工具，输入 control ，回车，然后再在弹出的“控制面板”界面，点击“程序和功能”；&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_00-40-06.png&#34; alt=&#34;开启 WSL 支持步骤二&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_00-40-06.png&#34; alt=&#34;开启 WSL 支持步骤二&#34;&gt;&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;点击“启用或关闭 Windows 功能”，在弹出的 “Windows 功能”选择“适用于 Linux 的 Windows 子系统”，点击“确定”，等待安装，重启。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;二下载安装-linux-发行版和初始化系统&#34;&gt;二、下载安装 Linux 发行版和初始化系统&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-27_00-38-27.png&#34; alt=&#34;下载安装 Ubuntu&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-27_00-38-27.png&#34; alt=&#34;下载安装 Ubuntu&#34;&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;打开 Microsoft Store ，搜索 &lt;em&gt;Ubuntu&lt;/em&gt; ，在结果内容中选择你要安装的版本，点击“获取”，这里作者选择的版本是 18.04，各位可以根据自己的开发需求，选择不同的版本。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-27_00-48-08.png&#34; alt=&#34;初始化系统&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-27_00-48-08.png&#34; alt=&#34;初始化系统&#34;&gt;&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;下载安装完成后，在开始菜单就有 Ubuntu18.04 的项目，第一次点击它后，会提示需要等待几分钟来安装，安装到最后一步，提示需要创建一个 Unix 账户，按照指引填写账号，密码，再次确认密码，按下回车，看到 &lt;em&gt;Installation successful&lt;/em&gt; ，就是完成安装和初始化了。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;三为系统创建一个-root-用户和修改镜像源&#34;&gt;三、为系统创建一个 Root 用户和修改镜像源&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-27_23-10-36.png&#34; alt=&#34;创建 Root 用户&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-27_23-10-36.png&#34; alt=&#34;创建 Root 用户&#34;&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;输入 &lt;code&gt; sudo passed root&lt;/code&gt;，先验证当前账号的密码，然后填写 root 账户的密码和确认即将设置的密码，按下回车后，如果看到 &lt;em&gt;password updated successfully&lt;/em&gt;  就是已经创建成功了。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_01-05-45.png&#34; alt=&#34;修改镜像源&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_01-05-45.png&#34; alt=&#34;修改镜像源&#34;&gt;&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;
 &lt;p&gt;这里所使用的是中科大的镜像，使用&lt;code&gt;cd /etc/apt&lt;/code&gt; 进入 apt 的目录，用 Vim 编辑 sources.list，在文件的开头添加以下内容；&lt;/p&gt;
@@ -119,31 +119,31 @@
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;先执行 &lt;code&gt;sudo apt automove --purge openssh-server &lt;/code&gt;卸载旧版本的 ssh，再执行 &lt;code&gt;sudo apt install openssh-server -y&lt;/code&gt;，安装完成后，进入到系统根目录，执行 &lt;code&gt;sudo service ssh --full-restart&lt;/code&gt;，启动ssh。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_01-17-20.png&#34; alt=&#34;编辑 ssh 配置文件&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_01-17-20.png&#34; alt=&#34;编辑 ssh 配置文件&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;编辑 &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;，解开  &lt;em&gt;Port&lt;/em&gt; 注释，并且设置端口为 2222（因为宿主机的 22 端口另有他用，故设置为 2222 端口），加入 &lt;em&gt;PermitRootLogin&lt;/em&gt;，同时设置值为 yes（这个主要是开启允许 root 账户远程登录），最后再加入 &lt;em&gt;PasswordAuthentication&lt;/em&gt;，值为 yes（这个主要是开启密码验证登录），最后保存文件。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_01-22-47.png&#34; alt=&#34;远程登录&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_01-22-47.png&#34; alt=&#34;远程登录&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;完成以上操作后，打开 &lt;em&gt;SecureCRT&lt;/em&gt;，选择“快速链接”，主机名为当前宿主机的 &lt;em&gt;ipv4&lt;/em&gt; 地址，端口为 2222，用户名为 &lt;em&gt;root&lt;/em&gt;， 密码为上面第三步之一所设置的，登录后就可以看到 Ubuntu 的操作区域了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_01-24-28.png&#34; alt=&#34;远程登录&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_01-24-28.png&#34; alt=&#34;远程登录&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;五启动和停止-wsl-服务&#34;&gt;五、启动和停止 WSL 服务&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/Snipaste_2021-08-28_23-36-47.png&#34; alt=&#34;启动和停止 WSL 服务&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-28_23-36-47.png&#34; alt=&#34;启动和停止 WSL 服务&#34;&gt;&lt;/p&gt;
 &lt;p&gt;如果是需要启动的话，可以在开始菜单直接点击安装的 &lt;em&gt;Ubuntu&lt;/em&gt;，或者使用 Powershell 执行 &lt;code&gt;net start LxxsManager&lt;/code&gt;，停止的话，依旧是在 Powershell 执行 &lt;code&gt;net stop LxxsManager&lt;/code&gt;即可。&lt;/p&gt;
 &lt;p&gt;就可以在 WSL 开始进行愉快的开发体验了，enjoy。&lt;/p&gt;
-- https://jadenhsiao.github.io/post/windows10-install-wsl/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/post/windows10-install-wsl/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>About</title>
-        <link>https://jadenhsiao.github.io/about/</link>
+        <link>https://www.jytype.cn/about/</link>
         <pubDate>Sun, 22 Aug 2021 13:56:53 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/about/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/about/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/about/</guid>
+        <description>JadenHsiao https://www.jytype.cn/about/ -&lt;blockquote&gt;
 &lt;p&gt;欢迎来到我的小站呀，很高兴遇见你！🤝&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;-关于本站&#34;&gt;🏠 关于本站&lt;/h2&gt;
@@ -156,18 +156,18 @@
 &lt;p&gt;关注我的🔎facebook
 Jason Shaw
 感谢你的到来。&lt;/p&gt;
-- https://jadenhsiao.github.io/about/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/about/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Cygwin安装apt-cyg</title>
-        <link>https://jadenhsiao.github.io/post/cygwin-install-apt-cyg/</link>
+        <link>https://www.jytype.cn/post/cygwin-install-apt-cyg/</link>
         <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/cygwin-install-apt-cyg/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/cygwin-install-apt-cyg/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/cygwin-install-apt-cyg/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/cygwin-install-apt-cyg/ -&lt;blockquote&gt;
 &lt;p&gt;在&lt;em&gt;Linux&lt;/em&gt;系统下，如果我们需要一些软件包的话，可以使用软件包管理进行下载、安装；例如在&lt;strong&gt;Ubuntu&lt;/strong&gt;下的&lt;em&gt;apt-get&lt;/em&gt;，又或者在&lt;strong&gt;CentOS&lt;/strong&gt;下的&lt;em&gt;yum&lt;/em&gt;，都能帮助我们快速的下载安装软件包，同时又能自动安装软件包对应的依赖包，从而提高我们的开发效率。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;既然&lt;em&gt;Cygwin&lt;/em&gt;是模拟&lt;em&gt;Linux&lt;/em&gt;的运行环境，所以，毫无例外，它也提供了软件包管理工具&lt;em&gt;apt-cyg&lt;/em&gt;，下面，我就简单分享下安装&lt;em&gt;apt-cyg&lt;/em&gt;的方法。&lt;/p&gt;
@@ -180,20 +180,20 @@ Jason Shaw
 &lt;/ol&gt;
 &lt;h2 id=&#34;三设置镜像源和更新源&#34;&gt;三、设置镜像源和更新源&lt;/h2&gt;
 &lt;p&gt;因为网络环境的问题，使用国内的镜像源可以提高我们在安装、更新软件包的速度，这里推荐使用网易的镜像源，执行指令&lt;code&gt;apt-cyg mirror http://mirrors.163.com/cygwin&lt;/code&gt;，然后再更新源&lt;code&gt;apt-cyg update&lt;/code&gt;。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624804899614.png&#34; alt=&#34;安装流程&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624804899614.png&#34; alt=&#34;安装流程&#34;&gt;
 完成以上步骤就可以使用&lt;em&gt;apt-cyg&lt;/em&gt;安装需要的软件包了。&lt;/p&gt;
-- https://jadenhsiao.github.io/post/cygwin-install-apt-cyg/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/post/cygwin-install-apt-cyg/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Cygwin安装composer</title>
-        <link>https://jadenhsiao.github.io/post/cygwin-install-composer/</link>
+        <link>https://www.jytype.cn/post/cygwin-install-composer/</link>
         <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/cygwin-install-composer/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/cygwin-install-composer/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/cygwin-install-composer/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/cygwin-install-composer/ -&lt;blockquote&gt;
 &lt;p&gt;A Dependency Manager for PHP&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。&lt;/p&gt;
@@ -209,9 +209,9 @@ Jason Shaw
 &lt;h2 id=&#34;二设置别名和测试&#34;&gt;二、设置别名和测试&lt;/h2&gt;
 &lt;p&gt;这一步主要为了可以在&lt;em&gt;Cygwin&lt;/em&gt;的终端全局可以使用&lt;em&gt;composer&lt;/em&gt;指令。
 &lt;code&gt;alias composer=&amp;quot;php /bin/composer.phar&amp;quot;&lt;/code&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624694369706.png&#34; alt=&#34;设置别名和测试&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624694369706.png&#34; alt=&#34;设置别名和测试&#34;&gt;
 在终端输入&lt;code&gt;composer&lt;/code&gt;回车，却发现报了一个致命错误，未捕获的错误，类&lt;em&gt;phar&lt;/em&gt;未找到，这个问题还是比较好解决的，只需要打开&lt;em&gt;Cygwin&lt;/em&gt;的安装包，搜索关键字&lt;em&gt;phar&lt;/em&gt;，在搜索结果里选择&lt;em&gt;php-phar&lt;/em&gt;，然后在&lt;em&gt;Current&lt;/em&gt;选择对应的php版本，&lt;em&gt;src&lt;/em&gt;勾选安装源码，执行下一步安装即可。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624694642931.png&#34; alt=&#34;Cygwin安装phar拓展&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624694642931.png&#34; alt=&#34;Cygwin安装phar拓展&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;三设置国内镜像&#34;&gt;三、设置国内镜像&lt;/h2&gt;
 &lt;p&gt;因为网络环境的原因，所以设置为国内的镜像可以提高我们下载更新拓展包的速度，目前国内有多家镜像提供商，这里列举几个比较常用的。&lt;/p&gt;
 &lt;table&gt;
@@ -241,20 +241,20 @@ Jason Shaw
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;设置方法：使用以下指令，&lt;code&gt;composer config -g repos.packagist composer 镜像地址&lt;/code&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624695464175.png&#34; alt=&#34;设置完成后打开&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624695464175.png&#34; alt=&#34;设置完成后打开&#34;&gt;
 😄enjoy!!&lt;/p&gt;
-- https://jadenhsiao.github.io/post/cygwin-install-composer/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/post/cygwin-install-composer/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Cygwin安装phpredis拓展</title>
-        <link>https://jadenhsiao.github.io/post/cygwin-install-phpredis/</link>
+        <link>https://www.jytype.cn/post/cygwin-install-phpredis/</link>
         <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/cygwin-install-phpredis/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/cygwin-install-phpredis/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/cygwin-install-phpredis/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/cygwin-install-phpredis/ -&lt;blockquote&gt;
 &lt;p&gt;phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。&lt;/p&gt;
@@ -273,41 +273,41 @@ Jason Shaw
 &lt;/ol&gt;
 &lt;p&gt;&lt;code&gt;cd redis-3.1.0&lt;/code&gt;
 &lt;code&gt;phpize &lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1624677894616.png&#34; alt=&#34;下载源码包解压并且执行生成编译文件&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1624677894616.png&#34; alt=&#34;下载源码包解压并且执行生成编译文件&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;二执行配置&#34;&gt;二、执行配置 &lt;/h2&gt;
 &lt;p&gt;这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。
 &lt;code&gt; ./configure --with-php-config=/bin/php-config&lt;/code&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624678635684.png&#34; alt=&#34;执行配置&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624678635684.png&#34; alt=&#34;执行配置&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;三执行编译和安装&#34;&gt;三、执行编译和安装 &lt;/h2&gt;
 &lt;p&gt;跑完执行配置后，就是最关键的编译和安装了，指令如下。
 &lt;code&gt;make &amp;amp;&amp;amp; make install&lt;/code&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624678803373.png&#34; alt=&#34;执行编译和安装&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624678803373.png&#34; alt=&#34;执行编译和安装&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;四执行测试和添加配置到phpini&#34;&gt;四、执行测试和添加配置到php.ini &lt;/h2&gt;
 &lt;p&gt;执行&lt;code&gt;make test&lt;/code&gt; 查看上一步是否存在纰漏；
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624679066762.png&#34; alt=&#34;执行测试&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624679066762.png&#34; alt=&#34;执行测试&#34;&gt;
 打开Cygwin的&lt;em&gt;php.ini&lt;/em&gt;，目录在 &lt;code&gt;/etc &lt;/code&gt; 下，加入&lt;code&gt;extension=redis.so&lt;/code&gt;；最后再执行&lt;code&gt;php -m&lt;/code&gt;查看列表是否存在redis，如果存在就安装完成了。&lt;/p&gt;
-- https://jadenhsiao.github.io/post/cygwin-install-phpredis/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/post/cygwin-install-phpredis/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Cygwin为php安装mongodb拓展</title>
-        <link>https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/</link>
+        <link>https://www.jytype.cn/post/cygwin-install-mongodb-plugin/</link>
         <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/cygwin-install-mongodb-plugin/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/cygwin-install-mongodb-plugin/ -&lt;blockquote&gt;
 &lt;p&gt;The purpose of this driver is to provide exceptionally thin glue between MongoDB and PHP, implementing only fundamental and performance-critical components necessary to build a fully-functional MongoDB driver.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;上面的引用是摘抄自mongodb拓展在&lt;a href=&#34;http://pecl.php.net/package/mongodb&#34;&gt;pecl&lt;/a&gt;站点的描述，大致的意思就是该拓展为php和mongodb提供粘合剂功能，实现php链接和操作mongodb。下面就简单分享下Cygwin安装php的mongodb拓展的方法。&lt;/p&gt;
 &lt;h2 id=&#34;一下载mongodb拓展源码包&#34;&gt;一、下载mongodb拓展源码包&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1626878736547.png&#34; alt=&#34;pecl的搜索页&#34; title=&#34;pecl的搜索页&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1626878736547.png&#34; alt=&#34;pecl的搜索页&#34; title=&#34;pecl的搜索页&#34;&gt;
 进入&lt;a href=&#34;http://pecl.php.net/&#34;&gt;pecl&lt;/a&gt;，搜索&lt;em&gt;mongodb&lt;/em&gt;，因为我使用的环境是Cygwin提供的php7.3.7版本，所以选择搜索结果的&lt;em&gt;mongodb&lt;/em&gt;，这里看到两个mongodb相关的拓展，第二个的mongo是php5.x所使用的，这里不做深入探讨。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1626886675885.png&#34; alt=&#34;mongodb项目页面&#34; title=&#34;mongodb项目页面&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1626886675885.png&#34; alt=&#34;mongodb项目页面&#34; title=&#34;mongodb项目页面&#34;&gt;
 进入到&lt;em&gt;mongodb&lt;/em&gt;拓展的项目页，选择最新的的稳定版1.10.0，复制下载链接，到Cygwin内用wget
 下载拓展源码包。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1626881168072.png&#34; alt=&#34;下载、解压、生成编译文件&#34; title=&#34;下载、解压、生成编译文件&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1626881168072.png&#34; alt=&#34;下载、解压、生成编译文件&#34; title=&#34;下载、解压、生成编译文件&#34;&gt;
 1.用wget下载mongodb拓展源码包
 &lt;code&gt;wget http://pecl.php.net/get/mongodb-1.10.0.tgz&lt;/code&gt;
 2.解压源码包
@@ -318,18 +318,18 @@ Jason Shaw
 &lt;h2 id=&#34;二执行配置&#34;&gt;二、执行配置&lt;/h2&gt;
 &lt;p&gt;这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。
 &lt;code&gt;./configure --with-php-config=/bin/php-config&lt;/code&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626881635352.png&#34; alt=&#34;执行配置&#34; title=&#34;执行配置&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1626881635352.png&#34; alt=&#34;执行配置&#34; title=&#34;执行配置&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;三执行编译和安装&#34;&gt;三、执行编译和安装&lt;/h2&gt;
 &lt;p&gt;跑完执行配置后，就是最关键的编译和安装了，指令如下。
 &lt;code&gt;make &amp;amp;&amp;amp; make install&lt;/code&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626882108514.png&#34; alt=&#34;执行编译和安装&#34; title=&#34;执行编译和安装&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1626882108514.png&#34; alt=&#34;执行编译和安装&#34; title=&#34;执行编译和安装&#34;&gt;
 当你在等待他编译安装的时候，突然出现了编译出错，找不到函数。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626882187357.png&#34; alt=&#34;编译错误提示&#34; title=&#34;编译错误提示&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1626882187357.png&#34; alt=&#34;编译错误提示&#34; title=&#34;编译错误提示&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;四处理编译错误&#34;&gt;四、处理编译错误&lt;/h2&gt;
 &lt;p&gt;从报错内容分析，在 &amp;ldquo;src/libmongoc/src/libmongoc/src/mongoc/mongoc-client.c&amp;rdquo; 这个文件下，存在有未被定义的函数 &amp;ldquo;__ns_initparse&amp;rdquo; 和 &amp;ldquo;__ns_parserr&amp;rdquo;，那还好办，找到对应的类库不就行了，结果在百度上翻了近10页搜索结果都没有解决方法，遇事不决，谷歌找，就在搜索结果的第二页，看到了&lt;em&gt;libspf2&lt;/em&gt;的静态库，里面也是包含了 &amp;ldquo;__ns_initparse&amp;rdquo; 的相关函数，同时还提供了源码。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626882755980.png&#34; alt=&#34;libspf2&#34; title=&#34;libspf2&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1626883015162.png&#34; alt=&#34;函数说明&#34; title=&#34;函数说明&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1626883065373.png&#34; alt=&#34;源码&#34; title=&#34;源码&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1626882755980.png&#34; alt=&#34;libspf2&#34; title=&#34;libspf2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1626883015162.png&#34; alt=&#34;函数说明&#34; title=&#34;函数说明&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1626883065373.png&#34; alt=&#34;源码&#34; title=&#34;源码&#34;&gt;&lt;/p&gt;
 &lt;p&gt;新建一个c文件，为&lt;em&gt;ns.c&lt;/em&gt;，文件内容就是&lt;em&gt;libspf2&lt;/em&gt;提供的&amp;quot;__ns_initparse&amp;quot;源码，下面贴出源码内容：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;#ifndef lint
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#1e889b&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color:#00688b;font-weight:bold&#34;&gt;char&lt;/span&gt; rcsid[] = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;$Id: ns_parse.c,v 1.3.2.1 2 6/27 03:51:42 marka Exp $&amp;#34;&lt;/span&gt;;
@@ -535,78 +535,78 @@ Jason Shaw
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	}
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;将其移动到&amp;quot;/src/libmongoc/src/libmongoc/src/mongoc&amp;quot;目录下，然后再打开同目录下的&lt;em&gt;mongoc-client.c&lt;/em&gt;，在该文件的第一个条件编译结束下面添加文件引用，如下图。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626883539223.png&#34; alt=&#34;引入函数文件&#34; title=&#34;引入函数文件&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1626883539223.png&#34; alt=&#34;引入函数文件&#34; title=&#34;引入函数文件&#34;&gt;&lt;/p&gt;
 &lt;p&gt;完成以上操作后，回到Cygwin，再次执行&lt;code&gt;make &amp;amp;&amp;amp; make install&lt;/code&gt;。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626883663846.png&#34; alt=&#34;编译安装完成&#34; title=&#34;编译安装完成&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1626883663846.png&#34; alt=&#34;编译安装完成&#34; title=&#34;编译安装完成&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;五添加配置到phpini&#34;&gt;五、添加配置到php.ini&lt;/h2&gt;
 &lt;p&gt;打开Cygwin的php.ini，目录在 &lt;em&gt;/etc&lt;/em&gt; 下，加入&lt;em&gt;extension=mongodb&lt;/em&gt;；最后再执行&lt;code&gt;php -m&lt;/code&gt;查看列表是否存在mongodb，如果存在就安装完成了。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1626886709530.png&#34; alt=&#34;执行php -m查看拓展&#34; title=&#34;执行php -m查看拓展&#34;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1626884253615.png&#34; alt=&#34;查看拓展具体信息&#34;&gt;&lt;/p&gt;
-- https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+&lt;img src=&#34;https://www.jytype.cn/images/1626886709530.png&#34; alt=&#34;执行php -m查看拓展&#34; title=&#34;执行php -m查看拓展&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1626884253615.png&#34; alt=&#34;查看拓展具体信息&#34;&gt;&lt;/p&gt;
+- https://www.jytype.cn/post/cygwin-install-mongodb-plugin/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     
     
         <item>
         <title>Windows10安装Cygwin</title>
-        <link>https://jadenhsiao.github.io/post/windows10-install-cygwin/</link>
+        <link>https://www.jytype.cn/post/windows10-install-cygwin/</link>
         <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
         
-        <guid>https://jadenhsiao.github.io/post/windows10-install-cygwin/</guid>
-        <description>JadenHsiao https://jadenhsiao.github.io/post/windows10-install-cygwin/ -&lt;blockquote&gt;
+        <guid>https://www.jytype.cn/post/windows10-install-cygwin/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/windows10-install-cygwin/ -&lt;blockquote&gt;
 &lt;p&gt;What Is Cygwin?
 Get that Linux feeling - on Windows&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;这个是&lt;a href=&#34;http://cygwin.org/&#34; title=&#34;Get that Linux feeling - on Windows&#34;&gt;Cygwin&lt;/a&gt;项目主页上的简介，安装它，可以得到一个类似Linux的Shell环境，在其中你可以使用绝大部分Linux软件和功能。如Gcc,Make,Vim,Emacs等等，作为一个php开发者，使用&lt;em&gt;Cygwin&lt;/em&gt;的目的是为了运行&lt;em&gt;Swoole&lt;/em&gt;，接下来，我将简单分享下安装&lt;em&gt;Cygwin&lt;/em&gt;的流程和我们安装&lt;em&gt;swoole&lt;/em&gt;需要的组件包。&lt;/p&gt;
 &lt;h2 id=&#34;一从项目主页下载cygwin安装包&#34;&gt;一、从项目主页下载&lt;em&gt;Cygwin&lt;/em&gt;安装包&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.github.io/images/1624781189842.webp&#34; alt=&#34;Cygwin下载页面&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/1624781189842.webp&#34; alt=&#34;Cygwin下载页面&#34;&gt;
 这个安装包不单单只是安装&lt;em&gt;Cygwin&lt;/em&gt;，还能用来安装我们需要的组件包。&lt;/p&gt;
 &lt;h2 id=&#34;二安装cygwin&#34;&gt;二、安装&lt;em&gt;Cygwin&lt;/em&gt;&lt;/h2&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;选择组件包的下载方式
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624781844331.webp&#34; alt=&#34;选择组件包的下载方式&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624781844331.webp&#34; alt=&#34;选择组件包的下载方式&#34;&gt;
 这里因为我使用了网络工具，网络环境相对来说比较好，所以我选择&lt;em&gt;Install from Internet&lt;/em&gt;。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;选择&lt;em&gt;Cygwin&lt;/em&gt;的安装路径
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624781935840.webp&#34; alt=&#34;选择Cygwin的安装路径&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624781935840.webp&#34; alt=&#34;选择Cygwin的安装路径&#34;&gt;
 安装包提示我们最好选择在盘符的根目录下作为&lt;em&gt;Cygwin&lt;/em&gt;的运行目录。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;选择组件包的下载路径
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782083039.webp&#34; alt=&#34;选择组件包的下载路径&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782083039.webp&#34; alt=&#34;选择组件包的下载路径&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;选择链接方式
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782150362.webp&#34; alt=&#34;选择链接方式&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782150362.webp&#34; alt=&#34;选择链接方式&#34;&gt;
 这里就根据你自己的网络环境来选择对应的链接方式。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;选择下载组件包的镜像地址
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782354070.png&#34; alt=&#34;选择下载组件包的镜像地址&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782354070.png&#34; alt=&#34;选择下载组件包的镜像地址&#34;&gt;
 选择下载组件包的镜像地址；
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782435987.png&#34; alt=&#34;根据镜像加载组件包列表&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782435987.png&#34; alt=&#34;根据镜像加载组件包列表&#34;&gt;
 这里也是根据网络环境，国内最好选择网易的镜像源，下载速度快且稳定。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;选择安装组件包
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782591653.png&#34; alt=&#34;选择安装组件包&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782591653.png&#34; alt=&#34;选择安装组件包&#34;&gt;
 这里就根据你开发环境的需要来安装组件包。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;执行安装组件包和&lt;em&gt;Cygwin&lt;/em&gt;
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782777091.png&#34; alt=&#34;执行安装组件包和Cygwin&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782777091.png&#34; alt=&#34;执行安装组件包和Cygwin&#34;&gt;
 点击&lt;strong&gt;下一页&lt;/strong&gt;后执行安装&lt;em&gt;Cygwin&lt;/em&gt;和组件包，完成后就可以打开&lt;em&gt;Cygwin64 Terminal&lt;/em&gt;来体验了。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624782943619.png&#34; alt=&#34;完成安装&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624782943619.png&#34; alt=&#34;完成安装&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;三安装组件包&#34;&gt;三、安装组件包&lt;/h2&gt;
 &lt;p&gt;这里我列举出我们运行&lt;em&gt;php&lt;/em&gt;运行环境和编译&lt;em&gt;Swoole&lt;/em&gt;所需要的组件包列表。
-&lt;img src=&#34;https://jadenhsiao.github.io/images/1624783146587.png&#34; alt=&#34;组件包列表&#34;&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624783146587.png&#34; alt=&#34;组件包列表&#34;&gt;
 这一步，可以在执行安装组件包和&lt;em&gt;Cygwin&lt;/em&gt;上进行；特别要提示的是，我们一旦选择好&lt;em&gt;php&lt;/em&gt;的版本后，&lt;em&gt;php&lt;/em&gt;相关组件包的安装都需要对应好版本。&lt;/p&gt;
 &lt;p&gt;以上步骤完成后，就可以在&lt;em&gt;Cygwin&lt;/em&gt;上进行php开发了，enjoy🤗！！&lt;/p&gt;
-- https://jadenhsiao.github.io/post/windows10-install-cygwin/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+- https://www.jytype.cn/post/windows10-install-cygwin/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
         </item>
     
     

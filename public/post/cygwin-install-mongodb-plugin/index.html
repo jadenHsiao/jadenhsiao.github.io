@@ -25,7 +25,7 @@
 二、执行配置 这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。 ./configure --with-php-config=/bin/php-config 三、执行编译和安装 跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;&amp; make install 当你在等待他编译安装的时候，突然出现了编译出错，找不到函数。 四、处理编译错误 从报错内容分析，在 &ldquo;src/libmongoc/src/libmongoc/src/mongoc/mongoc-client.c&rdquo; 这个文件下，存在有未被定义的函数 &ldquo;__ns_initparse&rdquo; 和 &ldquo;__ns_parserr&rdquo;，那还好办，找到对应的类库不就行了，结果在百度上翻了近10页搜索结果都没有解决方法，遇事不决，谷歌找，就在搜索结果的第二页，看到了libspf2的静态库，里面也是包含了 &ldquo;__ns_initparse&rdquo; 的相关函数，同时还提供了源码。 新建一个c文件，为ns.c，文件内容就是libspf2提供的&quot;__ns_initparse&quot;源码，下面贴出源码内容：
 #ifndef lint static const char rcsid[] = &#34;$Id: ns_parse." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jadenhsiao.github.io/post/cygwin-install-mongodb-plugin/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://www.jytype.cn/post/cygwin-install-mongodb-plugin/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-08-01T11:33:28+08:00" />
 <meta property="article:modified_time" content="2021-08-01T11:33:28+08:00" /><meta property="og:site_name" content="My Blog" />
 
@@ -60,11 +60,11 @@
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.github.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+<link rel="stylesheet" href="https://www.jytype.cn/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.github.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+<link rel="stylesheet" href="https://www.jytype.cn/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
 
 
 <script src="/vendor/js/loadCSS.js"></script>
@@ -96,7 +96,7 @@
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://jadenhsiao.github.io/">
+    <a class="a-block nav-head false" href="https://www.jytype.cn/">
     
         <div class="nav-title">
             JadenHsiao
@@ -482,7 +482,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 menu
             </i>
         </button>
-        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.github.io/">
+        <a id="navTitle" class="navbar-brand" href="https://www.jytype.cn/">
             JadenHsiao
         </a>
         
@@ -496,7 +496,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </nav>
 <div class="single-column-header-container" id="pageHead"
      v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://jadenhsiao.github.io/">
+    <a href="https://www.jytype.cn/">
         <div class="single-column-header-title">JadenHsiao</div>
         
         <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
@@ -806,13 +806,13 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="https://jadenhsiao.github.io/post/cygwin-install-phpredis/">
+                <a class="newer-posts" href="https://www.jytype.cn/post/cygwin-install-phpredis/">
 			下回<br>Cygwin安装phpredis拓展
                 </a>
                 
                 
                 
-                <a class="older-posts" href="https://jadenhsiao.github.io/post/windows10-install-cygwin/">
+                <a class="older-posts" href="https://www.jytype.cn/post/windows10-install-cygwin/">
 			上回<br>Windows10安装Cygwin
                 </a>
                 
