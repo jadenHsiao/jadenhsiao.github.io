@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html><head>
+<title>LeetCode - （MySQL）游戏玩法分析 I</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="LeetCode - （MySQL）游戏玩法分析 I" />
+<meta property="og:description" content="题目链接
+使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
+   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
+CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-03-01&#39;,&#39;5&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-05-02&#39;,&#39;6&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;2&#39;,&#39;3&#39;,&#39;2017-06-25&#39;,&#39;1&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;1&#39;,&#39;2016-03-02&#39;,&#39;0&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;4&#39;,&#39;2018-07-03&#39;,&#39;5&#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
+查询结果的格式如下所示：
+输入： Activity 表：
+   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jadenhsiao.gitee.io/post/game-play-analysis-i/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-07T13:08:28+08:00" />
+<meta property="article:modified_time" content="2022-08-07T13:08:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LeetCode - （MySQL）游戏玩法分析 I"/>
+<meta name="twitter:description" content="题目链接
+使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
+   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
+CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-03-01&#39;,&#39;5&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-05-02&#39;,&#39;6&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;2&#39;,&#39;3&#39;,&#39;2017-06-25&#39;,&#39;1&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;1&#39;,&#39;2016-03-02&#39;,&#39;0&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;4&#39;,&#39;2018-07-03&#39;,&#39;5&#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
+查询结果的格式如下所示：
+输入： Activity 表：
+   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://jadenhsiao.gitee.io/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/post">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/post">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.gitee.io/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://jadenhsiao.gitee.io/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    LeetCode - （MySQL）游戏玩法分析 I
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-08-07 13:08
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[MySQL LeetCode]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/mysql">MySQL</a>
+                                &nbsp;
+                            
+                                <a href="/tags/leetcode">LeetCode</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p><a href="https://leetcode.cn/problems/game-play-analysis-i/comments/">题目链接</a></p>
+<p>使用到下面的 Activity 表，表的主键是 (player_id, event_date)。
+这张表展示了一些游戏玩家在游戏平台上的行为活动。
+每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：</p>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>player_id</td>
+<td>int</td>
+</tr>
+<tr>
+<td>device_id</td>
+<td>int</td>
+</tr>
+<tr>
+<td>event_date</td>
+<td>date</td>
+</tr>
+<tr>
+<td>games_played</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
+<p>创建和填充数据：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">Create</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">table</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">If</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">Not</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">Exists</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb"> </span>(player_id<span style="color:#bbb">  </span><span style="color:#658b00">int</span>,<span style="color:#bbb"> </span>device_id<span style="color:#bbb">  </span><span style="color:#658b00">int</span>,<span style="color:#bbb"> </span>event_date<span style="color:#bbb">  </span><span style="color:#658b00">date</span>,<span style="color:#bbb"> </span>games_played<span style="color:#bbb">  </span><span style="color:#658b00">int</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">Truncate</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">table</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb"> </span>(player_id,<span style="color:#bbb"> </span>device_id,<span style="color:#bbb"> </span>event_date,<span style="color:#bbb"> </span>games_played)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;1&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2016-03-01&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;5&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb"> </span>(player_id,<span style="color:#bbb"> </span>device_id,<span style="color:#bbb"> </span>event_date,<span style="color:#bbb"> </span>games_played)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;1&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2016-05-02&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;6&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb"> </span>(player_id,<span style="color:#bbb"> </span>device_id,<span style="color:#bbb"> </span>event_date,<span style="color:#bbb"> </span>games_played)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;2&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;3&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2017-06-25&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;1&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb"> </span>(player_id,<span style="color:#bbb"> </span>device_id,<span style="color:#bbb"> </span>event_date,<span style="color:#bbb"> </span>games_played)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;3&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;1&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2016-03-02&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;0&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Activity<span style="color:#bbb"> </span>(player_id,<span style="color:#bbb"> </span>device_id,<span style="color:#bbb"> </span>event_date,<span style="color:#bbb"> </span>games_played)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;3&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;4&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2018-07-03&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;5&#39;</span>)<span style="color:#bbb">
+</span></span></span></code></pre></div><p>写一条 SQL 查询语句获取每位玩家  <strong>第一次登陆平台的日期</strong>。</p>
+<p>查询结果的格式如下所示：</p>
+<p>输入：
+Activity 表：</p>
+<table>
+<thead>
+<tr>
+<th>player_id</th>
+<th>device_id</th>
+<th>event_date</th>
+<th>games_played</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>2016-03-01</td>
+<td>5</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>2016-05-02</td>
+<td>6</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>2017-06-25</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>2016-03-02</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>4</td>
+<td>2018-07-03</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>输出:</p>
+<p>Result 表：</p>
+<table>
+<thead>
+<tr>
+<th>player_id</th>
+<th>first_login</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2016-03-01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2017-06-25</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2016-03-02</td>
+</tr>
+</tbody>
+</table>
+<p>解答：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">select</span><span style="color:#bbb"> </span>player_id,<span style="color:#8b008b;font-weight:bold">min</span>(event_date)<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">as</span><span style="color:#bbb"> </span>first_login<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">from</span><span style="color:#bbb"> </span>Activity<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">by</span><span style="color:#bbb"> </span>player_id;<span style="color:#bbb">
+</span></span></span></code></pre></div><p>先将登录的时间根据用户ID进行分组，然后在获取的结果集根据分组内的最小值进行输出，就可以获得用户第一次登陆的日期。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-08-07</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://jadenhsiao.gitee.io/post/implement-strstr/">
+			下回<br>LeetCode - （算法）实现 strStr()
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://jadenhsiao.gitee.io/post/consecutive-numbers/">
+			上回<br>LeetCode - （MySQL）连续出现的数字
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

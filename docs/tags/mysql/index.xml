@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL on JadenHsiao</title>
+    <link>https://jadenhsiao.gitee.io/tags/mysql/</link>
+    <description>Recent content in MySQL on JadenHsiao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Sun, 07 Aug 2022 13:08:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LeetCode - （MySQL）游戏玩法分析 I</title>
+      <link>https://jadenhsiao.gitee.io/post/game-play-analysis-i/</link>
+      <pubDate>Sun, 07 Aug 2022 13:08:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/game-play-analysis-i/</guid>
+      <description>题目链接
+使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
+   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
+CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;2016-03-01&amp;#39;,&amp;#39;5&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;2016-05-02&amp;#39;,&amp;#39;6&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;,&amp;#39;2017-06-25&amp;#39;,&amp;#39;1&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;3&amp;#39;,&amp;#39;1&amp;#39;,&amp;#39;2016-03-02&amp;#39;,&amp;#39;0&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;3&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;2018-07-03&amp;#39;,&amp;#39;5&amp;#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
+查询结果的格式如下所示：
+输入： Activity 表：
+   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）连续出现的数字</title>
+      <link>https://jadenhsiao.gitee.io/post/consecutive-numbers/</link>
+      <pubDate>Sun, 07 Aug 2022 03:27:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/consecutive-numbers/</guid>
+      <description>题目链接
+使用到下面的 Logs 表，id 是这个表的主键，表的结构如下：
+   Column Name Type     id int   num varchar    创建和填充数据：
+CreatetableIfNotExistsLogs(idint,numint)TruncatetableLogsinsertintoLogs(id,num)values(&amp;#39;1&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;2&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;3&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;4&amp;#39;,&amp;#39;2&amp;#39;)insertintoLogs(id,num)values(&amp;#39;5&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;6&amp;#39;,&amp;#39;2&amp;#39;)insertintoLogs(id,num)values(&amp;#39;7&amp;#39;,&amp;#39;2&amp;#39;)编写一个 SQL 查询，查找所有至少连续出现三次的数字。
+返回的结果表中的数据可以按 任意顺序 排列。
+查询结果格式如下面的例子所示：
+输入： Person 表：
+   Id Num     1 1   2 1   3 1   4 2   5 1   6 2   7 2    输出:</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）删除重复的电子邮箱</title>
+      <link>https://jadenhsiao.gitee.io/post/delete-duplicate-emails/</link>
+      <pubDate>Fri, 05 Aug 2022 08:27:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/delete-duplicate-emails/</guid>
+      <description>题目链接
+使用到下面的 Person 表，id 是这个表的主键，该表包含邮箱地址，表的结构如下：
+   Column Name Type     id int   email varchar    创建和填充数据：
+CreatetableIfNotExistsPerson(Idint,Emailvarchar(255))TruncatetablePersoninsertintoPerson(id,email)values(&amp;#39;1&amp;#39;,&amp;#39;john@example.com&amp;#39;)insertintoPerson(id,email)values(&amp;#39;2&amp;#39;,&amp;#39;bob@example.com&amp;#39;)insertintoPerson(id,email)values(&amp;#39;3&amp;#39;,&amp;#39;john@example.com&amp;#39;)编写一个 SQL 删除语句来 删除 所有重复的电子邮件，只保留一个id最小的唯一电子邮件。
+以 任意顺序 返回结果表。 （注意： 仅需要写删除语句，将自动对剩余结果进行查询）
+查询结果格式如下所示。
+输入： Person 表：
+   id email     1 john@example.com   2 bob@example.com   3 john@example.com    输出:
+   id email     1 john@example.</description>
+    </item>
+    
+    <item>
+      <title>LeetCode - （MySQL）上升的温度</title>
+      <link>https://jadenhsiao.gitee.io/post/rising-temperature/</link>
+      <pubDate>Wed, 03 Aug 2022 13:11:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/rising-temperature/</guid>
+      <description>题目链接
+使用到下面的 Weather 表，id 是这个表的主键，该表包含特定日期的温度信息，表的结构如下：
+   Column Name Type     id int   recordDate date   temperature int    创建和填充数据：
+CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableWeatherinsertintoWeather(id,recordDate,temperature)values(&amp;#39;1&amp;#39;,&amp;#39;2015-01-01&amp;#39;,&amp;#39;10&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;2&amp;#39;,&amp;#39;2015-01-02&amp;#39;,&amp;#39;25&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;3&amp;#39;,&amp;#39;2015-01-03&amp;#39;,&amp;#39;20&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;4&amp;#39;,&amp;#39;2015-01-04&amp;#39;,&amp;#39;30&amp;#39;)编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 id 。 返回结果 不要求顺序 。 查询结果格式如下例。
+输入： Weather 表：
+   id recordDate Temperature     1 2015-01-01 10   2 2015-01-02 25   3 2015-01-03 20   4 2015-01-04 30    输出：</description>
+    </item>
+    
+  </channel>
+</rss>

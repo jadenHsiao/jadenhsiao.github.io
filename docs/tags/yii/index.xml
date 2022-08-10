@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Yii on JadenHsiao</title>
+    <link>https://jadenhsiao.gitee.io/tags/yii/</link>
+    <description>Recent content in Yii on JadenHsiao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Wed, 20 Jul 2022 14:00:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/tags/yii/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Yii2使用技巧（六）- 文件上传兼容WPS</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-six/</link>
+      <pubDate>Wed, 20 Jul 2022 14:00:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-six/</guid>
+      <description>在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
+ 通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
+一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
+&amp;lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &amp;#34;docx&amp;#34; =&amp;gt; &amp;#34;application/zip&amp;#34;,  &amp;#34;et&amp;#34; =&amp;gt; &amp;#34;application/vnd.ms-excel&amp;#34;,  &amp;#34;xlsx&amp;#34; =&amp;gt; &amp;#34;application/zip&amp;#34;,  &amp;#34;ett&amp;#34; =&amp;gt; &amp;#34;application/vnd.ms-excel&amp;#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&amp;gt;extension, &amp;#39;UTF-8&amp;#39;);   if ($this-&amp;gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&amp;gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&amp;gt;extra[$extension] == $mimeType){  return true;  }   if (!</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-five/</link>
+      <pubDate>Tue, 19 Jul 2022 15:29:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-five/</guid>
+      <description>Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。使用它可以帮助我们记录下错误信息，官方提供的phpSDK,只需几行代码，就可以把他整合到Yii中，本篇文章是技巧三的延续。
+ 一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
+二、创建项目 注册完成后进入到控制台，点击右上角进入创建项目界面；
+因为我们要在Yii中使用，所以选择php，填写项目名称，点击创建。
+创建完成后，在引导配置界面有我们等下需要用到的dsn，将其复制下来保存好。
+三、整合到Yii中   使用composer安装sentry/sdk，指令如下composer require sentry/sdk --with-all-dependencies；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。
+  将dsn设置到Yii的params中，在config/params.php的数组中加入以下代码块：
+  &amp;lt;?php  return [  &amp;#39;adminEmail&amp;#39; =&amp;gt; &amp;#39;admin@example.com&amp;#39;,  &amp;#39;senderEmail&amp;#39; =&amp;gt; &amp;#39;noreply@example.com&amp;#39;,  &amp;#39;senderName&amp;#39; =&amp;gt; &amp;#39;Example.com mailer&amp;#39;,  &amp;#39;dsn&amp;#39; =&amp;gt; &amp;#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&amp;#39; ]; 在模块的入口文件init方法加入sentry初始化相关，代码块如下：  &amp;lt;?php use function Sentry\init as sentry_init;  class Module extends \yii\base\Module{  public function init(){  parent::init();  sentry_init([&amp;#39;dsn&amp;#39; =&amp;gt; Yii::$app-&amp;gt;params[&amp;#39;dsn&amp;#39;] ]);  } } 在错误拦截类中加入提交到Sentry相关  &amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（四）- 将Yii整合到GatewayWorker</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-four/</link>
+      <pubDate>Mon, 18 Jul 2022 15:29:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-four/</guid>
+      <description> Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
+ 一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
+二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
+ 上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
+&amp;lt;?php  //...  require_once __DIR__ . &amp;#39;/../../vendor/autoload.php&amp;#39;;  defined(&amp;#39;YII_DEBUG&amp;#39;) or define(&amp;#39;YII_DEBUG&amp;#39;, true); defined(&amp;#39;YII_ENV&amp;#39;) or define(&amp;#39;YII_ENV&amp;#39;, &amp;#39;dev&amp;#39;);  $config = require(__DIR__ . &amp;#39;/../../config/web-socket.php&amp;#39;); require(__DIR__ . &amp;#39;/../../vendor/yiisoft/yii2/Yii.php&amp;#39;);  (new \yii\web\Application($config))-&amp;gt;run();  if(!defined(&amp;#39;GLOBAL_START&amp;#39;)) {  Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
+三、用Yii的编码风格编写GatewayWorker的业务代码 在Applications目录下的Events.php中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。
+注意：引用类时需要使用完全限定名称，例如use \app\models\Example;
+参考链接  在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker  </description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（三）- 优雅处理业务错误</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-three/</link>
+      <pubDate>Mon, 18 Jul 2022 09:50:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-three/</guid>
+      <description>错误提示是程序运行重要的一环，可以让开发者及时知晓出错的位置和原因，但是在编码的时候，因拦截错误所编写的大量try catch会让代码后期难以维护，所以这里将会针对Yii，对程序的错误提示进行统一处理。
+ 一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
+&amp;lt;?php namespace app\modules\example\exception;  class ErrorCodes {   /** * 错误码列表 * @return array */  public static function errorCodeList()  {   return [   401 =&amp;gt; &amp;#34;Access Token 无效&amp;#34;,  403 =&amp;gt; &amp;#34;该 App ID 已被封禁，请联系管理员&amp;#34;,  429 =&amp;gt; &amp;#34;请求次数过多，请稍后再试&amp;#34;,  500 =&amp;gt; &amp;#34;服务器内容错误&amp;#34;,   // TODO 其他的错误信息可以根据错误码内容写入  101001 =&amp;gt; &amp;#34;生成 Access Token 失败&amp;#34;,   ];   }  } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（二）- 在Yii上使用MongoDB</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-two/</link>
+      <pubDate>Mon, 21 Mar 2022 00:26:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-two/</guid>
+      <description>公司项目的主线业务使用的是 MySQL ，但是在日志系统使用的是非关系型数据库 MongoDB ，而 Yii2 本身的 Active Record 是支持的，所以使用技巧二将针对 Yii2 上 MongoDB 的使用方法做一系列讲解。
+ 一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &amp;quot;yiisoft/yii2-mongodb&amp;quot;: &amp;quot;~2.1.0&amp;quot; ，再执行 composer update ，将拓展包安装包项目内。
+二、将组件添加到 Yii 配置 因为本人使用的是 basic 版，所以就直接在项目的 config/web.php 文件的 components 关联数组内添加一下代码：
+&amp;#39;mongodb&amp;#39; =&amp;gt; [  &amp;#39;class&amp;#39; =&amp;gt; &amp;#39;yii\mongodb\Connection&amp;#39;,  &amp;#39;dsn&amp;#39; =&amp;gt; &amp;#39;mongodb://localhost:27017/&amp;#39;.env(&amp;#34;MONGODB_DATABASE&amp;#34;),  &amp;#39;options&amp;#39; =&amp;gt; [  &amp;#34;username&amp;#34; =&amp;gt; env(&amp;#34;MONGODB_USERNAME&amp;#34;),  &amp;#34;password&amp;#34; =&amp;gt; env(&amp;#34;MONGODB_PASSWORD&amp;#34;)  ]  ] 上面的代码是添加一个名为mongodb的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用.</description>
+    </item>
+    
+    <item>
+      <title>Yii2使用技巧（一）- 数组辅助工具</title>
+      <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-one/</link>
+      <pubDate>Wed, 16 Mar 2022 23:36:28 +0800</pubDate>
+      
+      <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-one/</guid>
+      <description>因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。
+ 一、数组筛选（\yii\helper\ArrayHelper::filter） 该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。
+从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。
+public function actionExample() { 	$example = [  &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;jack&amp;#39;,  &amp;#39;sex&amp;#39; =&amp;gt; &amp;#39;man&amp;#39;,  &amp;#39;age&amp;#39; =&amp;gt; 17,  &amp;#39;course&amp;#39; =&amp;gt; [  &amp;#39;one&amp;#39; =&amp;gt; &amp;#39;english&amp;#39;,  &amp;#39;two&amp;#39; =&amp;gt; &amp;#39;chinese&amp;#39;,  &amp;#39;three&amp;#39; =&amp;gt; &amp;#39;math&amp;#39;  ]  ];  $result = \yii\helpers\ArrayHelper::filter(  $example,  [&amp;#39;!name&amp;#39;,&amp;#39;sex&amp;#39;,&amp;#39;course.one&amp;#39;,&amp;#39;!course.three&amp;#39;]  );  var_dump($result);   } 上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。</description>
+    </item>
+    
+  </channel>
+</rss>

