@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cygwin on JadenHsiao</title>
-    <link>https://jadenhsiao.gitee.io/categories/cygwin/</link>
+    <link>https://jadenhsiao.github.io/blog/categories/cygwin/</link>
     <description>Recent content in Cygwin on JadenHsiao</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Sun, 01 Aug 2021 11:33:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.gitee.io/categories/cygwin/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 11:33:28 +0800</lastBuildDate><atom:link href="https://jadenhsiao.github.io/blog/categories/cygwin/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cygwin安装apt-cyg</title>
-      <link>https://jadenhsiao.gitee.io/post/cygwin-install-apt-cyg/</link>
+      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-apt-cyg/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-apt-cyg/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-apt-cyg/</guid>
       <description>在Linux系统下，如果我们需要一些软件包的话，可以使用软件包管理进行下载、安装；例如在Ubuntu下的apt-get，又或者在CentOS下的yum，都能帮助我们快速的下载安装软件包，同时又能自动安装软件包对应的依赖包，从而提高我们的开发效率。
  既然Cygwin是模拟Linux的运行环境，所以，毫无例外，它也提供了软件包管理工具apt-cyg，下面，我就简单分享下安装apt-cyg的方法。
 一、执行下载apt-cyg可执行文件 创建一个下载目录，在该目录下执行指令，wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg。
@@ -22,10 +22,10 @@
     
     <item>
       <title>Cygwin安装composer</title>
-      <link>https://jadenhsiao.gitee.io/post/cygwin-install-composer/</link>
+      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-composer/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-composer/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-composer/</guid>
       <description>A Dependency Manager for PHP
  上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。
 一、下载composer并且移动到可执行目录  在下载目录使用wget下载composer.phar  wget https://install.phpcomposer.com/composer.phar
@@ -36,10 +36,10 @@
     
     <item>
       <title>Cygwin安装phpredis拓展</title>
-      <link>https://jadenhsiao.gitee.io/post/cygwin-install-phpredis/</link>
+      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-phpredis/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-phpredis/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-phpredis/</guid>
       <description>phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据
  这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
 一、下载phpredis源码包 在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。
@@ -51,10 +51,10 @@
     
     <item>
       <title>Cygwin为php安装mongodb拓展</title>
-      <link>https://jadenhsiao.gitee.io/post/cygwin-install-mongodb-plugin/</link>
+      <link>https://jadenhsiao.github.io/blog/post/cygwin-install-mongodb-plugin/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/cygwin-install-mongodb-plugin/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/cygwin-install-mongodb-plugin/</guid>
       <description>The purpose of this driver is to provide exceptionally thin glue between MongoDB and PHP, implementing only fundamental and performance-critical components necessary to build a fully-functional MongoDB driver.
  上面的引用是摘抄自mongodb拓展在pecl站点的描述，大致的意思就是该拓展为php和mongodb提供粘合剂功能，实现php链接和操作mongodb。下面就简单分享下Cygwin安装php的mongodb拓展的方法。
 一、下载mongodb拓展源码包 进入pecl，搜索mongodb，因为我使用的环境是Cygwin提供的php7.3.7版本，所以选择搜索结果的mongodb，这里看到两个mongodb相关的拓展，第二个的mongo是php5.x所使用的，这里不做深入探讨。
@@ -66,10 +66,10 @@
     
     <item>
       <title>Windows10安装Cygwin</title>
-      <link>https://jadenhsiao.gitee.io/post/windows10-install-cygwin/</link>
+      <link>https://jadenhsiao.github.io/blog/post/windows10-install-cygwin/</link>
       <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
       
-      <guid>https://jadenhsiao.gitee.io/post/windows10-install-cygwin/</guid>
+      <guid>https://jadenhsiao.github.io/blog/post/windows10-install-cygwin/</guid>
       <description>What Is Cygwin? Get that Linux feeling - on Windows
  这个是Cygwin项目主页上的简介，安装它，可以得到一个类似Linux的Shell环境，在其中你可以使用绝大部分Linux软件和功能。如Gcc,Make,Vim,Emacs等等，作为一个php开发者，使用Cygwin的目的是为了运行Swoole，接下来，我将简单分享下安装Cygwin的流程和我们安装swoole需要的组件包。
 一、从项目主页下载Cygwin安装包 这个安装包不单单只是安装Cygwin，还能用来安装我们需要的组件包。

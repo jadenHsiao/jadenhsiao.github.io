@@ -22,7 +22,7 @@
 一、执行下载apt-cyg可执行文件 创建一个下载目录，在该目录下执行指令，wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg。
 二、执行安装   下载完成后，将apt-cyg执行安装到可执行目录，Cygwin的可执行目录是bin，指令为install apt-cyg /bin。 安装完成后就可以执行apt-cyg来测试是否安装完成。  三、设置镜像源和更新源 因为网络环境的问题，使用国内的镜像源可以提高我们在安装、更新软件包的速度，这里推荐使用网易的镜像源，执行指令apt-cyg mirror http://mirrors.163.com/cygwin，然后再更新源apt-cyg update。 完成以上步骤就可以使用apt-cyg安装需要的软件包了。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jadenhsiao.gitee.io/post/cygwin-install-apt-cyg/" /><meta property="article:section" content="post" />
+<meta property="og:url" content="https://jadenhsiao.github.io/blog/post/cygwin-install-apt-cyg/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2021-08-01T11:33:28+08:00" />
 <meta property="article:modified_time" content="2021-08-01T11:33:28+08:00" /><meta property="og:site_name" content="My Blog" />
 
@@ -44,7 +44,7 @@
 
 
 
-<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="/blog/vendor/css/bootstrap.min.css">
 
 
   
@@ -54,14 +54,14 @@
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+<link rel="stylesheet" href="https://jadenhsiao.github.io/blog/scss/journal.scss" integrity="" media="screen">
 
 
 
-<link rel="stylesheet" href="https://jadenhsiao.gitee.io/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+<link rel="stylesheet" href="https://jadenhsiao.github.io/blog/scss/dark-mode.scss" integrity="" media="screen">
 
 
-<script src="/vendor/js/loadCSS.js"></script>
+<script src="/blog/vendor/js/loadCSS.js"></script>
 <script>
   loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
 </script>
@@ -71,7 +71,7 @@
 
 
 
-  <script src="/js/toc.js"></script>
+  <script src="/blog/js/toc.js"></script>
 
 
 
@@ -90,7 +90,7 @@
 <body>
     	<div id="app"><div id="sideContainer" class="side-container">
     
-    <a class="a-block nav-head false" href="https://jadenhsiao.gitee.io/">
+    <a class="a-block nav-head false" href="https://jadenhsiao.github.io/blog">
     
         <div class="nav-title">
             JadenHsiao
@@ -112,7 +112,7 @@
             
             
             
-            <a class="a-block nav-link-item active" href="/post">
+            <a class="a-block nav-link-item active" href="/blog/post">
                 文章内容
             </a>
             
@@ -122,7 +122,7 @@
             
             
             
-            <a class="a-block nav-link-item false" href="/categories">
+            <a class="a-block nav-link-item false" href="/blog/categories">
                 分类列表
             </a>
             
@@ -132,7 +132,7 @@
             
             
             
-            <a class="a-block nav-link-item false" href="/about">
+            <a class="a-block nav-link-item false" href="/blog/about">
                 关于作者
             </a>
             
@@ -142,7 +142,7 @@
             
             
             
-            <a class="a-block nav-link-item false" href="/index.xml">
+            <a class="a-block nav-link-item false" href="/blog/index.xml">
                 RSS Feed
             </a>
             
@@ -276,7 +276,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item active" href="/post">
+                <a class="a-block drawer-menu-item active" href="/blog/post">
                     文章内容
                 </a>
                 
@@ -286,7 +286,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/categories">
+                <a class="a-block drawer-menu-item false" href="/blog/categories">
                     分类列表
                 </a>
                 
@@ -296,7 +296,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/about">
+                <a class="a-block drawer-menu-item false" href="/blog/about">
                     关于作者
                 </a>
                 
@@ -306,7 +306,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 
                 
                 
-                <a class="a-block drawer-menu-item false" href="/index.xml">
+                <a class="a-block drawer-menu-item false" href="/blog/index.xml">
                     RSS Feed
                 </a>
                 
@@ -404,7 +404,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
                 menu
             </i>
         </button>
-        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.gitee.io/">
+        <a id="navTitle" class="navbar-brand" href="https://jadenhsiao.github.io/blog">
             JadenHsiao
         </a>
         
@@ -418,7 +418,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </nav>
 <div class="single-column-header-container" id="pageHead"
      v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
-    <a href="https://jadenhsiao.gitee.io/">
+    <a href="https://jadenhsiao.github.io/blog">
         <div class="single-column-header-title">JadenHsiao</div>
         
         <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
@@ -451,14 +451,14 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 
                         
                             <i class="material-icons" style="">folder</i>
-                                <a href="/categories/">[Cygwin]</a>
+                                <a href="/blog/categories/">[Cygwin]</a>
                                 &nbsp;
                         
 
                         
                             <i class="material-icons" style="">label</i>
                             
-                                <a href="/tags/cygwin">Cygwin</a>
+                                <a href="/blog/tags/cygwin">Cygwin</a>
                                 &nbsp;
                             
                         
@@ -498,13 +498,13 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts" href="https://jadenhsiao.gitee.io/about/">
+                <a class="newer-posts" href="https://jadenhsiao.github.io/blog/about/">
 			下回<br>About
                 </a>
                 
                 
                 
-                <a class="older-posts" href="https://jadenhsiao.gitee.io/post/cygwin-install-composer/">
+                <a class="older-posts" href="https://jadenhsiao.github.io/blog/post/cygwin-install-composer/">
 			上回<br>Cygwin安装composer
                 </a>
                 
@@ -540,6 +540,6 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </div>
             </div>
     
-    <script src="/js/journal.js"></script>
+    <script src="/blog/js/journal.js"></script>
     </body>
 </html>
