@@ -18,9 +18,9 @@
 
 <meta property="og:title" content="Yii2使用技巧（二）- 在Yii上使用MongoDB" />
 <meta property="og:description" content="公司项目的主线业务使用的是 MySQL ，但是在日志系统使用的是非关系型数据库 MongoDB ，而 Yii2 本身的 Active Record 是支持的，所以使用技巧二将针对 Yii2 上 MongoDB 的使用方法做一系列讲解。
- 一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &quot;yiisoft/yii2-mongodb&quot;: &quot;~2.1.0&quot; ，再执行 composer update ，将拓展包安装包项目内。
+一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &quot;yiisoft/yii2-mongodb&quot;: &quot;~2.1.0&quot; ，再执行 composer update ，将拓展包安装包项目内。
 二、将组件添加到 Yii 配置 因为本人使用的是 basic 版，所以就直接在项目的 config/web.php 文件的 components 关联数组内添加一下代码：
-&#39;mongodb&#39; =&gt; [  &#39;class&#39; =&gt; &#39;yii\mongodb\Connection&#39;,  &#39;dsn&#39; =&gt; &#39;mongodb://localhost:27017/&#39;.env(&#34;MONGODB_DATABASE&#34;),  &#39;options&#39; =&gt; [  &#34;username&#34; =&gt; env(&#34;MONGODB_USERNAME&#34;),  &#34;password&#34; =&gt; env(&#34;MONGODB_PASSWORD&#34;)  ]  ] 上面的代码是添加一个名为mongodb的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用." />
+&#39;mongodb&#39; =&gt; [ &#39;class&#39; =&gt; &#39;yii\mongodb\Connection&#39;, &#39;dsn&#39; =&gt; &#39;mongodb://localhost:27017/&#39;.env(&#34;MONGODB_DATABASE&#34;), &#39;options&#39; =&gt; [ &#34;username&#34; =&gt; env(&#34;MONGODB_USERNAME&#34;), &#34;password&#34; =&gt; env(&#34;MONGODB_PASSWORD&#34;) ] ] 上面的代码是添加一个名为mongodb的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用.env 文件进行动态配置；完成上诉配置之后，在项目里就可以使用Yii::$app-&gt;mongodb来调用拓展提供的方法了。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/post/yii2-skills-part-two/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-03-21T00:26:28+08:00" />
@@ -34,9 +34,9 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Yii2使用技巧（二）- 在Yii上使用MongoDB"/>
 <meta name="twitter:description" content="公司项目的主线业务使用的是 MySQL ，但是在日志系统使用的是非关系型数据库 MongoDB ，而 Yii2 本身的 Active Record 是支持的，所以使用技巧二将针对 Yii2 上 MongoDB 的使用方法做一系列讲解。
- 一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &quot;yiisoft/yii2-mongodb&quot;: &quot;~2.1.0&quot; ，再执行 composer update ，将拓展包安装包项目内。
+一、下载安装 Yii2-mongodb 拓展包 根据拓展的简介，这个拓展包的功能就是作为 Yii2 和 mongoDB 的粘合剂，因此这个拓展包是必要的；在 Yii2 项目目录下，执行 composer require yiisoft/yii2-mongodb ；或者在项目的“ composer.json ”文件中“ require ”项内加入 &quot;yiisoft/yii2-mongodb&quot;: &quot;~2.1.0&quot; ，再执行 composer update ，将拓展包安装包项目内。
 二、将组件添加到 Yii 配置 因为本人使用的是 basic 版，所以就直接在项目的 config/web.php 文件的 components 关联数组内添加一下代码：
-&#39;mongodb&#39; =&gt; [  &#39;class&#39; =&gt; &#39;yii\mongodb\Connection&#39;,  &#39;dsn&#39; =&gt; &#39;mongodb://localhost:27017/&#39;.env(&#34;MONGODB_DATABASE&#34;),  &#39;options&#39; =&gt; [  &#34;username&#34; =&gt; env(&#34;MONGODB_USERNAME&#34;),  &#34;password&#34; =&gt; env(&#34;MONGODB_PASSWORD&#34;)  ]  ] 上面的代码是添加一个名为mongodb的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用."/>
+&#39;mongodb&#39; =&gt; [ &#39;class&#39; =&gt; &#39;yii\mongodb\Connection&#39;, &#39;dsn&#39; =&gt; &#39;mongodb://localhost:27017/&#39;.env(&#34;MONGODB_DATABASE&#34;), &#39;options&#39; =&gt; [ &#34;username&#34; =&gt; env(&#34;MONGODB_USERNAME&#34;), &#34;password&#34; =&gt; env(&#34;MONGODB_PASSWORD&#34;) ] ] 上面的代码是添加一个名为mongodb的配置项，其中包括调用的类，链接地址，还有登录数据库的配置，其中相关的配置都是使用.env 文件进行动态配置；完成上诉配置之后，在项目里就可以使用Yii::$app-&gt;mongodb来调用拓展提供的方法了。"/>
 
 
 

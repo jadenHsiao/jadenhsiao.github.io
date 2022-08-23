@@ -19,11 +19,8 @@
 <meta property="og:title" content="LeetCode - （MySQL）游戏玩法分析 I" />
 <meta property="og:description" content="题目链接
 使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
-   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
-CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-03-01&#39;,&#39;5&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-05-02&#39;,&#39;6&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;2&#39;,&#39;3&#39;,&#39;2017-06-25&#39;,&#39;1&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;1&#39;,&#39;2016-03-02&#39;,&#39;0&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;4&#39;,&#39;2018-07-03&#39;,&#39;5&#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
-查询结果的格式如下所示：
-输入： Activity 表：
-   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:" />
+Column Name Type player_id int device_id int event_date date games_played int 创建和填充数据：
+Create table If Not Exists Activity (player_id int, device_id int, event_date date, games_played int) Truncate table Activity insert into Activity (player_id, device_id, event_date, games_played) values (&#39;1&#39;, &#39;2&#39;, &#39;2016-03-01&#39;, &#39;5&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;1&#39;, &#39;2&#39;, &#39;2016-05-02&#39;, &#39;6&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;2&#39;, &#39;3&#39;, &#39;2017-06-25&#39;, &#39;1&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;3&#39;, &#39;1&#39;, &#39;2016-03-02&#39;, &#39;0&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;3&#39;, &#39;4&#39;, &#39;2018-07-03&#39;, &#39;5&#39;) 写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/post/game-play-analysis-i/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-08-07T13:08:28+08:00" />
@@ -38,11 +35,8 @@ CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_pl
 <meta name="twitter:title" content="LeetCode - （MySQL）游戏玩法分析 I"/>
 <meta name="twitter:description" content="题目链接
 使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
-   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
-CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-03-01&#39;,&#39;5&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;1&#39;,&#39;2&#39;,&#39;2016-05-02&#39;,&#39;6&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;2&#39;,&#39;3&#39;,&#39;2017-06-25&#39;,&#39;1&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;1&#39;,&#39;2016-03-02&#39;,&#39;0&#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&#39;3&#39;,&#39;4&#39;,&#39;2018-07-03&#39;,&#39;5&#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
-查询结果的格式如下所示：
-输入： Activity 表：
-   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:"/>
+Column Name Type player_id int device_id int event_date date games_played int 创建和填充数据：
+Create table If Not Exists Activity (player_id int, device_id int, event_date date, games_played int) Truncate table Activity insert into Activity (player_id, device_id, event_date, games_played) values (&#39;1&#39;, &#39;2&#39;, &#39;2016-03-01&#39;, &#39;5&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;1&#39;, &#39;2&#39;, &#39;2016-05-02&#39;, &#39;6&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;2&#39;, &#39;3&#39;, &#39;2017-06-25&#39;, &#39;1&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;3&#39;, &#39;1&#39;, &#39;2016-03-02&#39;, &#39;0&#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&#39;3&#39;, &#39;4&#39;, &#39;2018-07-03&#39;, &#39;5&#39;) 写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。"/>
 
 
 

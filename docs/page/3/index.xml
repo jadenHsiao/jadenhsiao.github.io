@@ -7,9 +7,132 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 09 Aug 2022 22:15:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Aug 2022 13:27:28 +0800</lastBuildDate>
     
         <atom:link href="https://www.jytype.cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Yii2使用技巧（一）- 数组辅助工具</title>
+        <link>https://www.jytype.cn/post/yii2-skills-part-one/</link>
+        <pubDate>Wed, 16 Mar 2022 23:36:28 +0800</pubDate>
+        
+        <guid>https://www.jytype.cn/post/yii2-skills-part-one/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/yii2-skills-part-one/ -&lt;blockquote&gt;
+&lt;p&gt;因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;一数组筛选yiihelperarrayhelperfilter&#34;&gt;一、数组筛选（\yii\helper\ArrayHelper::filter）&lt;/h2&gt;
+&lt;p&gt;该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2022-03-16_23-51-11.png&#34; alt=&#34;API 文档说明&#34;&gt;&lt;/p&gt;
+&lt;p&gt;从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;actionExample&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jack&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;17&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;course&amp;#39;&lt;/span&gt; =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;one&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;english&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;two&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;chinese&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;three&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;math&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt; = \yii\helpers\ArrayHelper::&lt;span style=&#34;color:#658b00&#34;&gt;filter&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;!name&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;course.one&amp;#39;&lt;/span&gt;,&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;!course.three&amp;#39;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2022-03-17_00-02-32.png&#34; alt=&#34;运行结果&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二数组检索列yiihelperarrayhelpergetcolumn&#34;&gt;二、数组检索列（\yii\helper\ArrayHelper::getColumn）&lt;/h2&gt;
+&lt;p&gt;其实这个函数的话在官方文档内也说明的挺清楚的，&lt;a href=&#34;https://www.yiiframework.com/doc/guide/2.0/zh-cn/helper-array#retrieving-columns&#34;&gt;点击前往&lt;/a&gt;，但是在这里的话，我是对文档内指定一个匿名函数的补充，因为官方文档内示例是只检索出单独一个值，而这里的话是可以返回出一个新的数组结构。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color:#008b45&#34;&gt;actionExample&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt; = [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jack&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;17&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;james&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;19&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;jones&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;man&amp;#39;&lt;/span&gt;, &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;age&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#b452cd&#34;&gt;16&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt; = \yii\helpers\ArrayHelper::&lt;span style=&#34;color:#658b00&#34;&gt;getColumn&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#00688b&#34;&gt;$example&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt;(&lt;span style=&#34;color:#00688b&#34;&gt;$element&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        	&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; [&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;student&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#00688b&#34;&gt;$element&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;],&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;gender&amp;#39;&lt;/span&gt;=&amp;gt;&lt;span style=&#34;color:#00688b&#34;&gt;$element&lt;/span&gt;[&lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;sex&amp;#39;&lt;/span&gt;]];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    );
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    var_dump(&lt;span style=&#34;color:#00688b&#34;&gt;$result&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面这个 demo 里，使用了检索列函数，同时用匿名函数来为数组的每一项返回新的结构，使用 student 来显示原先的 name，gender 显示原先的 sex，最后结果为下图。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2022-03-17_00-33-40.png&#34; alt=&#34;运行结果&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二对象转化为数组yiihelperarrayhelpertoarray&#34;&gt;二、对象转化为数组（\yii\helper\ArrayHelper::toArray）&lt;/h2&gt;
+&lt;p&gt;有时候我们通过&lt;em&gt;Active Record&lt;/em&gt;查询出的数据并不满足前端需求，或者某些字段需要其他字段进行聚合运算；可能好多开发者的第一反应是对结果集转化为数组后进行遍历操作，这样一方面代码不够整洁，另一方面进行遍历操作如果存在其他表查询就会带来N+1的问题，所以使用&lt;em&gt;toArray&lt;/em&gt;这个方法来处理我们的需求。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;?php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; yii\helpers\ArrayHelper;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;use&lt;/span&gt; app\models\Example;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;//其他伪代码....
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#228b22&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#00688b&#34;&gt;$data&lt;/span&gt; = ArrayHelper::&lt;span style=&#34;color:#658b00&#34;&gt;toArray&lt;/span&gt;(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#00688b&#34;&gt;$list&lt;/span&gt;, 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                Example::&lt;span style=&#34;color:#658b00&#34;&gt;className&lt;/span&gt;() =&amp;gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;name&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;article_top&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;article&amp;#39;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#cd5555&#34;&gt;&amp;#39;question_list&amp;#39;&lt;/span&gt; =&amp;gt; &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;function&lt;/span&gt; (&lt;span style=&#34;color:#00688b&#34;&gt;$item&lt;/span&gt;){
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        &lt;span style=&#34;color:#8b008b;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#00688b&#34;&gt;$item&lt;/span&gt;-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;getQuestion&lt;/span&gt;()-&amp;gt;&lt;span style=&#34;color:#658b00&#34;&gt;all&lt;/span&gt;();
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    );
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;上面的伪代码中，&lt;code&gt;$list&lt;/code&gt;为模型查询出来的数据（对象）；转化为数组时需要先指定目标的模型，指定模型后，如果需要返回原先模型的字段，则直接对应名称即可；如果需要定义返回内容的话，则需要编写对应的返回名称和执行计算的闭包函数，闭包函数的参数是查询的&lt;em&gt;Active Record&lt;/em&gt;对象，基于它可以进行模型关联等其他操作。&lt;/p&gt;
+- https://www.jytype.cn/post/yii2-skills-part-one/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
+    
+    
+    
+        <item>
+        <title>Ubuntu 安装 Vapor</title>
+        <link>https://www.jytype.cn/post/ubuntu-install-vapor/</link>
+        <pubDate>Tue, 31 Aug 2021 22:38:28 +0800</pubDate>
+        
+        <guid>https://www.jytype.cn/post/ubuntu-install-vapor/</guid>
+        <description>JadenHsiao https://www.jytype.cn/post/ubuntu-install-vapor/ -&lt;blockquote&gt;
+&lt;p&gt;Apple 公司的 Swift 不仅能够编写 MacOS 、IOS 端的应用，还能基于 SwiftNIO 编写服务端，在 Swift 服务端的阵营里，有 Kitura、perfect、Vapor 。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;而今天，我将给大家介绍一款服务端框架 &lt;a href=&#34;https://vapor.codes&#34;&gt;Vapor&lt;/a&gt;，他在 &lt;a href=&#34;https://github.com/vapor/vapor&#34;&gt;github&lt;/a&gt; 收获高达 20.6k star 的服务端框架，同时支持 JWT、MySQL、Redis、MongoDB种种我们服务端开发所需要的组件，并且设计思路来源于 Laravel/Lumen（php开发者狂喜😆😆），同时拥有活跃的社区，并且随着 Swift 版本在不断地更新，所以，我毅然决然选择 Vapor 作为我 Swift 开发服务端的框架。&lt;/p&gt;
+&lt;p&gt;因为我的 MacOS 系统版本是 Majove，同时平常更加倾向于使用 Windows，所以就选择了 WSL 作为 Vapor 的开发环境，使用的是 Ubuntu18.04，接下来，将先介绍下在 Ubuntu 下如何安装 Vapor。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-31_11-56-18.jpg&#34; alt=&#34;下载 Vapor 源码&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;到 Vapor 的 github 项目主页上下载源码；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-31_11-59-59.jpg&#34; alt=&#34;编译源码&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;进入到 toolbox，执行 &lt;code&gt;swift build -c release --disable-sandbox --enable-test-discovery&lt;/code&gt;进行源码编译，在执行 &lt;code&gt;mv .build/release/vapor /usr/local/bin&lt;/code&gt; 移动到执行目录；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-31_12-41-01.jpg&#34; alt=&#34;校验是否安装完成&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;执行 &lt;code&gt;vapor --help&lt;/code&gt;，如和上图所示，即为安装完成；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-31_12-50-02.jpg&#34; alt=&#34;创建项目&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;执行 &lt;code&gt;vapor new hello -n&lt;/code&gt;，创建第一个 Vapor 项目，看到如此大的水蒸气图案💧，就证明创建完成了；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-31_12-55-35.jpg&#34; alt=&#34;编译项目&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;5&#34;&gt;
+&lt;li&gt;执行 &lt;code&gt;swift build&lt;/code&gt;，编译 Vapor 项目文件；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://www.jytype.cn/images/Snipaste_2021-08-31_12-55-56.jpg&#34; alt=&#34;启动项目&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;6&#34;&gt;
+&lt;li&gt;启动项目，这时候看到命令行提示使用 127.0.0.1:8080 进行访问。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;打开浏览器，访问 127.0.0.1:8080，就可以看到第一个路由的返回结果，“It work”了😀。&lt;/p&gt;
+- https://www.jytype.cn/post/ubuntu-install-vapor/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
     
     
     

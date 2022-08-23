@@ -18,13 +18,13 @@
 
 <meta property="og:title" content="Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台" />
 <meta property="og:description" content="Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。使用它可以帮助我们记录下错误信息，官方提供的phpSDK,只需几行代码，就可以把他整合到Yii中，本篇文章是技巧三的延续。
- 一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
+一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
 二、创建项目 注册完成后进入到控制台，点击右上角进入创建项目界面；
 因为我们要在Yii中使用，所以选择php，填写项目名称，点击创建。
 创建完成后，在引导配置界面有我们等下需要用到的dsn，将其复制下来保存好。
-三、整合到Yii中   使用composer安装sentry/sdk，指令如下composer require sentry/sdk --with-all-dependencies；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。
-  将dsn设置到Yii的params中，在config/params.php的数组中加入以下代码块：
-  &lt;?php  return [  &#39;adminEmail&#39; =&gt; &#39;admin@example.com&#39;,  &#39;senderEmail&#39; =&gt; &#39;noreply@example.com&#39;,  &#39;senderName&#39; =&gt; &#39;Example.com mailer&#39;,  &#39;dsn&#39; =&gt; &#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&#39; ]; 在模块的入口文件init方法加入sentry初始化相关，代码块如下：  &lt;?php use function Sentry\init as sentry_init;  class Module extends \yii\base\Module{  public function init(){  parent::init();  sentry_init([&#39;dsn&#39; =&gt; Yii::$app-&gt;params[&#39;dsn&#39;] ]);  } } 在错误拦截类中加入提交到Sentry相关  &lt;?" />
+三、整合到Yii中 使用composer安装sentry/sdk，指令如下composer require sentry/sdk --with-all-dependencies；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。
+将dsn设置到Yii的params中，在config/params.php的数组中加入以下代码块：
+&lt;?php return [ &#39;adminEmail&#39; =&gt; &#39;admin@example.com&#39;, &#39;senderEmail&#39; =&gt; &#39;noreply@example.com&#39;, &#39;senderName&#39; =&gt; &#39;Example.com mailer&#39;, &#39;dsn&#39; =&gt; &#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&#39; ]; 在模块的入口文件init方法加入sentry初始化相关，代码块如下： &lt;?php use function Sentry\init as sentry_init; class Module extends \yii\base\Module{ public function init(){ parent::init(); sentry_init([&#39;dsn&#39; =&gt; Yii::$app-&gt;params[&#39;dsn&#39;] ]); } } 在错误拦截类中加入提交到Sentry相关 &lt;?php namespace app\modules\api\exception; use function \Sentry\captureException; class ErrorHandler extends BaseErrorHandle { /** * 错误处理 * @param \Error|\Exception $exception * @return array */ public function convertExceptionToArray($exception) { $value = parent::convertExceptionToArray($exception); // 加入此行 captureException($exception); return [ &#39;code&#39; =&gt; $value[&#39;code&#39;] , &#39;message&#39; =&gt; $value[&#39;message&#39;] ]; } } 四、测试并在控制台查看 在模块的控制器，加入throw new BaseException(401);，然后请求接口； 登录到控制台，点击对应的项目就可以查看到报错列表了。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/post/yii2-skills-part-five/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-07-19T15:29:28+08:00" />
@@ -38,13 +38,13 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Yii2使用技巧（五）- 使用Sentry作为错误日志监控平台"/>
 <meta name="twitter:description" content="Sentry 是一个实时的事件日志和聚合平台，基于 Django 构建。使用它可以帮助我们记录下错误信息，官方提供的phpSDK,只需几行代码，就可以把他整合到Yii中，本篇文章是技巧三的延续。
- 一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
+一、注册Sentry账号 Sentry官方提供了线上版和docker部署两种方式，这里使用的是线上版，有兴趣独立部署的点击前往github项目主页查看； 打开Sentry注册页面，填写对应公司信息和个人信息、邮箱、密码，该邮箱将会作为管理员邮箱。
 二、创建项目 注册完成后进入到控制台，点击右上角进入创建项目界面；
 因为我们要在Yii中使用，所以选择php，填写项目名称，点击创建。
 创建完成后，在引导配置界面有我们等下需要用到的dsn，将其复制下来保存好。
-三、整合到Yii中   使用composer安装sentry/sdk，指令如下composer require sentry/sdk --with-all-dependencies；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。
-  将dsn设置到Yii的params中，在config/params.php的数组中加入以下代码块：
-  &lt;?php  return [  &#39;adminEmail&#39; =&gt; &#39;admin@example.com&#39;,  &#39;senderEmail&#39; =&gt; &#39;noreply@example.com&#39;,  &#39;senderName&#39; =&gt; &#39;Example.com mailer&#39;,  &#39;dsn&#39; =&gt; &#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&#39; ]; 在模块的入口文件init方法加入sentry初始化相关，代码块如下：  &lt;?php use function Sentry\init as sentry_init;  class Module extends \yii\base\Module{  public function init(){  parent::init();  sentry_init([&#39;dsn&#39; =&gt; Yii::$app-&gt;params[&#39;dsn&#39;] ]);  } } 在错误拦截类中加入提交到Sentry相关  &lt;?"/>
+三、整合到Yii中 使用composer安装sentry/sdk，指令如下composer require sentry/sdk --with-all-dependencies；由于该包要求php版本不能低于8.0，所以要先对php环境配置好。
+将dsn设置到Yii的params中，在config/params.php的数组中加入以下代码块：
+&lt;?php return [ &#39;adminEmail&#39; =&gt; &#39;admin@example.com&#39;, &#39;senderEmail&#39; =&gt; &#39;noreply@example.com&#39;, &#39;senderName&#39; =&gt; &#39;Example.com mailer&#39;, &#39;dsn&#39; =&gt; &#39;https://764e44dc5a984331bbe928d1f201fba8@o1261582.ingest.sentry.io/6439472&#39; ]; 在模块的入口文件init方法加入sentry初始化相关，代码块如下： &lt;?php use function Sentry\init as sentry_init; class Module extends \yii\base\Module{ public function init(){ parent::init(); sentry_init([&#39;dsn&#39; =&gt; Yii::$app-&gt;params[&#39;dsn&#39;] ]); } } 在错误拦截类中加入提交到Sentry相关 &lt;?php namespace app\modules\api\exception; use function \Sentry\captureException; class ErrorHandler extends BaseErrorHandle { /** * 错误处理 * @param \Error|\Exception $exception * @return array */ public function convertExceptionToArray($exception) { $value = parent::convertExceptionToArray($exception); // 加入此行 captureException($exception); return [ &#39;code&#39; =&gt; $value[&#39;code&#39;] , &#39;message&#39; =&gt; $value[&#39;message&#39;] ]; } } 四、测试并在控制台查看 在模块的控制器，加入throw new BaseException(401);，然后请求接口； 登录到控制台，点击对应的项目就可以查看到报错列表了。"/>
 
 
 
