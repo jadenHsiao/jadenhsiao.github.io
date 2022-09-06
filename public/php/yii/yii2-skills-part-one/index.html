@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html><head>
+<title>Yii2使用技巧（一）- 数组辅助工具</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Yii2使用技巧（一）- 数组辅助工具" />
+<meta property="og:description" content="因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。
+一、数组筛选（\yii\helper\ArrayHelper::filter） 该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。
+从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。
+public function actionExample() { $example = [ &#39;name&#39; =&gt; &#39;jack&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 17, &#39;course&#39; =&gt; [ &#39;one&#39; =&gt; &#39;english&#39;, &#39;two&#39; =&gt; &#39;chinese&#39;, &#39;three&#39; =&gt; &#39;math&#39; ] ]; $result = \yii\helpers\ArrayHelper::filter( $example, [&#39;!name&#39;,&#39;sex&#39;,&#39;course.one&#39;,&#39;!course.three&#39;] ); var_dump($result); } 上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。
+二、数组检索列（\yii\helper\ArrayHelper::getColumn） 其实这个函数的话在官方文档内也说明的挺清楚的，点击前往，但是在这里的话，我是对文档内指定一个匿名函数的补充，因为官方文档内示例是只检索出单独一个值，而这里的话是可以返回出一个新的数组结构。
+public function actionExample() { $example = [ [&#39;name&#39; =&gt; &#39;jack&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 17], [&#39;name&#39; =&gt; &#39;james&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 19], [&#39;name&#39; =&gt; &#39;jones&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 16] ]; $result = \yii\helpers\ArrayHelper::getColumn( $example, function($element){ return [&#39;student&#39;=&gt;$element[&#39;name&#39;],&#39;gender&#39;=&gt;$element[&#39;sex&#39;]]; } ); var_dump($result); } 上面这个 demo 里，使用了检索列函数，同时用匿名函数来为数组的每一项返回新的结构，使用 student 来显示原先的 name，gender 显示原先的 sex，最后结果为下图。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jytype.cn/php/yii/yii2-skills-part-one/" /><meta property="article:section" content="php" />
+<meta property="article:published_time" content="2022-03-16T23:36:28+08:00" />
+<meta property="article:modified_time" content="2022-03-16T23:36:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Yii2使用技巧（一）- 数组辅助工具"/>
+<meta name="twitter:description" content="因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。
+一、数组筛选（\yii\helper\ArrayHelper::filter） 该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。
+从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。
+public function actionExample() { $example = [ &#39;name&#39; =&gt; &#39;jack&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 17, &#39;course&#39; =&gt; [ &#39;one&#39; =&gt; &#39;english&#39;, &#39;two&#39; =&gt; &#39;chinese&#39;, &#39;three&#39; =&gt; &#39;math&#39; ] ]; $result = \yii\helpers\ArrayHelper::filter( $example, [&#39;!name&#39;,&#39;sex&#39;,&#39;course.one&#39;,&#39;!course.three&#39;] ); var_dump($result); } 上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。
+二、数组检索列（\yii\helper\ArrayHelper::getColumn） 其实这个函数的话在官方文档内也说明的挺清楚的，点击前往，但是在这里的话，我是对文档内指定一个匿名函数的补充，因为官方文档内示例是只检索出单独一个值，而这里的话是可以返回出一个新的数组结构。
+public function actionExample() { $example = [ [&#39;name&#39; =&gt; &#39;jack&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 17], [&#39;name&#39; =&gt; &#39;james&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 19], [&#39;name&#39; =&gt; &#39;jones&#39;, &#39;sex&#39; =&gt; &#39;man&#39;, &#39;age&#39; =&gt; 16] ]; $result = \yii\helpers\ArrayHelper::getColumn( $example, function($element){ return [&#39;student&#39;=&gt;$element[&#39;name&#39;],&#39;gender&#39;=&gt;$element[&#39;sex&#39;]]; } ); var_dump($result); } 上面这个 demo 里，使用了检索列函数，同时用匿名函数来为数组的每一项返回新的结构，使用 student 来显示原先的 name，gender 显示原先的 sex，最后结果为下图。"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://www.jytype.cn/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://www.jytype.cn/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://www.jytype.cn/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e6%95%b0%e7%bb%84%e7%ad%9b%e9%80%89yiihelperarrayhelperfilter" onclick="onNavClick(`#一数组筛选yiihelperarrayhelperfilter-nav`)" id="一数组筛选yiihelperarrayhelperfilter-nav">
+									一、数组筛选（\yii\helper\ArrayHelper::filter）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e6%95%b0%e7%bb%84%e6%a3%80%e7%b4%a2%e5%88%97yiihelperarrayhelpergetcolumn" onclick="onNavClick(`#二数组检索列yiihelperarrayhelpergetcolumn-nav`)" id="二数组检索列yiihelperarrayhelpergetcolumn-nav">
+									二、数组检索列（\yii\helper\ArrayHelper::getColumn）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e5%af%b9%e8%b1%a1%e8%bd%ac%e5%8c%96%e4%b8%ba%e6%95%b0%e7%bb%84yiihelperarrayhelpertoarray" onclick="onNavClick(`#二对象转化为数组yiihelperarrayhelpertoarray-nav`)" id="二对象转化为数组yiihelperarrayhelpertoarray-nav">
+									二、对象转化为数组（\yii\helper\ArrayHelper::toArray）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e6%95%b0%e7%bb%84%e7%ad%9b%e9%80%89yiihelperarrayhelperfilter" onclick="onNavClick(`#一数组筛选yiihelperarrayhelperfilter-nav`)" id="一数组筛选yiihelperarrayhelperfilter-nav">
+									一、数组筛选（\yii\helper\ArrayHelper::filter）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e6%95%b0%e7%bb%84%e6%a3%80%e7%b4%a2%e5%88%97yiihelperarrayhelpergetcolumn" onclick="onNavClick(`#二数组检索列yiihelperarrayhelpergetcolumn-nav`)" id="二数组检索列yiihelperarrayhelpergetcolumn-nav">
+									二、数组检索列（\yii\helper\ArrayHelper::getColumn）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e5%af%b9%e8%b1%a1%e8%bd%ac%e5%8c%96%e4%b8%ba%e6%95%b0%e7%bb%84yiihelperarrayhelpertoarray" onclick="onNavClick(`#二对象转化为数组yiihelperarrayhelpertoarray-nav`)" id="二对象转化为数组yiihelperarrayhelpertoarray-nav">
+									二、对象转化为数组（\yii\helper\ArrayHelper::toArray）
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://www.jytype.cn/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://www.jytype.cn/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Yii2使用技巧（一）- 数组辅助工具
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-03-16 23:36
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[PHP Yii]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/php">PHP</a>
+                                &nbsp;
+                            
+                                <a href="/tags/yii">Yii</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <blockquote>
+<p>因为公司主线业务使用的是 Yii2，所以该系列文章主要是平时工作中使用 Yii2 框架的技巧总结，希望可以让开发者更多地使用 Yii2 框架提供的特性，编写出更加规范化和可读性更高的业务代码；Yii2 官方提供的数组工具非常实用，这里根据使用经验展开说明。</p>
+</blockquote>
+<h2 id="一数组筛选yiihelperarrayhelperfilter">一、数组筛选（\yii\helper\ArrayHelper::filter）</h2>
+<p>该函数在 Yii2.0 的权威指南中数组助手类并没有看到，而是在 API 文档中查阅到的，主要功能是根据指定的规则筛选数组，但是这个函数有使用条件，就是只能在两维或以下的数组中使用。</p>
+<p><img src="/images/Snipaste_2022-03-16_23-51-11.png" alt="API 文档说明"></p>
+<p>从上图可以看到，该函数有两个参数，第一个参数是待处理的数组，第二个参数是筛选的规则（格式也是数组）；其中规则支持，筛选（排除）出一维或二维指定字段；下面就由一个简单的示例来说明该函数的作用。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">public</span> <span style="color:#8b008b;font-weight:bold">function</span> <span style="color:#008b45">actionExample</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#00688b">$example</span> = [
+</span></span><span style="display:flex;"><span>            <span style="color:#cd5555">&#39;name&#39;</span> =&gt; <span style="color:#cd5555">&#39;jack&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#cd5555">&#39;sex&#39;</span> =&gt; <span style="color:#cd5555">&#39;man&#39;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#cd5555">&#39;age&#39;</span> =&gt; <span style="color:#b452cd">17</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#cd5555">&#39;course&#39;</span> =&gt; [
+</span></span><span style="display:flex;"><span>                <span style="color:#cd5555">&#39;one&#39;</span> =&gt; <span style="color:#cd5555">&#39;english&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#cd5555">&#39;two&#39;</span> =&gt; <span style="color:#cd5555">&#39;chinese&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#cd5555">&#39;three&#39;</span> =&gt; <span style="color:#cd5555">&#39;math&#39;</span>
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>        ];
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$result</span> = \yii\helpers\ArrayHelper::<span style="color:#658b00">filter</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">$example</span>,
+</span></span><span style="display:flex;"><span>            [<span style="color:#cd5555">&#39;!name&#39;</span>,<span style="color:#cd5555">&#39;sex&#39;</span>,<span style="color:#cd5555">&#39;course.one&#39;</span>,<span style="color:#cd5555">&#39;!course.three&#39;</span>]
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>        var_dump(<span style="color:#00688b">$result</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><p>上面这个 demo 里，使用该筛选函数，排除了一维的 name ，显示了一维的 sex ，显示二维的 course 中的 one ，排除了二维的 course 中的 three，最后的结果为下图。</p>
+<p><img src="/images/Snipaste_2022-03-17_00-02-32.png" alt="运行结果"></p>
+<h2 id="二数组检索列yiihelperarrayhelpergetcolumn">二、数组检索列（\yii\helper\ArrayHelper::getColumn）</h2>
+<p>其实这个函数的话在官方文档内也说明的挺清楚的，<a href="https://www.yiiframework.com/doc/guide/2.0/zh-cn/helper-array#retrieving-columns">点击前往</a>，但是在这里的话，我是对文档内指定一个匿名函数的补充，因为官方文档内示例是只检索出单独一个值，而这里的话是可以返回出一个新的数组结构。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">public</span> <span style="color:#8b008b;font-weight:bold">function</span> <span style="color:#008b45">actionExample</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00688b">$example</span> = [
+</span></span><span style="display:flex;"><span>        [<span style="color:#cd5555">&#39;name&#39;</span> =&gt; <span style="color:#cd5555">&#39;jack&#39;</span>, <span style="color:#cd5555">&#39;sex&#39;</span> =&gt; <span style="color:#cd5555">&#39;man&#39;</span>, <span style="color:#cd5555">&#39;age&#39;</span> =&gt; <span style="color:#b452cd">17</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#cd5555">&#39;name&#39;</span> =&gt; <span style="color:#cd5555">&#39;james&#39;</span>, <span style="color:#cd5555">&#39;sex&#39;</span> =&gt; <span style="color:#cd5555">&#39;man&#39;</span>, <span style="color:#cd5555">&#39;age&#39;</span> =&gt; <span style="color:#b452cd">19</span>],
+</span></span><span style="display:flex;"><span>        [<span style="color:#cd5555">&#39;name&#39;</span> =&gt; <span style="color:#cd5555">&#39;jones&#39;</span>, <span style="color:#cd5555">&#39;sex&#39;</span> =&gt; <span style="color:#cd5555">&#39;man&#39;</span>, <span style="color:#cd5555">&#39;age&#39;</span> =&gt; <span style="color:#b452cd">16</span>]
+</span></span><span style="display:flex;"><span>    ];
+</span></span><span style="display:flex;"><span>    <span style="color:#00688b">$result</span> = \yii\helpers\ArrayHelper::<span style="color:#658b00">getColumn</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#00688b">$example</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#8b008b;font-weight:bold">function</span>(<span style="color:#00688b">$element</span>){
+</span></span><span style="display:flex;"><span>        	<span style="color:#8b008b;font-weight:bold">return</span> [<span style="color:#cd5555">&#39;student&#39;</span>=&gt;<span style="color:#00688b">$element</span>[<span style="color:#cd5555">&#39;name&#39;</span>],<span style="color:#cd5555">&#39;gender&#39;</span>=&gt;<span style="color:#00688b">$element</span>[<span style="color:#cd5555">&#39;sex&#39;</span>]];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    var_dump(<span style="color:#00688b">$result</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上面这个 demo 里，使用了检索列函数，同时用匿名函数来为数组的每一项返回新的结构，使用 student 来显示原先的 name，gender 显示原先的 sex，最后结果为下图。</p>
+<p><img src="/images/Snipaste_2022-03-17_00-33-40.png" alt="运行结果"></p>
+<h2 id="二对象转化为数组yiihelperarrayhelpertoarray">二、对象转化为数组（\yii\helper\ArrayHelper::toArray）</h2>
+<p>有时候我们通过<em>Active Record</em>查询出的数据并不满足前端需求，或者某些字段需要其他字段进行聚合运算；可能好多开发者的第一反应是对结果集转化为数组后进行遍历操作，这样一方面代码不够整洁，另一方面进行遍历操作如果存在其他表查询就会带来N+1的问题，所以使用<em>toArray</em>这个方法来处理我们的需求。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> yii\helpers\ArrayHelper;
+</span></span><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">use</span> app\models\Example;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#228b22">//其他伪代码....
+</span></span></span><span style="display:flex;"><span><span style="color:#228b22"></span><span style="color:#00688b">$data</span> = ArrayHelper::<span style="color:#658b00">toArray</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#00688b">$list</span>, 
+</span></span><span style="display:flex;"><span>            [
+</span></span><span style="display:flex;"><span>                Example::<span style="color:#658b00">className</span>() =&gt; [
+</span></span><span style="display:flex;"><span>                    <span style="color:#cd5555">&#39;id&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#cd5555">&#39;name&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#cd5555">&#39;article_top&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#cd5555">&#39;article&#39;</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#cd5555">&#39;question_list&#39;</span> =&gt; <span style="color:#8b008b;font-weight:bold">function</span> (<span style="color:#00688b">$item</span>){
+</span></span><span style="display:flex;"><span>                        <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#00688b">$item</span>-&gt;<span style="color:#658b00">getQuestion</span>()-&gt;<span style="color:#658b00">all</span>();
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                ]
+</span></span><span style="display:flex;"><span>            ]
+</span></span><span style="display:flex;"><span>    );
+</span></span></code></pre></div><p>上面的伪代码中，<code>$list</code>为模型查询出来的数据（对象）；转化为数组时需要先指定目标的模型，指定模型后，如果需要返回原先模型的字段，则直接对应名称即可；如果需要定义返回内容的话，则需要编写对应的返回名称和执行计算的闭包函数，闭包函数的参数是查询的<em>Active Record</em>对象，基于它可以进行模型关联等其他操作。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-03-16</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://www.jytype.cn/php/yii/yii2-skills-part-two/">
+			下回<br>Yii2使用技巧（二）- 在Yii上使用MongoDB
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://www.jytype.cn/swift/ubuntu-install-vapor/">
+			上回<br>Ubuntu 安装 Vapor
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

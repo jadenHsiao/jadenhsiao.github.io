@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html><head>
+<title>Cygwin安装phpredis拓展</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="Cygwin安装phpredis拓展" />
+<meta property="og:description" content="phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据
+这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
+一、下载phpredis源码包 在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。
+下载phpredis3.1源码包 wget http://pecl.php.net/get/redis-3.1.0.tgz
+解压源码包 tar xzf redis-3.1.0.tgz
+进入源码目录并且执行生成编译文件 cd redis-3.1.0 phpize 二、执行配置 这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。 ./configure --with-php-config=/bin/php-config 三、执行编译和安装 跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;&amp; make install 四、执行测试和添加配置到php.ini 执行make test 查看上一步是否存在纰漏； 打开Cygwin的php.ini，目录在 /etc 下，加入extension=redis.so；最后再执行php -m查看列表是否存在redis，如果存在就安装完成了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jytype.cn/cygwin/cygwin-install-phpredis/" /><meta property="article:section" content="cygwin" />
+<meta property="article:published_time" content="2021-08-01T11:33:28+08:00" />
+<meta property="article:modified_time" content="2021-08-01T11:33:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Cygwin安装phpredis拓展"/>
+<meta name="twitter:description" content="phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据
+这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
+一、下载phpredis源码包 在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。
+下载phpredis3.1源码包 wget http://pecl.php.net/get/redis-3.1.0.tgz
+解压源码包 tar xzf redis-3.1.0.tgz
+进入源码目录并且执行生成编译文件 cd redis-3.1.0 phpize 二、执行配置 这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。 ./configure --with-php-config=/bin/php-config 三、执行编译和安装 跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;&amp; make install 四、执行测试和添加配置到php.ini 执行make test 查看上一步是否存在纰漏； 打开Cygwin的php.ini，目录在 /etc 下，加入extension=redis.so；最后再执行php -m查看列表是否存在redis，如果存在就安装完成了。"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://www.jytype.cn/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://www.jytype.cn/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://www.jytype.cn/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e4%b8%8b%e8%bd%bdphpredis%e6%ba%90%e7%a0%81%e5%8c%85" onclick="onNavClick(`#一下载phpredis源码包-nav`)" id="一下载phpredis源码包-nav">
+									一、下载phpredis源码包
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e6%89%a7%e8%a1%8c%e9%85%8d%e7%bd%ae" onclick="onNavClick(`#二执行配置-nav`)" id="二执行配置-nav">
+									二、执行配置 
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e6%89%a7%e8%a1%8c%e7%bc%96%e8%af%91%e5%92%8c%e5%ae%89%e8%a3%85" onclick="onNavClick(`#三执行编译和安装-nav`)" id="三执行编译和安装-nav">
+									三、执行编译和安装 
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%9b%e6%89%a7%e8%a1%8c%e6%b5%8b%e8%af%95%e5%92%8c%e6%b7%bb%e5%8a%a0%e9%85%8d%e7%bd%ae%e5%88%b0phpini" onclick="onNavClick(`#四执行测试和添加配置到phpini-nav`)" id="四执行测试和添加配置到phpini-nav">
+									四、执行测试和添加配置到php.ini 
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- 目录 -</center>
+		
+		
+		<ul>
+			
+				
+				
+					
+						
+						
+						
+						
+							
+								
+									<ul>
+								
+							
+						
+						
+							<li>
+								<a href="#%e4%b8%80%e4%b8%8b%e8%bd%bdphpredis%e6%ba%90%e7%a0%81%e5%8c%85" onclick="onNavClick(`#一下载phpredis源码包-nav`)" id="一下载phpredis源码包-nav">
+									一、下载phpredis源码包
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%ba%8c%e6%89%a7%e8%a1%8c%e9%85%8d%e7%bd%ae" onclick="onNavClick(`#二执行配置-nav`)" id="二执行配置-nav">
+									二、执行配置 
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e4%b8%89%e6%89%a7%e8%a1%8c%e7%bc%96%e8%af%91%e5%92%8c%e5%ae%89%e8%a3%85" onclick="onNavClick(`#三执行编译和安装-nav`)" id="三执行编译和安装-nav">
+									三、执行编译和安装 
+								</a>
+							</li>
+						
+						
+					
+				
+			
+				
+				
+					
+						
+						
+						
+						
+						
+							<li>
+								<a href="#%e5%9b%9b%e6%89%a7%e8%a1%8c%e6%b5%8b%e8%af%95%e5%92%8c%e6%b7%bb%e5%8a%a0%e9%85%8d%e7%bd%ae%e5%88%b0phpini" onclick="onNavClick(`#四执行测试和添加配置到phpini-nav`)" id="四执行测试和添加配置到phpini-nav">
+									四、执行测试和添加配置到php.ini 
+								</a>
+							</li>
+						
+						
+					
+				
+			
+		</ul>
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://www.jytype.cn/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://www.jytype.cn/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    Cygwin安装phpredis拓展
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2021-08-01 11:33
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[Cygwin]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/cygwin">Cygwin</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <blockquote>
+<p>phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据</p>
+</blockquote>
+<p>这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。</p>
+<h2 id="一下载phpredis源码包">一、下载phpredis源码包</h2>
+<p>在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。</p>
+<ol>
+<li>下载phpredis3.1源码包</li>
+</ol>
+<p><code>wget http://pecl.php.net/get/redis-3.1.0.tgz</code></p>
+<ol start="2">
+<li>解压源码包</li>
+</ol>
+<p><code> tar xzf redis-3.1.0.tgz</code></p>
+<ol start="3">
+<li>进入源码目录并且执行生成编译文件</li>
+</ol>
+<p><code>cd redis-3.1.0</code>
+<code>phpize </code></p>
+<p><img src="/images/1624677894616.png" alt="下载源码包解压并且执行生成编译文件"></p>
+<h2 id="二执行配置">二、执行配置 </h2>
+<p>这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。
+<code> ./configure --with-php-config=/bin/php-config</code>
+<img src="/images/1624678635684.png" alt="执行配置"></p>
+<h2 id="三执行编译和安装">三、执行编译和安装 </h2>
+<p>跑完执行配置后，就是最关键的编译和安装了，指令如下。
+<code>make &amp;&amp; make install</code>
+<img src="/images/1624678803373.png" alt="执行编译和安装"></p>
+<h2 id="四执行测试和添加配置到phpini">四、执行测试和添加配置到php.ini </h2>
+<p>执行<code>make test</code> 查看上一步是否存在纰漏；
+<img src="/images/1624679066762.png" alt="执行测试">
+打开Cygwin的<em>php.ini</em>，目录在 <code>/etc </code> 下，加入<code>extension=redis.so</code>；最后再执行<code>php -m</code>查看列表是否存在redis，如果存在就安装完成了。</p>
+
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2021-08-01</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://www.jytype.cn/cygwin/cygwin-install-composer/">
+			下回<br>Cygwin安装composer
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://www.jytype.cn/cygwin/cygwin-install-mongodb-plugin/">
+			上回<br>Cygwin为php安装mongodb拓展
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

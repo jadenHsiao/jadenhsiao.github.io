@@ -52,7 +52,7 @@ url = "/about"
 name = "关于作者"
 weight = 3
 [[menu.main]]
-url = "/post"
+url = "/"
 name = "文章内容"
 weight = 1
 [[menu.main]]
