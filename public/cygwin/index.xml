@@ -15,9 +15,9 @@
       
       <guid>https://www.jytype.cn/cygwin/cygwin-install-apt-cyg/</guid>
       <description>在Linux系统下，如果我们需要一些软件包的话，可以使用软件包管理进行下载、安装；例如在Ubuntu下的apt-get，又或者在CentOS下的yum，都能帮助我们快速的下载安装软件包，同时又能自动安装软件包对应的依赖包，从而提高我们的开发效率。
-既然Cygwin是模拟Linux的运行环境，所以，毫无例外，它也提供了软件包管理工具apt-cyg，下面，我就简单分享下安装apt-cyg的方法。
+ 既然Cygwin是模拟Linux的运行环境，所以，毫无例外，它也提供了软件包管理工具apt-cyg，下面，我就简单分享下安装apt-cyg的方法。
 一、执行下载apt-cyg可执行文件 创建一个下载目录，在该目录下执行指令，wget https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg。
-二、执行安装 下载完成后，将apt-cyg执行安装到可执行目录，Cygwin的可执行目录是bin，指令为install apt-cyg /bin。 安装完成后就可以执行apt-cyg来测试是否安装完成。 三、设置镜像源和更新源 因为网络环境的问题，使用国内的镜像源可以提高我们在安装、更新软件包的速度，这里推荐使用网易的镜像源，执行指令apt-cyg mirror http://mirrors.163.com/cygwin，然后再更新源apt-cyg update。 完成以上步骤就可以使用apt-cyg安装需要的软件包了。</description>
+二、执行安装   下载完成后，将apt-cyg执行安装到可执行目录，Cygwin的可执行目录是bin，指令为install apt-cyg /bin。 安装完成后就可以执行apt-cyg来测试是否安装完成。  三、设置镜像源和更新源 因为网络环境的问题，使用国内的镜像源可以提高我们在安装、更新软件包的速度，这里推荐使用网易的镜像源，执行指令apt-cyg mirror http://mirrors.163.com/cygwin，然后再更新源apt-cyg update。 完成以上步骤就可以使用apt-cyg安装需要的软件包了。</description>
     </item>
     
     <item>
@@ -27,11 +27,11 @@
       
       <guid>https://www.jytype.cn/cygwin/cygwin-install-composer/</guid>
       <description>A Dependency Manager for PHP
-上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。
-一、下载composer并且移动到可执行目录 在下载目录使用wget下载composer.phar wget https://install.phpcomposer.com/composer.phar
-移动到Cygwin的可执行目录bin mv composer.phar /bin
+ 上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。
+一、下载composer并且移动到可执行目录  在下载目录使用wget下载composer.phar  wget https://install.phpcomposer.com/composer.phar
+移动到Cygwin的可执行目录bin  mv composer.phar /bin
 二、设置别名和测试 这一步主要为了可以在Cygwin的终端全局可以使用composer指令。 alias composer=&amp;quot;php /bin/composer.phar&amp;quot; 在终端输入composer回车，却发现报了一个致命错误，未捕获的错误，类phar未找到，这个问题还是比较好解决的，只需要打开Cygwin的安装包，搜索关键字phar，在搜索结果里选择php-phar，然后在Current选择对应的php版本，src勾选安装源码，执行下一步安装即可。 三、设置国内镜像 因为网络环境的原因，所以设置为国内的镜像可以提高我们下载更新拓展包的速度，目前国内有多家镜像提供商，这里列举几个比较常用的。
-提供方 镜像地址 腾讯云 https://mirrors.cloud.tencent.com/composer/ 阿里云 https://mirrors.aliyun.com/composer/ Packagist / Composer（中国全量镜像） https://packagist.phpcomposer.com 华为云 https://mirrors.huaweicloud.com/repository/php/ 设置方法：使用以下指令，composer config -g repos.packagist composer 镜像地址 😄enjoy!!</description>
+   提供方 镜像地址     腾讯云 https://mirrors.cloud.tencent.com/composer/   阿里云 https://mirrors.aliyun.com/composer/   Packagist / Composer（中国全量镜像） https://packagist.phpcomposer.com   华为云 https://mirrors.huaweicloud.com/repository/php/    设置方法：使用以下指令，composer config -g repos.packagist composer 镜像地址 😄enjoy!!</description>
     </item>
     
     <item>
@@ -41,11 +41,12 @@
       
       <guid>https://www.jytype.cn/cygwin/cygwin-install-phpredis/</guid>
       <description>phpredis是一个用C所编写的php拓展模块，用来链接并且操作Redis数据库上的数据
-这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
+ 这个是phpredis在github项目主页上的简介，就是一款对redis操作的拓展，在swoft的composer.json文件里，phpredis是必须要安装的拓展，下面就简单分享下Cygwin下安装phpredis的方法。
 一、下载phpredis源码包 在Cygwin终端下创建一个下载目录，用 wget来下载源码包，因为我使用的环境是Cygwin提供的php7.3.7版本，所以使用的phpredis是3.1版本，如果没有wget，可以使用安装Cygwin的安装包选择安装wget拓展。
-下载phpredis3.1源码包 wget http://pecl.php.net/get/redis-3.1.0.tgz
-解压源码包 tar xzf redis-3.1.0.tgz
-进入源码目录并且执行生成编译文件 cd redis-3.1.0 phpize 二、执行配置 这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。 ./configure --with-php-config=/bin/php-config 三、执行编译和安装 跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;amp;&amp;amp; make install 四、执行测试和添加配置到php.ini 执行make test 查看上一步是否存在纰漏； 打开Cygwin的php.ini，目录在 /etc 下，加入extension=redis.so；最后再执行php -m查看列表是否存在redis，如果存在就安装完成了。</description>
+ 下载phpredis3.1源码包  wget http://pecl.php.net/get/redis-3.1.0.tgz
+解压源码包   tar xzf redis-3.1.0.tgz
+进入源码目录并且执行生成编译文件  cd redis-3.1.0 phpize 
+二、执行配置  这里需要注意的是，执行配置时需要指定到Cygwin下php-config文件，指令如下。  ./configure --with-php-config=/bin/php-config 三、执行编译和安装  跑完执行配置后，就是最关键的编译和安装了，指令如下。 make &amp;amp;&amp;amp; make install 四、执行测试和添加配置到php.ini  执行make test 查看上一步是否存在纰漏； 打开Cygwin的php.ini，目录在 /etc  下，加入extension=redis.so；最后再执行php -m查看列表是否存在redis，如果存在就安装完成了。</description>
     </item>
     
     <item>
@@ -55,7 +56,7 @@
       
       <guid>https://www.jytype.cn/cygwin/cygwin-install-mongodb-plugin/</guid>
       <description>The purpose of this driver is to provide exceptionally thin glue between MongoDB and PHP, implementing only fundamental and performance-critical components necessary to build a fully-functional MongoDB driver.
-上面的引用是摘抄自mongodb拓展在pecl站点的描述，大致的意思就是该拓展为php和mongodb提供粘合剂功能，实现php链接和操作mongodb。下面就简单分享下Cygwin安装php的mongodb拓展的方法。
+ 上面的引用是摘抄自mongodb拓展在pecl站点的描述，大致的意思就是该拓展为php和mongodb提供粘合剂功能，实现php链接和操作mongodb。下面就简单分享下Cygwin安装php的mongodb拓展的方法。
 一、下载mongodb拓展源码包 进入pecl，搜索mongodb，因为我使用的环境是Cygwin提供的php7.3.7版本，所以选择搜索结果的mongodb，这里看到两个mongodb相关的拓展，第二个的mongo是php5.x所使用的，这里不做深入探讨。
 进入到mongodb拓展的项目页，选择最新的的稳定版1.10.0，复制下载链接，到Cygwin内用wget 下载拓展源码包。
 1.用wget下载mongodb拓展源码包 wget http://pecl.php.net/get/mongodb-1.10.0.tgz 2.解压源码包 tar xzf mongodb-1.10.0.tgz 3.进入源码目录并且执行生成编译文件 cd mongodb-1.10.0 phpize
@@ -70,14 +71,14 @@
       
       <guid>https://www.jytype.cn/cygwin/windows10-install-cygwin/</guid>
       <description>What Is Cygwin? Get that Linux feeling - on Windows
-这个是Cygwin项目主页上的简介，安装它，可以得到一个类似Linux的Shell环境，在其中你可以使用绝大部分Linux软件和功能。如Gcc,Make,Vim,Emacs等等，作为一个php开发者，使用Cygwin的目的是为了运行Swoole，接下来，我将简单分享下安装Cygwin的流程和我们安装swoole需要的组件包。
+ 这个是Cygwin项目主页上的简介，安装它，可以得到一个类似Linux的Shell环境，在其中你可以使用绝大部分Linux软件和功能。如Gcc,Make,Vim,Emacs等等，作为一个php开发者，使用Cygwin的目的是为了运行Swoole，接下来，我将简单分享下安装Cygwin的流程和我们安装swoole需要的组件包。
 一、从项目主页下载Cygwin安装包 这个安装包不单单只是安装Cygwin，还能用来安装我们需要的组件包。
-二、安装Cygwin 选择组件包的下载方式 这里因为我使用了网络工具，网络环境相对来说比较好，所以我选择Install from Internet。
-选择Cygwin的安装路径 安装包提示我们最好选择在盘符的根目录下作为Cygwin的运行目录。
-选择组件包的下载路径 选择链接方式 这里就根据你自己的网络环境来选择对应的链接方式。
-选择下载组件包的镜像地址 选择下载组件包的镜像地址； 这里也是根据网络环境，国内最好选择网易的镜像源，下载速度快且稳定。
-选择安装组件包 这里就根据你开发环境的需要来安装组件包。
-执行安装组件包和Cygwin 点击下一页后执行安装Cygwin和组件包，完成后就可以打开Cygwin64 Terminal来体验了。 三、安装组件包 这里我列举出我们运行php运行环境和编译Swoole所需要的组件包列表。 这一步，可以在执行安装组件包和Cygwin上进行；特别要提示的是，我们一旦选择好php的版本后，php相关组件包的安装都需要对应好版本。
+二、安装Cygwin   选择组件包的下载方式 这里因为我使用了网络工具，网络环境相对来说比较好，所以我选择Install from Internet。
+  选择Cygwin的安装路径 安装包提示我们最好选择在盘符的根目录下作为Cygwin的运行目录。
+  选择组件包的下载路径   选择链接方式 这里就根据你自己的网络环境来选择对应的链接方式。
+  选择下载组件包的镜像地址 选择下载组件包的镜像地址； 这里也是根据网络环境，国内最好选择网易的镜像源，下载速度快且稳定。
+  选择安装组件包 这里就根据你开发环境的需要来安装组件包。
+  执行安装组件包和Cygwin 点击下一页后执行安装Cygwin和组件包，完成后就可以打开Cygwin64 Terminal来体验了。   三、安装组件包 这里我列举出我们运行php运行环境和编译Swoole所需要的组件包列表。 这一步，可以在执行安装组件包和Cygwin上进行；特别要提示的是，我们一旦选择好php的版本后，php相关组件包的安装都需要对应好版本。
 以上步骤完成后，就可以在Cygwin上进行php开发了，enjoy🤗！！</description>
     </item>
     

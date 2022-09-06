@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html><head>
+<title>LeetCode - （MySQL）部门工资最高的员工</title>
+
+
+
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="description" content="">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<meta property="og:title" content="LeetCode - （MySQL）部门工资最高的员工" />
+<meta property="og:description" content="题目链接
+使用到下面的 Employee 表，id是此表的主键列，departmentId是Department表中ID的外键，此表的每一行都表示员工的ID、姓名和工资，它还包含他们所在部门的ID，表的结构如下：
+ Employee 表     Column Name Type     id int   name varchar   salary int   departmentId int     Department 表     Column Name Type     id int   name varchar    创建和填充数据：
+CreatetableIfNotExistsEmployee(idint,namevarchar(255),salaryint,departmentIdint)CreatetableIfNotExistsDepartment(idint,namevarchar(255))TruncatetableEmployeeinsertintoEmployee(id,name,salary,departmentId)values(&#39;1&#39;,&#39;Joe&#39;,&#39;70000&#39;,&#39;1&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;2&#39;,&#39;Jim&#39;,&#39;90000&#39;,&#39;1&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;3&#39;,&#39;Henry&#39;,&#39;80000&#39;,&#39;2&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;4&#39;,&#39;Sam&#39;,&#39;60000&#39;,&#39;2&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;5&#39;,&#39;Max&#39;,&#39;90000&#39;,&#39;1&#39;)TruncatetableDepartmentinsertintoDepartment(id,name)values(&#39;1&#39;,&#39;IT&#39;)insertintoDepartment(id,name)values(&#39;2&#39;,&#39;Sales&#39;)编写SQL查询以查找每个部门中薪资最高的员工。
+按 任意顺序 返回结果表。
+查询结果格式如下例所示。
+输入： Employee表：
+   id name salary departmentId     1 Joe 70000 1   2 Jim 90000 1   3 Henry 80000 2   4 Sam 60000 2   5 Max 90000 1    Department 表" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.jytype.cn/leetcode/database/department-highest-salary/" /><meta property="article:section" content="leetcode" />
+<meta property="article:published_time" content="2022-09-06T23:43:28+08:00" />
+<meta property="article:modified_time" content="2022-09-06T23:43:28+08:00" /><meta property="og:site_name" content="My Blog" />
+
+
+
+
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LeetCode - （MySQL）部门工资最高的员工"/>
+<meta name="twitter:description" content="题目链接
+使用到下面的 Employee 表，id是此表的主键列，departmentId是Department表中ID的外键，此表的每一行都表示员工的ID、姓名和工资，它还包含他们所在部门的ID，表的结构如下：
+ Employee 表     Column Name Type     id int   name varchar   salary int   departmentId int     Department 表     Column Name Type     id int   name varchar    创建和填充数据：
+CreatetableIfNotExistsEmployee(idint,namevarchar(255),salaryint,departmentIdint)CreatetableIfNotExistsDepartment(idint,namevarchar(255))TruncatetableEmployeeinsertintoEmployee(id,name,salary,departmentId)values(&#39;1&#39;,&#39;Joe&#39;,&#39;70000&#39;,&#39;1&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;2&#39;,&#39;Jim&#39;,&#39;90000&#39;,&#39;1&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;3&#39;,&#39;Henry&#39;,&#39;80000&#39;,&#39;2&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;4&#39;,&#39;Sam&#39;,&#39;60000&#39;,&#39;2&#39;)insertintoEmployee(id,name,salary,departmentId)values(&#39;5&#39;,&#39;Max&#39;,&#39;90000&#39;,&#39;1&#39;)TruncatetableDepartmentinsertintoDepartment(id,name)values(&#39;1&#39;,&#39;IT&#39;)insertintoDepartment(id,name)values(&#39;2&#39;,&#39;Sales&#39;)编写SQL查询以查找每个部门中薪资最高的员工。
+按 任意顺序 返回结果表。
+查询结果格式如下例所示。
+输入： Employee表：
+   id name salary departmentId     1 Joe 70000 1   2 Jim 90000 1   3 Henry 80000 2   4 Sam 60000 2   5 Max 90000 1    Department 表"/>
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+
+
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="https://www.jytype.cn/scss/journal.min.0f46f98b723f2aad4b02d9370bb6aa7848b5c2b2a5579642014082283683d2d8.css" integrity="sha256-D0b5i3I/Kq1LAtk3C7aqeEi1wrKlV5ZCAUCCKDaD0tg=" media="screen">
+
+
+
+<link rel="stylesheet" href="https://www.jytype.cn/scss/dark-mode.min.79c34391dbcff20df8b4dac718e2606701efcbfdb9f3b08447ac39ac9dc7b463.css" integrity="sha256-ecNDkdvP8g34tNrHGOJgZwHvy/2587CER6w5rJ3HtGM=" media="screen">
+
+
+<script src="/vendor/js/loadCSS.js"></script>
+<script>
+  loadCSS("https://fonts.googleapis.com/css?family=Fira+Mono|Material+Icons");
+</script>
+
+
+
+
+
+
+  <script src="/js/toc.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+    	<div id="app"><div id="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://www.jytype.cn/">
+    
+        <div class="nav-title">
+            JadenHsiao
+        </div>
+        
+        <div class="nav-subtitle">
+            Keep being brave,Debug the world.
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+            
+            
+                
+            
+            
+            
+            <a class="a-block nav-link-item active" href="/">
+                文章内容
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/categories">
+                分类列表
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/about">
+                关于作者
+            </a>
+            
+        
+            
+            
+            
+            
+            
+            <a class="a-block nav-link-item false" href="/index.xml">
+                RSS Feed
+            </a>
+            
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+
+    </div>
+    
+</div><div id="extraContainer" class="extra-container">
+    
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+        <a type="button" class="pagination-action" id="darkModeToggleButton">
+            <span class="material-icons pagination-action-icon" id="darkModeToggleIcon">
+                dark_mode
+            </span>
+        </a>
+        
+        
+    </div>
+</div>
+<div class="single-column-drawer-container" id="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+            
+                
+                
+                
+                    
+                
+                
+                
+                <a class="a-block drawer-menu-item active" href="/">
+                    文章内容
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/categories">
+                    分类列表
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/about">
+                    关于作者
+                </a>
+                
+            
+                
+                
+                
+                
+                
+                <a class="a-block drawer-menu-item false" href="/index.xml">
+                    RSS Feed
+                </a>
+                
+            
+            
+            <div class="toc">
+
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div id="drawer-mask" v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav id="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div id="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a id="navTitle" class="navbar-brand" href="https://www.jytype.cn/">
+            JadenHsiao
+        </a>
+        
+        <button type="button" class="nav-darkmode-toggle" id="darkModeToggleButton2">
+            <i class="material-icons" id="darkModeToggleIcon2">
+                dark_mode
+            </i>
+        </button>
+        
+    </div>
+</nav>
+<div class="single-column-header-container" id="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://www.jytype.cn/">
+        <div class="single-column-header-title">JadenHsiao</div>
+        
+        <div class="single-column-header-subtitle">Keep being brave,Debug the world.</div>
+        
+
+    </a>
+</div>
+
+            <div id="content">
+                <div id="streamContainer" class="stream-container">
+
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                
+            >
+                <div class="post-title">
+                    LeetCode - （MySQL）部门工资最高的员工
+                    
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2022-09-06 23:43
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[MySQL LeetCode]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/mysql">MySQL</a>
+                                &nbsp;
+                            
+                                <a href="/tags/leetcode">LeetCode</a>
+                                &nbsp;
+                            
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                
+                <div class="post-body" v-pre>
+                
+                    <p><a href="https://leetcode.cn/problems/department-highest-salary/">题目链接</a></p>
+<p>使用到下面的 Employee 表，id是此表的主键列，departmentId是Department表中ID的外键，此表的每一行都表示员工的ID、姓名和工资，它还包含他们所在部门的ID，表的结构如下：</p>
+<ul>
+<li>Employee 表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+</tr>
+<tr>
+<td>salary</td>
+<td>int</td>
+</tr>
+<tr>
+<td>departmentId</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Department 表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>int</td>
+</tr>
+<tr>
+<td>name</td>
+<td>varchar</td>
+</tr>
+</tbody>
+</table>
+<p>创建和填充数据：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">Create</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">table</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">If</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">Not</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">Exists</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb"> </span>(id<span style="color:#bbb">  </span><span style="color:#658b00">int</span>,<span style="color:#bbb">  </span>name<span style="color:#bbb">  </span><span style="color:#658b00">varchar</span>(<span style="color:#b452cd">255</span>),<span style="color:#bbb"> </span>salary<span style="color:#bbb">  </span><span style="color:#658b00">int</span>,<span style="color:#bbb"> </span>departmentId<span style="color:#bbb">  </span><span style="color:#658b00">int</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">Create</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">table</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">If</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">Not</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">Exists</span><span style="color:#bbb">  </span>Department<span style="color:#bbb"> </span>(id<span style="color:#bbb">  </span><span style="color:#658b00">int</span>,<span style="color:#bbb">  </span>name<span style="color:#bbb">  </span><span style="color:#658b00">varchar</span>(<span style="color:#b452cd">255</span>))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">Truncate</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">table</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name,<span style="color:#bbb"> </span>salary,<span style="color:#bbb"> </span>departmentId)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;1&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;Joe&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;70000&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;1&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name,<span style="color:#bbb"> </span>salary,<span style="color:#bbb"> </span>departmentId)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;2&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;Jim&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;90000&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;1&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name,<span style="color:#bbb"> </span>salary,<span style="color:#bbb"> </span>departmentId)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;3&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;Henry&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;80000&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name,<span style="color:#bbb"> </span>salary,<span style="color:#bbb"> </span>departmentId)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;4&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;Sam&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;60000&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;2&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Employee<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name,<span style="color:#bbb"> </span>salary,<span style="color:#bbb"> </span>departmentId)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;5&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;Max&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;90000&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;1&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">Truncate</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">table</span><span style="color:#bbb">  </span>Department<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Department<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;1&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;IT&#39;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">insert</span><span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">into</span><span style="color:#bbb">  </span>Department<span style="color:#bbb"> </span>(id,<span style="color:#bbb">  </span>name)<span style="color:#bbb">  </span><span style="color:#8b008b;font-weight:bold">values</span><span style="color:#bbb">  </span>(<span style="color:#cd5555">&#39;2&#39;</span>,<span style="color:#bbb">  </span><span style="color:#cd5555">&#39;Sales&#39;</span>)<span style="color:#bbb">
+</span></span></span></code></pre></div><p>编写SQL查询以查找每个部门中薪资最高的员工。<br>
+按 <strong>任意顺序</strong> 返回结果表。<br>
+查询结果格式如下例所示。</p>
+<p>输入：
+Employee表：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>salary</th>
+<th>departmentId</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Joe</td>
+<td>70000</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Jim</td>
+<td>90000</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Henry</td>
+<td>80000</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Sam</td>
+<td>60000</td>
+<td>2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Max</td>
+<td>90000</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Department 表</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IT</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Sales</td>
+</tr>
+</tbody>
+</table>
+<p>输出:</p>
+<p>Result 表：</p>
+<table>
+<thead>
+<tr>
+<th>Department</th>
+<th>Employee</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IT</td>
+<td>Jim</td>
+<td>90000</td>
+</tr>
+<tr>
+<td>Sales</td>
+<td>Henry</td>
+<td>80000</td>
+</tr>
+<tr>
+<td>IT</td>
+<td>Max</td>
+<td>90000</td>
+</tr>
+</tbody>
+</table>
+<p>解释：Max 和 Jim 在 IT 部门的工资都是最高的，Henry 在销售部的工资最高。</p>
+<p>解答：先使用子查询，联表分组查询出每个部门里薪资最高的的金额和部门名称，再将部门表和子查询结果进行联表查询，筛选出所有对应部门的薪资。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#8b008b;font-weight:bold">select</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>a.name<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">as</span><span style="color:#bbb"> </span>Department,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>e.name<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">as</span><span style="color:#bbb"> </span>Employee,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>a.salary<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">as</span><span style="color:#bbb"> </span>Salary<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">from</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>employee<span style="color:#bbb"> </span>e<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">left</span><span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">join</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>(<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">	</span><span style="color:#8b008b;font-weight:bold">select</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span><span style="color:#8b008b;font-weight:bold">max</span>(salary)<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">as</span><span style="color:#bbb"> </span>salary,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span>departmentId,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span>d.`name`<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span><span style="color:#8b008b;font-weight:bold">from</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span>employee<span style="color:#bbb"> </span>e<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span><span style="color:#8b008b;font-weight:bold">left</span><span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">join</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span>department<span style="color:#bbb"> </span>d<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">on</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span>e.departmentId<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>d.id<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">		</span><span style="color:#8b008b;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">by</span><span style="color:#bbb"> </span>e.departmentId<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">	</span>)<span style="color:#bbb"> </span>a<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">on</span><span style="color:#bbb"> </span>a.departmentId<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>e.departmentId<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">and</span><span style="color:#bbb"> </span>e.salary<span style="color:#bbb"> </span>=<span style="color:#bbb"> </span>a.salary<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#8b008b;font-weight:bold">where</span><span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>a.name<span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">is</span><span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">not</span><span style="color:#bbb"> </span><span style="color:#8b008b;font-weight:bold">null</span><span style="color:#bbb">
+</span></span></span></code></pre></div>
+                    
+                    <HR width="100%" id="EOF">
+		    <p style="color:#777;">最后修改于 2022-09-06</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+			下回<br>已经到头啦。
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://www.jytype.cn/leetcode/database/exchange-seats/">
+			上回<br>LeetCode - （MySQL）换座位
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+                    </div>
+            </div><div id="single-column-footer">
+Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> by <a href="https://risehere.net/">Rise</a>
+<br>
+移植自 <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer noopener">Makito</a>'s <a href="https://github.com/SumiMakito/hexo-theme-journal/" target="_blank" rel="noreferrer noopener">Journal.</a> <br>
+<br>
+
+&copy;
+	
+	Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议
+	
+</div>
+            </div>
+    
+    <script src="/js/journal.js"></script>
+    </body>
+</html>

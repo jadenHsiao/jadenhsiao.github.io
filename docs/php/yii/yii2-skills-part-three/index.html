@@ -18,10 +18,8 @@
 
 <meta property="og:title" content="Yii2使用技巧（三）- 优雅处理业务错误" />
 <meta property="og:description" content="错误提示是程序运行重要的一环，可以让开发者及时知晓出错的位置和原因，但是在编码的时候，因拦截错误所编写的大量try catch会让代码后期难以维护，所以这里将会针对Yii，对程序的错误提示进行统一处理。
-一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
-&lt;?php namespace app\modules\example\exception; class ErrorCodes { /** * 错误码列表 * @return array */ public static function errorCodeList() { return [ 401 =&gt; &#34;Access Token 无效&#34;, 403 =&gt; &#34;该 App ID 已被封禁，请联系管理员&#34;, 429 =&gt; &#34;请求次数过多，请稍后再试&#34;, 500 =&gt; &#34;服务器内容错误&#34;, // TODO 其他的错误信息可以根据错误码内容写入 101001 =&gt; &#34;生成 Access Token 失败&#34;, ]; } } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。
-二、重写Yii错误控制类 &lt;response&gt; &lt;name&gt;OK&lt;/name&gt; &lt;message&gt;Access Token 无效&lt;/message&gt; &lt;code&gt;401&lt;/code&gt; &lt;status&gt;200&lt;/status&gt; &lt;type&gt;app\modules\api\exception\BaseException&lt;/type&gt; &lt;/response&gt; 上面的代码块原先ErrorHandle返回的内容，而该模块主要是提供给APP做接口调用，所以在返回内容需要较为简洁，因此需要重写Yii的ErrorHandler；
-&lt;?php namespace app\modules\api\exception; use yii\web\ErrorHandler as BaseErrorHandle; class ErrorHandler extends BaseErrorHandle { /** * 错误处理 * @param \Error|\Exception $exception * @return array */ public function convertExceptionToArray($exception) { $value = parent::convertExceptionToArray($exception); return [ &#39;code&#39; =&gt; $value[&#39;code&#39;], &#39;message&#39; =&gt; $value[&#39;message&#39;] ]; } } 上面的代码块重写了错误渲染结果，只返回了错误码和信息；处理之后的结果如下：" />
+ 一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
+&lt;?php namespace app\modules\example\exception;  class ErrorCodes {   /** * 错误码列表 * @return array */  public static function errorCodeList()  {   return [   401 =&gt; &#34;Access Token 无效&#34;,  403 =&gt; &#34;该 App ID 已被封禁，请联系管理员&#34;,  429 =&gt; &#34;请求次数过多，请稍后再试&#34;,  500 =&gt; &#34;服务器内容错误&#34;,   // TODO 其他的错误信息可以根据错误码内容写入  101001 =&gt; &#34;生成 Access Token 失败&#34;,   ];   }  } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/php/yii/yii2-skills-part-three/" /><meta property="article:section" content="php" />
 <meta property="article:published_time" content="2022-07-18T09:50:28+08:00" />
@@ -35,10 +33,8 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Yii2使用技巧（三）- 优雅处理业务错误"/>
 <meta name="twitter:description" content="错误提示是程序运行重要的一环，可以让开发者及时知晓出错的位置和原因，但是在编码的时候，因拦截错误所编写的大量try catch会让代码后期难以维护，所以这里将会针对Yii，对程序的错误提示进行统一处理。
-一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
-&lt;?php namespace app\modules\example\exception; class ErrorCodes { /** * 错误码列表 * @return array */ public static function errorCodeList() { return [ 401 =&gt; &#34;Access Token 无效&#34;, 403 =&gt; &#34;该 App ID 已被封禁，请联系管理员&#34;, 429 =&gt; &#34;请求次数过多，请稍后再试&#34;, 500 =&gt; &#34;服务器内容错误&#34;, // TODO 其他的错误信息可以根据错误码内容写入 101001 =&gt; &#34;生成 Access Token 失败&#34;, ]; } } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。
-二、重写Yii错误控制类 &lt;response&gt; &lt;name&gt;OK&lt;/name&gt; &lt;message&gt;Access Token 无效&lt;/message&gt; &lt;code&gt;401&lt;/code&gt; &lt;status&gt;200&lt;/status&gt; &lt;type&gt;app\modules\api\exception\BaseException&lt;/type&gt; &lt;/response&gt; 上面的代码块原先ErrorHandle返回的内容，而该模块主要是提供给APP做接口调用，所以在返回内容需要较为简洁，因此需要重写Yii的ErrorHandler；
-&lt;?php namespace app\modules\api\exception; use yii\web\ErrorHandler as BaseErrorHandle; class ErrorHandler extends BaseErrorHandle { /** * 错误处理 * @param \Error|\Exception $exception * @return array */ public function convertExceptionToArray($exception) { $value = parent::convertExceptionToArray($exception); return [ &#39;code&#39; =&gt; $value[&#39;code&#39;], &#39;message&#39; =&gt; $value[&#39;message&#39;] ]; } } 上面的代码块重写了错误渲染结果，只返回了错误码和信息；处理之后的结果如下："/>
+ 一、准备错误码类 在对应的模块目录下先创建一个exception的目录，用于放置我们处理错误的逻辑内容；在该目录下创建一个名为ErrorCodes.php的文件，该文件主要是放置错误码列表，一些通用的错误将通过该列表获取返回；代码如下：
+&lt;?php namespace app\modules\example\exception;  class ErrorCodes {   /** * 错误码列表 * @return array */  public static function errorCodeList()  {   return [   401 =&gt; &#34;Access Token 无效&#34;,  403 =&gt; &#34;该 App ID 已被封禁，请联系管理员&#34;,  429 =&gt; &#34;请求次数过多，请稍后再试&#34;,  500 =&gt; &#34;服务器内容错误&#34;,   // TODO 其他的错误信息可以根据错误码内容写入  101001 =&gt; &#34;生成 Access Token 失败&#34;,   ];   }  } 上面的代码里放置了几个比较通用的错误码和提示语，这里可以根据业务需求进行自定义。"/>
 
 
 

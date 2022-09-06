@@ -19,9 +19,12 @@
 <meta property="og:title" content="LeetCode - （MySQL）换座位" />
 <meta property="og:description" content="题目链接
 使用到下面的 Seat 表，Id是该表的主键列，该表的每一行都表示学生的姓名和ID，Id是一个连续的增量。
-User 表 Column Name Type id int name varchar 创建和填充数据：
-Create table If Not Exists Seat (id int, student varchar(255)) Truncate table Seat insert into Seat (id, student) values (&#39;1&#39;, &#39;Abbot&#39;) insert into Seat (id, student) values (&#39;2&#39;, &#39;Doris&#39;) insert into Seat (id, student) values (&#39;3&#39;, &#39;Emerson&#39;) insert into Seat (id, student) values (&#39;4&#39;, &#39;Green&#39;) insert into Seat (id, student) values (&#39;5&#39;, &#39;Jeames&#39;) 编写SQL查询来交换每两个连续的学生的座位号。如果学生的数量是奇数，则最后一个学生的id不交换。 查询结果格式如下例所示：
-输入： Users 表：" />
+ User 表     Column Name Type     id int   name varchar    创建和填充数据：
+CreatetableIfNotExistsSeat(idint,studentvarchar(255))TruncatetableSeatinsertintoSeat(id,student)values(&#39;1&#39;,&#39;Abbot&#39;)insertintoSeat(id,student)values(&#39;2&#39;,&#39;Doris&#39;)insertintoSeat(id,student)values(&#39;3&#39;,&#39;Emerson&#39;)insertintoSeat(id,student)values(&#39;4&#39;,&#39;Green&#39;)insertintoSeat(id,student)values(&#39;5&#39;,&#39;Jeames&#39;)编写SQL查询来交换每两个连续的学生的座位号。如果学生的数量是奇数，则最后一个学生的id不交换。 查询结果格式如下例所示：
+输入： Users 表：
+   id student     1 Abbot   2 Doris   3 Emerson   4 Green   5 Jeames    输出:
+Result 表：
+   id student     1 Doris   2 Abbot   3 Green   4 Emerson   5 Jeames    解释： 请注意，如果学生人数为奇数，则不需要更换最后一名学生的座位。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/leetcode/database/exchange-seats/" /><meta property="article:section" content="leetcode" />
 <meta property="article:published_time" content="2022-09-06T12:50:28+08:00" />
@@ -36,9 +39,12 @@ Create table If Not Exists Seat (id int, student varchar(255)) Truncate table Se
 <meta name="twitter:title" content="LeetCode - （MySQL）换座位"/>
 <meta name="twitter:description" content="题目链接
 使用到下面的 Seat 表，Id是该表的主键列，该表的每一行都表示学生的姓名和ID，Id是一个连续的增量。
-User 表 Column Name Type id int name varchar 创建和填充数据：
-Create table If Not Exists Seat (id int, student varchar(255)) Truncate table Seat insert into Seat (id, student) values (&#39;1&#39;, &#39;Abbot&#39;) insert into Seat (id, student) values (&#39;2&#39;, &#39;Doris&#39;) insert into Seat (id, student) values (&#39;3&#39;, &#39;Emerson&#39;) insert into Seat (id, student) values (&#39;4&#39;, &#39;Green&#39;) insert into Seat (id, student) values (&#39;5&#39;, &#39;Jeames&#39;) 编写SQL查询来交换每两个连续的学生的座位号。如果学生的数量是奇数，则最后一个学生的id不交换。 查询结果格式如下例所示：
-输入： Users 表："/>
+ User 表     Column Name Type     id int   name varchar    创建和填充数据：
+CreatetableIfNotExistsSeat(idint,studentvarchar(255))TruncatetableSeatinsertintoSeat(id,student)values(&#39;1&#39;,&#39;Abbot&#39;)insertintoSeat(id,student)values(&#39;2&#39;,&#39;Doris&#39;)insertintoSeat(id,student)values(&#39;3&#39;,&#39;Emerson&#39;)insertintoSeat(id,student)values(&#39;4&#39;,&#39;Green&#39;)insertintoSeat(id,student)values(&#39;5&#39;,&#39;Jeames&#39;)编写SQL查询来交换每两个连续的学生的座位号。如果学生的数量是奇数，则最后一个学生的id不交换。 查询结果格式如下例所示：
+输入： Users 表：
+   id student     1 Abbot   2 Doris   3 Emerson   4 Green   5 Jeames    输出:
+Result 表：
+   id student     1 Doris   2 Abbot   3 Green   4 Emerson   5 Jeames    解释： 请注意，如果学生人数为奇数，则不需要更换最后一名学生的座位。"/>
 
 
 
@@ -458,8 +464,8 @@ Users 表：</p>
             <nav class="post-pagination">
 
                 
-                <a class="newer-posts">
-			下回<br>已经到头啦。
+                <a class="newer-posts" href="https://www.jytype.cn/leetcode/database/department-highest-salary/">
+			下回<br>LeetCode - （MySQL）部门工资最高的员工
                 </a>
                 
                 

@@ -7,9 +7,70 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 06 Sep 2022 12:50:28 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 06 Sep 2022 23:43:28 +0800</lastBuildDate>
     
         <atom:link href="https://www.jytype.cn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Cygwin安装composer</title>
+        <link>https://www.jytype.cn/cygwin/cygwin-install-composer/</link>
+        <pubDate>Sun, 01 Aug 2021 11:33:28 +0800</pubDate>
+        
+        <guid>https://www.jytype.cn/cygwin/cygwin-install-composer/</guid>
+        <description>JadenHsiao https://www.jytype.cn/cygwin/cygwin-install-composer/ -&lt;blockquote&gt;
+&lt;p&gt;A Dependency Manager for PHP&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;上面是引用composer官网的说明，作为一个依赖管理工具，我们可以很轻松把其他开发者开发的优秀拓展引用到我们的项目上，提高我们的开发效率，下面就简单分享下Cygwin下安装composer的方法。&lt;/p&gt;
+&lt;h2 id=&#34;一下载composer并且移动到可执行目录&#34;&gt;一、下载composer并且移动到可执行目录&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;在下载目录使用&lt;em&gt;wget&lt;/em&gt;下载&lt;em&gt;composer.phar&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;wget https://install.phpcomposer.com/composer.phar&lt;/code&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;移动到&lt;em&gt;Cygwin&lt;/em&gt;的可执行目录&lt;em&gt;bin&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;mv composer.phar /bin&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二设置别名和测试&#34;&gt;二、设置别名和测试&lt;/h2&gt;
+&lt;p&gt;这一步主要为了可以在&lt;em&gt;Cygwin&lt;/em&gt;的终端全局可以使用&lt;em&gt;composer&lt;/em&gt;指令。
+&lt;code&gt;alias composer=&amp;quot;php /bin/composer.phar&amp;quot;&lt;/code&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624694369706.png&#34; alt=&#34;设置别名和测试&#34;&gt;
+在终端输入&lt;code&gt;composer&lt;/code&gt;回车，却发现报了一个致命错误，未捕获的错误，类&lt;em&gt;phar&lt;/em&gt;未找到，这个问题还是比较好解决的，只需要打开&lt;em&gt;Cygwin&lt;/em&gt;的安装包，搜索关键字&lt;em&gt;phar&lt;/em&gt;，在搜索结果里选择&lt;em&gt;php-phar&lt;/em&gt;，然后在&lt;em&gt;Current&lt;/em&gt;选择对应的php版本，&lt;em&gt;src&lt;/em&gt;勾选安装源码，执行下一步安装即可。
+&lt;img src=&#34;https://www.jytype.cn/images/1624694642931.png&#34; alt=&#34;Cygwin安装phar拓展&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;三设置国内镜像&#34;&gt;三、设置国内镜像&lt;/h2&gt;
+&lt;p&gt;因为网络环境的原因，所以设置为国内的镜像可以提高我们下载更新拓展包的速度，目前国内有多家镜像提供商，这里列举几个比较常用的。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;提供方&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;镜像地址&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;腾讯云&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://mirrors.cloud.tencent.com/composer/&#34;&gt;https://mirrors.cloud.tencent.com/composer/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;阿里云&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://mirrors.aliyun.com/composer/&#34;&gt;https://mirrors.aliyun.com/composer/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;Packagist / Composer（中国全量镜像）&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://packagist.phpcomposer.com&#34;&gt;https://packagist.phpcomposer.com&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;华为云&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://mirrors.huaweicloud.com/repository/php/&#34;&gt;https://mirrors.huaweicloud.com/repository/php/&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;设置方法：使用以下指令，&lt;code&gt;composer config -g repos.packagist composer 镜像地址&lt;/code&gt;
+&lt;img src=&#34;https://www.jytype.cn/images/1624695464175.png&#34; alt=&#34;设置完成后打开&#34;&gt;
+😄enjoy!!&lt;/p&gt;
+- https://www.jytype.cn/cygwin/cygwin-install-composer/ - Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</description>
+        </item>
     
     
     

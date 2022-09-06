@@ -18,13 +18,13 @@
 
 <meta property="og:title" content="Yii2使用技巧（四）- 将Yii整合到GatewayWorker" />
 <meta property="og:description" content=" Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
-一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
-二、修改start_businessworker.php BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
-上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
-&lt;?php //... require_once __DIR__ . &#39;/../../vendor/autoload.php&#39;; defined(&#39;YII_DEBUG&#39;) or define(&#39;YII_DEBUG&#39;, true); defined(&#39;YII_ENV&#39;) or define(&#39;YII_ENV&#39;, &#39;dev&#39;); $config = require(__DIR__ . &#39;/../../config/web-socket.php&#39;); require(__DIR__ . &#39;/../../vendor/yiisoft/yii2/Yii.php&#39;); (new \yii\web\Application($config))-&gt;run(); if(!defined(&#39;GLOBAL_START&#39;)) { Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
+ 一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
+二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
+ 上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
+&lt;?php  //...  require_once __DIR__ . &#39;/../../vendor/autoload.php&#39;;  defined(&#39;YII_DEBUG&#39;) or define(&#39;YII_DEBUG&#39;, true); defined(&#39;YII_ENV&#39;) or define(&#39;YII_ENV&#39;, &#39;dev&#39;);  $config = require(__DIR__ . &#39;/../../config/web-socket.php&#39;); require(__DIR__ . &#39;/../../vendor/yiisoft/yii2/Yii.php&#39;);  (new \yii\web\Application($config))-&gt;run();  if(!defined(&#39;GLOBAL_START&#39;)) {  Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
 三、用Yii的编码风格编写GatewayWorker的业务代码 在Applications目录下的Events.php中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。
 注意：引用类时需要使用完全限定名称，例如use \app\models\Example;
-参考链接 在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker " />
+参考链接  在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker  " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/php/yii/yii2-skills-part-four/" /><meta property="article:section" content="php" />
 <meta property="article:published_time" content="2022-07-18T15:29:28+08:00" />
@@ -38,13 +38,13 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Yii2使用技巧（四）- 将Yii整合到GatewayWorker"/>
 <meta name="twitter:description" content=" Yii作为FPM框架，主要针对业务开发方面，因为本身并不支持网络层面编程，所以需要引入其他网络框架，这里我选择的是基于WorkerMan的GatewayWorker，来处理业务里需要的WebSocket；但是我又想在GatewayWorker中使用Yii的例如Active Record、ArrayHelper等上手的特性，所以本篇文章将对于如何整个进行说明。
-一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
-二、修改start_businessworker.php BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
-上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
-&lt;?php //... require_once __DIR__ . &#39;/../../vendor/autoload.php&#39;; defined(&#39;YII_DEBUG&#39;) or define(&#39;YII_DEBUG&#39;, true); defined(&#39;YII_ENV&#39;) or define(&#39;YII_ENV&#39;, &#39;dev&#39;); $config = require(__DIR__ . &#39;/../../config/web-socket.php&#39;); require(__DIR__ . &#39;/../../vendor/yiisoft/yii2/Yii.php&#39;); (new \yii\web\Application($config))-&gt;run(); if(!defined(&#39;GLOBAL_START&#39;)) { Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
+ 一、下载GatewayWorker 这里提供了下载GatewayWorker的链接地址，下载后，将压缩包的内容解压到Yii2的项目目录内。
+二、修改start_businessworker.php  BusinessWorker类其实也是基于基础的Worker开发的。BusinessWorker是运行业务逻辑的进程，BusinessWorker收到Gateway转发来的事件及请求时会默认调用Events.php中的onConnect onMessage onClose方法处理事件及数据，开发者正是通过实现这些回调控制业务及流程。
+ 上述这段引用是WorkerMan对于该生命周期中，业务逻辑处理所在位置的说明；所以Yii的操作就在这个环节上；打开Applications目录，修改start_businessworker.php，加入以下代码块：
+&lt;?php  //...  require_once __DIR__ . &#39;/../../vendor/autoload.php&#39;;  defined(&#39;YII_DEBUG&#39;) or define(&#39;YII_DEBUG&#39;, true); defined(&#39;YII_ENV&#39;) or define(&#39;YII_ENV&#39;, &#39;dev&#39;);  $config = require(__DIR__ . &#39;/../../config/web-socket.php&#39;); require(__DIR__ . &#39;/../../vendor/yiisoft/yii2/Yii.php&#39;);  (new \yii\web\Application($config))-&gt;run();  if(!defined(&#39;GLOBAL_START&#39;)) {  Worker::runAll(); } 在Worker::runAll()，前面先引用composer的自加载，然后$config可以自己定义配置文件，再引入Yii的核心文件，最后一步将其实例化即可，其实这个流程就和Yii框架本身public/index.php是一致的。
 三、用Yii的编码风格编写GatewayWorker的业务代码 在Applications目录下的Events.php中就可以愉快使用原先框架的模型文件进行增删改查，工具类函数进行数组操作了。
 注意：引用类时需要使用完全限定名称，例如use \app\models\Example;
-参考链接 在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker "/>
+参考链接  在第三方系统内使用 Yii 命名空间和动态语言特征 GatewayWorker  "/>
 
 
 

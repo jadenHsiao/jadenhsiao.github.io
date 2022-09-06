@@ -20,10 +20,10 @@
 <meta property="og:description" content="题目链接
 给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
 单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
-输入：s = &ldquo;Hello World&rdquo; 输出：5 解释：最后一个单词是“World”，长度为5。
-输入：s = &quot; fly me to the moon &quot; 输出：4 解释：最后一个单词是“moon”，长度为4。
-输入：s = &ldquo;luffy is still joyboy&rdquo; 输出：6 解释：最后一个单词是长度为6的“joyboy”。
-class Solution { /** * @param String $s * @return Integer */ function lengthOfLastWord($s) { $str_length = strlen($s); $str_start = false; $length = 0; for($i = $str_length-1;$i &gt;= 0;$i--){ if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == false){ continue; } if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == true ){ break; } if(&#39; &#39;!" />
+ 输入：s = &ldquo;Hello World&rdquo; 输出：5 解释：最后一个单词是“World”，长度为5。
+  输入：s = &quot; fly me to the moon &quot; 输出：4 解释：最后一个单词是“moon”，长度为4。
+  输入：s = &ldquo;luffy is still joyboy&rdquo; 输出：6 解释：最后一个单词是长度为6的“joyboy”。
+ class Solution {   /** * @param String $s * @return Integer */  function lengthOfLastWord($s) {  $str_length = strlen($s);  $str_start = false;  $length = 0;  for($i = $str_length-1;$i &gt;= 0;$i--){  if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == false){  continue;  }  if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == true ){  break;  }  if(&#39; &#39;!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/leetcode/algorithms/length-of-last-word/" /><meta property="article:section" content="leetcode" />
 <meta property="article:published_time" content="2022-08-09T22:15:28+08:00" />
@@ -39,10 +39,10 @@ class Solution { /** * @param String $s * @return Integer */ function lengthOfLa
 <meta name="twitter:description" content="题目链接
 给你一个字符串 s，由若干单词组成，单词前后用一些空格字符隔开。返回字符串中 最后一个 单词的长度。
 单词 是指仅由字母组成、不包含任何空格字符的最大子字符串。
-输入：s = &ldquo;Hello World&rdquo; 输出：5 解释：最后一个单词是“World”，长度为5。
-输入：s = &quot; fly me to the moon &quot; 输出：4 解释：最后一个单词是“moon”，长度为4。
-输入：s = &ldquo;luffy is still joyboy&rdquo; 输出：6 解释：最后一个单词是长度为6的“joyboy”。
-class Solution { /** * @param String $s * @return Integer */ function lengthOfLastWord($s) { $str_length = strlen($s); $str_start = false; $length = 0; for($i = $str_length-1;$i &gt;= 0;$i--){ if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == false){ continue; } if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == true ){ break; } if(&#39; &#39;!"/>
+ 输入：s = &ldquo;Hello World&rdquo; 输出：5 解释：最后一个单词是“World”，长度为5。
+  输入：s = &quot; fly me to the moon &quot; 输出：4 解释：最后一个单词是“moon”，长度为4。
+  输入：s = &ldquo;luffy is still joyboy&rdquo; 输出：6 解释：最后一个单词是长度为6的“joyboy”。
+ class Solution {   /** * @param String $s * @return Integer */  function lengthOfLastWord($s) {  $str_length = strlen($s);  $str_start = false;  $length = 0;  for($i = $str_length-1;$i &gt;= 0;$i--){  if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == false){  continue;  }  if(&#39; &#39;==$s[$i] &amp;&amp; $str_start == true ){  break;  }  if(&#39; &#39;!"/>
 
 
 
@@ -344,7 +344,7 @@ Hugo Theme <a href="https://github.com/amazingrise/hugo-theme-diary">Diary</a> b
 </blockquote>
 <blockquote>
 <p>输入：s = &quot;   fly me   to   the moon  &quot;
-输出：4
+输出：4 
 解释：最后一个单词是“moon”，长度为4。</p>
 </blockquote>
 <blockquote>

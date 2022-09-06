@@ -19,8 +19,11 @@
 <meta property="og:title" content="LeetCode - （MySQL）变更性别" />
 <meta property="og:description" content="题目链接
 使用到下面的 Salary 表，id 是这个表的主键，sex 这一列的值是 ENUM 类型，只能从 (&rsquo;m&rsquo;, &lsquo;f&rsquo;) 中取，本表包含公司雇员的信息，表的结构如下：
-Column Name Type id int name varchar sex ENUM salary int 创建和填充数据：
-Create table If Not Exists Salary (id int, name varchar(100), sex char(1), salary int) Truncate table Salary insert into Salary (id, name, sex, salary) values (&#39;1&#39;, &#39;A&#39;, &#39;m&#39;, &#39;2500&#39;) insert into Salary (id, name, sex, salary) values (&#39;2&#39;, &#39;B&#39;, &#39;f&#39;, &#39;1500&#39;) insert into Salary (id, name, sex, salary) values (&#39;3&#39;, &#39;C&#39;, &#39;m&#39;, &#39;5500&#39;) insert into Salary (id, name, sex, salary) values (&#39;4&#39;, &#39;D&#39;, &#39;f&#39;, &#39;500&#39;) 请你编写一个 SQL 查询来交换所有的 &lsquo;f&rsquo; 和 &rsquo;m&rsquo; （即，将所有 &lsquo;f&rsquo; 变为 &rsquo;m&rsquo; ，反之亦然），仅使用 单个 update 语句 ，且不产生中间临时表。" />
+   Column Name Type     id int   name varchar   sex ENUM   salary int    创建和填充数据：
+CreatetableIfNotExistsSalary(idint,namevarchar(100),sexchar(1),salaryint)TruncatetableSalaryinsertintoSalary(id,name,sex,salary)values(&#39;1&#39;,&#39;A&#39;,&#39;m&#39;,&#39;2500&#39;)insertintoSalary(id,name,sex,salary)values(&#39;2&#39;,&#39;B&#39;,&#39;f&#39;,&#39;1500&#39;)insertintoSalary(id,name,sex,salary)values(&#39;3&#39;,&#39;C&#39;,&#39;m&#39;,&#39;5500&#39;)insertintoSalary(id,name,sex,salary)values(&#39;4&#39;,&#39;D&#39;,&#39;f&#39;,&#39;500&#39;)请你编写一个 SQL 查询来交换所有的 &lsquo;f&rsquo; 和 &rsquo;m&rsquo; （即，将所有 &lsquo;f&rsquo; 变为 &rsquo;m&rsquo; ，反之亦然），仅使用 单个 update 语句 ，且不产生中间临时表。
+注意，你必须仅使用一条 update 语句，且 不能 使用 select 语句。
+输入： Courses 表：
+   id name sex salary     1 A m 2500   2 B f 1500   3 C m 5500   4 D f 500    输出:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/leetcode/database/swap-salary/" /><meta property="article:section" content="leetcode" />
 <meta property="article:published_time" content="2022-08-23T13:13:28+08:00" />
@@ -35,8 +38,11 @@ Create table If Not Exists Salary (id int, name varchar(100), sex char(1), salar
 <meta name="twitter:title" content="LeetCode - （MySQL）变更性别"/>
 <meta name="twitter:description" content="题目链接
 使用到下面的 Salary 表，id 是这个表的主键，sex 这一列的值是 ENUM 类型，只能从 (&rsquo;m&rsquo;, &lsquo;f&rsquo;) 中取，本表包含公司雇员的信息，表的结构如下：
-Column Name Type id int name varchar sex ENUM salary int 创建和填充数据：
-Create table If Not Exists Salary (id int, name varchar(100), sex char(1), salary int) Truncate table Salary insert into Salary (id, name, sex, salary) values (&#39;1&#39;, &#39;A&#39;, &#39;m&#39;, &#39;2500&#39;) insert into Salary (id, name, sex, salary) values (&#39;2&#39;, &#39;B&#39;, &#39;f&#39;, &#39;1500&#39;) insert into Salary (id, name, sex, salary) values (&#39;3&#39;, &#39;C&#39;, &#39;m&#39;, &#39;5500&#39;) insert into Salary (id, name, sex, salary) values (&#39;4&#39;, &#39;D&#39;, &#39;f&#39;, &#39;500&#39;) 请你编写一个 SQL 查询来交换所有的 &lsquo;f&rsquo; 和 &rsquo;m&rsquo; （即，将所有 &lsquo;f&rsquo; 变为 &rsquo;m&rsquo; ，反之亦然），仅使用 单个 update 语句 ，且不产生中间临时表。"/>
+   Column Name Type     id int   name varchar   sex ENUM   salary int    创建和填充数据：
+CreatetableIfNotExistsSalary(idint,namevarchar(100),sexchar(1),salaryint)TruncatetableSalaryinsertintoSalary(id,name,sex,salary)values(&#39;1&#39;,&#39;A&#39;,&#39;m&#39;,&#39;2500&#39;)insertintoSalary(id,name,sex,salary)values(&#39;2&#39;,&#39;B&#39;,&#39;f&#39;,&#39;1500&#39;)insertintoSalary(id,name,sex,salary)values(&#39;3&#39;,&#39;C&#39;,&#39;m&#39;,&#39;5500&#39;)insertintoSalary(id,name,sex,salary)values(&#39;4&#39;,&#39;D&#39;,&#39;f&#39;,&#39;500&#39;)请你编写一个 SQL 查询来交换所有的 &lsquo;f&rsquo; 和 &rsquo;m&rsquo; （即，将所有 &lsquo;f&rsquo; 变为 &rsquo;m&rsquo; ，反之亦然），仅使用 单个 update 语句 ，且不产生中间临时表。
+注意，你必须仅使用一条 update 语句，且 不能 使用 select 语句。
+输入： Courses 表：
+   id name sex salary     1 A m 2500   2 B f 1500   3 C m 5500   4 D f 500    输出:"/>
 
 
 

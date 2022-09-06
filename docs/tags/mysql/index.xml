@@ -7,7 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Jadenhsiao. 本站遵循 CC-BY-NC 4.0 协议</copyright>
-    <lastBuildDate>Tue, 06 Sep 2022 12:50:28 +0800</lastBuildDate><atom:link href="https://www.jytype.cn/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Sep 2022 23:43:28 +0800</lastBuildDate><atom:link href="https://www.jytype.cn/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LeetCode - （MySQL）部门工资最高的员工</title>
+      <link>https://www.jytype.cn/leetcode/database/department-highest-salary/</link>
+      <pubDate>Tue, 06 Sep 2022 23:43:28 +0800</pubDate>
+      
+      <guid>https://www.jytype.cn/leetcode/database/department-highest-salary/</guid>
+      <description>题目链接
+使用到下面的 Employee 表，id是此表的主键列，departmentId是Department表中ID的外键，此表的每一行都表示员工的ID、姓名和工资，它还包含他们所在部门的ID，表的结构如下：
+ Employee 表     Column Name Type     id int   name varchar   salary int   departmentId int     Department 表     Column Name Type     id int   name varchar    创建和填充数据：
+CreatetableIfNotExistsEmployee(idint,namevarchar(255),salaryint,departmentIdint)CreatetableIfNotExistsDepartment(idint,namevarchar(255))TruncatetableEmployeeinsertintoEmployee(id,name,salary,departmentId)values(&amp;#39;1&amp;#39;,&amp;#39;Joe&amp;#39;,&amp;#39;70000&amp;#39;,&amp;#39;1&amp;#39;)insertintoEmployee(id,name,salary,departmentId)values(&amp;#39;2&amp;#39;,&amp;#39;Jim&amp;#39;,&amp;#39;90000&amp;#39;,&amp;#39;1&amp;#39;)insertintoEmployee(id,name,salary,departmentId)values(&amp;#39;3&amp;#39;,&amp;#39;Henry&amp;#39;,&amp;#39;80000&amp;#39;,&amp;#39;2&amp;#39;)insertintoEmployee(id,name,salary,departmentId)values(&amp;#39;4&amp;#39;,&amp;#39;Sam&amp;#39;,&amp;#39;60000&amp;#39;,&amp;#39;2&amp;#39;)insertintoEmployee(id,name,salary,departmentId)values(&amp;#39;5&amp;#39;,&amp;#39;Max&amp;#39;,&amp;#39;90000&amp;#39;,&amp;#39;1&amp;#39;)TruncatetableDepartmentinsertintoDepartment(id,name)values(&amp;#39;1&amp;#39;,&amp;#39;IT&amp;#39;)insertintoDepartment(id,name)values(&amp;#39;2&amp;#39;,&amp;#39;Sales&amp;#39;)编写SQL查询以查找每个部门中薪资最高的员工。
+按 任意顺序 返回结果表。
+查询结果格式如下例所示。
+输入： Employee表：
+   id name salary departmentId     1 Joe 70000 1   2 Jim 90000 1   3 Henry 80000 2   4 Sam 60000 2   5 Max 90000 1    Department 表</description>
+    </item>
+    
     <item>
       <title>LeetCode - （MySQL）换座位</title>
       <link>https://www.jytype.cn/leetcode/database/exchange-seats/</link>
@@ -16,9 +32,12 @@
       <guid>https://www.jytype.cn/leetcode/database/exchange-seats/</guid>
       <description>题目链接
 使用到下面的 Seat 表，Id是该表的主键列，该表的每一行都表示学生的姓名和ID，Id是一个连续的增量。
-User 表 Column Name Type id int name varchar 创建和填充数据：
-Create table If Not Exists Seat (id int, student varchar(255)) Truncate table Seat insert into Seat (id, student) values (&amp;#39;1&amp;#39;, &amp;#39;Abbot&amp;#39;) insert into Seat (id, student) values (&amp;#39;2&amp;#39;, &amp;#39;Doris&amp;#39;) insert into Seat (id, student) values (&amp;#39;3&amp;#39;, &amp;#39;Emerson&amp;#39;) insert into Seat (id, student) values (&amp;#39;4&amp;#39;, &amp;#39;Green&amp;#39;) insert into Seat (id, student) values (&amp;#39;5&amp;#39;, &amp;#39;Jeames&amp;#39;) 编写SQL查询来交换每两个连续的学生的座位号。如果学生的数量是奇数，则最后一个学生的id不交换。 查询结果格式如下例所示：
-输入： Users 表：</description>
+ User 表     Column Name Type     id int   name varchar    创建和填充数据：
+CreatetableIfNotExistsSeat(idint,studentvarchar(255))TruncatetableSeatinsertintoSeat(id,student)values(&amp;#39;1&amp;#39;,&amp;#39;Abbot&amp;#39;)insertintoSeat(id,student)values(&amp;#39;2&amp;#39;,&amp;#39;Doris&amp;#39;)insertintoSeat(id,student)values(&amp;#39;3&amp;#39;,&amp;#39;Emerson&amp;#39;)insertintoSeat(id,student)values(&amp;#39;4&amp;#39;,&amp;#39;Green&amp;#39;)insertintoSeat(id,student)values(&amp;#39;5&amp;#39;,&amp;#39;Jeames&amp;#39;)编写SQL查询来交换每两个连续的学生的座位号。如果学生的数量是奇数，则最后一个学生的id不交换。 查询结果格式如下例所示：
+输入： Users 表：
+   id student     1 Abbot   2 Doris   3 Emerson   4 Green   5 Jeames    输出:
+Result 表：
+   id student     1 Doris   2 Abbot   3 Green   4 Emerson   5 Jeames    解释： 请注意，如果学生人数为奇数，则不需要更换最后一名学生的座位。</description>
     </item>
     
     <item>
@@ -29,8 +48,12 @@ Create table If Not Exists Seat (id int, student varchar(255)) Truncate table Se
       <guid>https://www.jytype.cn/leetcode/database/the-latest-login-in-2020/</guid>
       <description>题目链接
 使用到下面的 Logins 表，(user_id, time_stamp) 是这个表的主键，每一行包含的信息是user_id 这个用户的登录时间，表的结构如下：
-Column Name Type user_id varchar time_stamp varchar 创建和填充数据：
-Create table If Not Exists Logins (user_id int, time_stamp datetime) Truncate table Logins insert into Logins (user_id, time_stamp) values (&amp;#39;6&amp;#39;, &amp;#39;2020-06-30 15:06:07&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;6&amp;#39;, &amp;#39;2021-04-21 14:06:06&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;6&amp;#39;, &amp;#39;2019-03-07 00:18:15&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;8&amp;#39;, &amp;#39;2020-02-01 05:10:53&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;8&amp;#39;, &amp;#39;2020-12-30 00:46:50&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;2&amp;#39;, &amp;#39;2020-01-16 02:49:50&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;2&amp;#39;, &amp;#39;2019-08-25 07:59:08&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;14&amp;#39;, &amp;#39;2019-07-14 09:00:00&amp;#39;) insert into Logins (user_id, time_stamp) values (&amp;#39;14&amp;#39;, &amp;#39;2021-01-06 11:59:59&amp;#39;) 编写一个 SQL 查询，该查询可以获取在 2020 年登录过的所有用户的本年度 最后一次 登录时间。结果集 不 包含 2020 年没有登录过的用户。</description>
+   Column Name Type     user_id varchar   time_stamp varchar    创建和填充数据：
+CreatetableIfNotExistsLogins(user_idint,time_stampdatetime)TruncatetableLoginsinsertintoLogins(user_id,time_stamp)values(&amp;#39;6&amp;#39;,&amp;#39;2020-06-30 15:06:07&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;6&amp;#39;,&amp;#39;2021-04-21 14:06:06&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;6&amp;#39;,&amp;#39;2019-03-07 00:18:15&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;8&amp;#39;,&amp;#39;2020-02-01 05:10:53&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;8&amp;#39;,&amp;#39;2020-12-30 00:46:50&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;2&amp;#39;,&amp;#39;2020-01-16 02:49:50&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;2&amp;#39;,&amp;#39;2019-08-25 07:59:08&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;14&amp;#39;,&amp;#39;2019-07-14 09:00:00&amp;#39;)insertintoLogins(user_id,time_stamp)values(&amp;#39;14&amp;#39;,&amp;#39;2021-01-06 11:59:59&amp;#39;)编写一个 SQL 查询，该查询可以获取在 2020 年登录过的所有用户的本年度 最后一次 登录时间。结果集 不 包含 2020 年没有登录过的用户。
+返回的结果集可以按 任意顺序 排列。
+查询结果格式如下面的例子所示：
+输入： Logins 表：
+   user_id time_stamp     6 2020-06-30 15:06:07   6 2021-04-21 14:06:06   6 2019-03-07 00:18:15   8 2020-02-01 05:10:53   8 2020-12-30 00:46:50   2 2020-01-16 02:49:50   2 2019-08-25 07:59:08   14 2019-07-14 09:00:00   14 2021-01-06 11:59:59    输出:</description>
     </item>
     
     <item>
@@ -41,8 +64,8 @@ Create table If Not Exists Logins (user_id int, time_stamp datetime) Truncate ta
       <guid>https://www.jytype.cn/leetcode/database/bank-account-summary-ii/</guid>
       <description>题目链接
 使用到下面的 Users 表和Transactions表，Users 表中account 是该表的主键，表中的每一行包含银行里中每一个用户的账号，Transactions表中，trans_id 是该表主键，该表的每一行包含了所有账户的交易改变情况；如果用户收到了钱, 那么金额是正的; 如果用户转了钱, 那么金额是负的，所有账户的起始余额为 0：
-User 表 Column Name Type account int name varchar Transactions表 Column Name Type trans_id int account int amount int transacted_on date 创建和填充数据：
-Create table If Not Exists Users (account int, name varchar(20)) Create table If Not Exists Transactions (trans_id int, account int, amount int, transacted_on date) Truncate table Users insert into Users (account, name) values (&amp;#39;900001&amp;#39;, &amp;#39;Alice&amp;#39;) insert into Users (account, name) values (&amp;#39;900002&amp;#39;, &amp;#39;Bob&amp;#39;) insert into Users (account, name) values (&amp;#39;900003&amp;#39;, &amp;#39;Charlie&amp;#39;) Truncate table Transactions insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;1&amp;#39;, &amp;#39;900001&amp;#39;, &amp;#39;7000&amp;#39;, &amp;#39;2020-08-01&amp;#39;) insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;2&amp;#39;, &amp;#39;900001&amp;#39;, &amp;#39;7000&amp;#39;, &amp;#39;2020-09-01&amp;#39;) insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;3&amp;#39;, &amp;#39;900001&amp;#39;, &amp;#39;-3000&amp;#39;, &amp;#39;2020-09-02&amp;#39;) insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;4&amp;#39;, &amp;#39;900002&amp;#39;, &amp;#39;1000&amp;#39;, &amp;#39;2020-09-12&amp;#39;) insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;5&amp;#39;, &amp;#39;900003&amp;#39;, &amp;#39;6000&amp;#39;, &amp;#39;2020-08-07&amp;#39;) insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;6&amp;#39;, &amp;#39;900003&amp;#39;, &amp;#39;6000&amp;#39;, &amp;#39;2020-09-07&amp;#39;) insert into Transactions (trans_id, account, amount, transacted_on) values (&amp;#39;7&amp;#39;, &amp;#39;900003&amp;#39;, &amp;#39;-4000&amp;#39;, &amp;#39;2020-09-11&amp;#39;) 写一个 SQL, 报告余额高于 10000 的所有用户的名字和余额.</description>
+ User 表     Column Name Type     account int   name varchar     Transactions表     Column Name Type     trans_id int   account int   amount int   transacted_on date    创建和填充数据：
+CreatetableIfNotExistsUsers(accountint,namevarchar(20))CreatetableIfNotExistsTransactions(trans_idint,accountint,amountint,transacted_ondate)TruncatetableUsersinsertintoUsers(account,name)values(&amp;#39;900001&amp;#39;,&amp;#39;Alice&amp;#39;)insertintoUsers(account,name)values(&amp;#39;900002&amp;#39;,&amp;#39;Bob&amp;#39;)insertintoUsers(account,name)values(&amp;#39;900003&amp;#39;,&amp;#39;Charlie&amp;#39;)TruncatetableTransactionsinsertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;1&amp;#39;,&amp;#39;900001&amp;#39;,&amp;#39;7000&amp;#39;,&amp;#39;2020-08-01&amp;#39;)insertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;2&amp;#39;,&amp;#39;900001&amp;#39;,&amp;#39;7000&amp;#39;,&amp;#39;2020-09-01&amp;#39;)insertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;3&amp;#39;,&amp;#39;900001&amp;#39;,&amp;#39;-3000&amp;#39;,&amp;#39;2020-09-02&amp;#39;)insertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;4&amp;#39;,&amp;#39;900002&amp;#39;,&amp;#39;1000&amp;#39;,&amp;#39;2020-09-12&amp;#39;)insertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;5&amp;#39;,&amp;#39;900003&amp;#39;,&amp;#39;6000&amp;#39;,&amp;#39;2020-08-07&amp;#39;)insertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;6&amp;#39;,&amp;#39;900003&amp;#39;,&amp;#39;6000&amp;#39;,&amp;#39;2020-09-07&amp;#39;)insertintoTransactions(trans_id,account,amount,transacted_on)values(&amp;#39;7&amp;#39;,&amp;#39;900003&amp;#39;,&amp;#39;-4000&amp;#39;,&amp;#39;2020-09-11&amp;#39;)写一个 SQL, 报告余额高于 10000 的所有用户的名字和余额. 账户的余额等于包含该账户的所有交易的总和.</description>
     </item>
     
     <item>
@@ -53,8 +76,12 @@ Create table If Not Exists Users (account int, name varchar(20)) Create table If
       <guid>https://www.jytype.cn/leetcode/database/classes-more-than-5-students/</guid>
       <description>题目链接
 使用到下面的 Courses 表，(student, class)是该表的主键列，该表的每一行表示学生的名字和他们注册的班级，表的结构如下：
-Column Name Type student varchar class varchar 创建和填充数据：
-Create table If Not Exists Courses (student varchar(255), class varchar(255)) Truncate table Courses insert into Courses (student, class) values (&amp;#39;A&amp;#39;, &amp;#39;Math&amp;#39;) insert into Courses (student, class) values (&amp;#39;B&amp;#39;, &amp;#39;English&amp;#39;) insert into Courses (student, class) values (&amp;#39;C&amp;#39;, &amp;#39;Math&amp;#39;) insert into Courses (student, class) values (&amp;#39;D&amp;#39;, &amp;#39;Biology&amp;#39;) insert into Courses (student, class) values (&amp;#39;E&amp;#39;, &amp;#39;Math&amp;#39;) insert into Courses (student, class) values (&amp;#39;F&amp;#39;, &amp;#39;Computer&amp;#39;) insert into Courses (student, class) values (&amp;#39;G&amp;#39;, &amp;#39;Math&amp;#39;) insert into Courses (student, class) values (&amp;#39;H&amp;#39;, &amp;#39;Math&amp;#39;) insert into Courses (student, class) values (&amp;#39;I&amp;#39;, &amp;#39;Math&amp;#39;) 编写一个SQL查询来报告 至少有5个学生 的所有班级。</description>
+   Column Name Type     student varchar   class varchar    创建和填充数据：
+CreatetableIfNotExistsCourses(studentvarchar(255),classvarchar(255))TruncatetableCoursesinsertintoCourses(student,class)values(&amp;#39;A&amp;#39;,&amp;#39;Math&amp;#39;)insertintoCourses(student,class)values(&amp;#39;B&amp;#39;,&amp;#39;English&amp;#39;)insertintoCourses(student,class)values(&amp;#39;C&amp;#39;,&amp;#39;Math&amp;#39;)insertintoCourses(student,class)values(&amp;#39;D&amp;#39;,&amp;#39;Biology&amp;#39;)insertintoCourses(student,class)values(&amp;#39;E&amp;#39;,&amp;#39;Math&amp;#39;)insertintoCourses(student,class)values(&amp;#39;F&amp;#39;,&amp;#39;Computer&amp;#39;)insertintoCourses(student,class)values(&amp;#39;G&amp;#39;,&amp;#39;Math&amp;#39;)insertintoCourses(student,class)values(&amp;#39;H&amp;#39;,&amp;#39;Math&amp;#39;)insertintoCourses(student,class)values(&amp;#39;I&amp;#39;,&amp;#39;Math&amp;#39;)编写一个SQL查询来报告 至少有5个学生 的所有班级。
+返回的结果表中的数据可以按 任意顺序 排列。
+查询结果格式如下面的例子所示：
+输入： Courses 表：
+   student class     A Math   B English   C Math   D Biology   E Math   F Computer   G Math   H Math   I Math    输出:</description>
     </item>
     
     <item>
@@ -65,8 +92,11 @@ Create table If Not Exists Courses (student varchar(255), class varchar(255)) Tr
       <guid>https://www.jytype.cn/leetcode/database/swap-salary/</guid>
       <description>题目链接
 使用到下面的 Salary 表，id 是这个表的主键，sex 这一列的值是 ENUM 类型，只能从 (&amp;rsquo;m&amp;rsquo;, &amp;lsquo;f&amp;rsquo;) 中取，本表包含公司雇员的信息，表的结构如下：
-Column Name Type id int name varchar sex ENUM salary int 创建和填充数据：
-Create table If Not Exists Salary (id int, name varchar(100), sex char(1), salary int) Truncate table Salary insert into Salary (id, name, sex, salary) values (&amp;#39;1&amp;#39;, &amp;#39;A&amp;#39;, &amp;#39;m&amp;#39;, &amp;#39;2500&amp;#39;) insert into Salary (id, name, sex, salary) values (&amp;#39;2&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39;1500&amp;#39;) insert into Salary (id, name, sex, salary) values (&amp;#39;3&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;m&amp;#39;, &amp;#39;5500&amp;#39;) insert into Salary (id, name, sex, salary) values (&amp;#39;4&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;f&amp;#39;, &amp;#39;500&amp;#39;) 请你编写一个 SQL 查询来交换所有的 &amp;lsquo;f&amp;rsquo; 和 &amp;rsquo;m&amp;rsquo; （即，将所有 &amp;lsquo;f&amp;rsquo; 变为 &amp;rsquo;m&amp;rsquo; ，反之亦然），仅使用 单个 update 语句 ，且不产生中间临时表。</description>
+   Column Name Type     id int   name varchar   sex ENUM   salary int    创建和填充数据：
+CreatetableIfNotExistsSalary(idint,namevarchar(100),sexchar(1),salaryint)TruncatetableSalaryinsertintoSalary(id,name,sex,salary)values(&amp;#39;1&amp;#39;,&amp;#39;A&amp;#39;,&amp;#39;m&amp;#39;,&amp;#39;2500&amp;#39;)insertintoSalary(id,name,sex,salary)values(&amp;#39;2&amp;#39;,&amp;#39;B&amp;#39;,&amp;#39;f&amp;#39;,&amp;#39;1500&amp;#39;)insertintoSalary(id,name,sex,salary)values(&amp;#39;3&amp;#39;,&amp;#39;C&amp;#39;,&amp;#39;m&amp;#39;,&amp;#39;5500&amp;#39;)insertintoSalary(id,name,sex,salary)values(&amp;#39;4&amp;#39;,&amp;#39;D&amp;#39;,&amp;#39;f&amp;#39;,&amp;#39;500&amp;#39;)请你编写一个 SQL 查询来交换所有的 &amp;lsquo;f&amp;rsquo; 和 &amp;rsquo;m&amp;rsquo; （即，将所有 &amp;lsquo;f&amp;rsquo; 变为 &amp;rsquo;m&amp;rsquo; ，反之亦然），仅使用 单个 update 语句 ，且不产生中间临时表。
+注意，你必须仅使用一条 update 语句，且 不能 使用 select 语句。
+输入： Courses 表：
+   id name sex salary     1 A m 2500   2 B f 1500   3 C m 5500   4 D f 500    输出:</description>
     </item>
     
     <item>
@@ -77,8 +107,11 @@ Create table If Not Exists Salary (id int, name varchar(100), sex char(1), salar
       <guid>https://www.jytype.cn/leetcode/database/game-play-analysis-i/</guid>
       <description>题目链接
 使用到下面的 Activity 表，表的主键是 (player_id, event_date)。 这张表展示了一些游戏玩家在游戏平台上的行为活动。 每行数据记录了一名玩家在退出平台之前，当天使用同一台设备登录平台后打开的游戏的数目（可能是 0 个），表的结构如下：
-Column Name Type player_id int device_id int event_date date games_played int 创建和填充数据：
-Create table If Not Exists Activity (player_id int, device_id int, event_date date, games_played int) Truncate table Activity insert into Activity (player_id, device_id, event_date, games_played) values (&amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;2016-03-01&amp;#39;, &amp;#39;5&amp;#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&amp;#39;1&amp;#39;, &amp;#39;2&amp;#39;, &amp;#39;2016-05-02&amp;#39;, &amp;#39;6&amp;#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&amp;#39;2&amp;#39;, &amp;#39;3&amp;#39;, &amp;#39;2017-06-25&amp;#39;, &amp;#39;1&amp;#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&amp;#39;3&amp;#39;, &amp;#39;1&amp;#39;, &amp;#39;2016-03-02&amp;#39;, &amp;#39;0&amp;#39;) insert into Activity (player_id, device_id, event_date, games_played) values (&amp;#39;3&amp;#39;, &amp;#39;4&amp;#39;, &amp;#39;2018-07-03&amp;#39;, &amp;#39;5&amp;#39;) 写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。</description>
+   Column Name Type     player_id int   device_id int   event_date date   games_played int    创建和填充数据：
+CreatetableIfNotExistsActivity(player_idint,device_idint,event_datedate,games_playedint)TruncatetableActivityinsertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;2016-03-01&amp;#39;,&amp;#39;5&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;1&amp;#39;,&amp;#39;2&amp;#39;,&amp;#39;2016-05-02&amp;#39;,&amp;#39;6&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;2&amp;#39;,&amp;#39;3&amp;#39;,&amp;#39;2017-06-25&amp;#39;,&amp;#39;1&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;3&amp;#39;,&amp;#39;1&amp;#39;,&amp;#39;2016-03-02&amp;#39;,&amp;#39;0&amp;#39;)insertintoActivity(player_id,device_id,event_date,games_played)values(&amp;#39;3&amp;#39;,&amp;#39;4&amp;#39;,&amp;#39;2018-07-03&amp;#39;,&amp;#39;5&amp;#39;)写一条 SQL 查询语句获取每位玩家 第一次登陆平台的日期。
+查询结果的格式如下所示：
+输入： Activity 表：
+   player_id device_id event_date games_played     1 2 2016-03-01 5   1 2 2016-05-02 6   2 3 2017-06-25 1   3 1 2016-03-02 0   3 4 2018-07-03 5    输出:</description>
     </item>
     
     <item>
@@ -89,8 +122,12 @@ Create table If Not Exists Activity (player_id int, device_id int, event_date da
       <guid>https://www.jytype.cn/leetcode/database/consecutive-numbers/</guid>
       <description>题目链接
 使用到下面的 Logs 表，id 是这个表的主键，表的结构如下：
-Column Name Type id int num varchar 创建和填充数据：
-Create table If Not Exists Logs (id int, num int) Truncate table Logs insert into Logs (id, num) values (&amp;#39;1&amp;#39;, &amp;#39;1&amp;#39;) insert into Logs (id, num) values (&amp;#39;2&amp;#39;, &amp;#39;1&amp;#39;) insert into Logs (id, num) values (&amp;#39;3&amp;#39;, &amp;#39;1&amp;#39;) insert into Logs (id, num) values (&amp;#39;4&amp;#39;, &amp;#39;2&amp;#39;) insert into Logs (id, num) values (&amp;#39;5&amp;#39;, &amp;#39;1&amp;#39;) insert into Logs (id, num) values (&amp;#39;6&amp;#39;, &amp;#39;2&amp;#39;) insert into Logs (id, num) values (&amp;#39;7&amp;#39;, &amp;#39;2&amp;#39;) 编写一个 SQL 查询，查找所有至少连续出现三次的数字。</description>
+   Column Name Type     id int   num varchar    创建和填充数据：
+CreatetableIfNotExistsLogs(idint,numint)TruncatetableLogsinsertintoLogs(id,num)values(&amp;#39;1&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;2&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;3&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;4&amp;#39;,&amp;#39;2&amp;#39;)insertintoLogs(id,num)values(&amp;#39;5&amp;#39;,&amp;#39;1&amp;#39;)insertintoLogs(id,num)values(&amp;#39;6&amp;#39;,&amp;#39;2&amp;#39;)insertintoLogs(id,num)values(&amp;#39;7&amp;#39;,&amp;#39;2&amp;#39;)编写一个 SQL 查询，查找所有至少连续出现三次的数字。
+返回的结果表中的数据可以按 任意顺序 排列。
+查询结果格式如下面的例子所示：
+输入： Person 表：
+   Id Num     1 1   2 1   3 1   4 2   5 1   6 2   7 2    输出:</description>
     </item>
     
     <item>
@@ -101,12 +138,13 @@ Create table If Not Exists Logs (id int, num int) Truncate table Logs insert int
       <guid>https://www.jytype.cn/leetcode/database/delete-duplicate-emails/</guid>
       <description>题目链接
 使用到下面的 Person 表，id 是这个表的主键，该表包含邮箱地址，表的结构如下：
-Column Name Type id int email varchar 创建和填充数据：
-Create table If Not Exists Person (Id int, Email varchar(255)) Truncate table Person insert into Person (id, email) values (&amp;#39;1&amp;#39;, &amp;#39;john@example.com&amp;#39;) insert into Person (id, email) values (&amp;#39;2&amp;#39;, &amp;#39;bob@example.com&amp;#39;) insert into Person (id, email) values (&amp;#39;3&amp;#39;, &amp;#39;john@example.com&amp;#39;) 编写一个 SQL 删除语句来 删除 所有重复的电子邮件，只保留一个id最小的唯一电子邮件。
+   Column Name Type     id int   email varchar    创建和填充数据：
+CreatetableIfNotExistsPerson(Idint,Emailvarchar(255))TruncatetablePersoninsertintoPerson(id,email)values(&amp;#39;1&amp;#39;,&amp;#39;john@example.com&amp;#39;)insertintoPerson(id,email)values(&amp;#39;2&amp;#39;,&amp;#39;bob@example.com&amp;#39;)insertintoPerson(id,email)values(&amp;#39;3&amp;#39;,&amp;#39;john@example.com&amp;#39;)编写一个 SQL 删除语句来 删除 所有重复的电子邮件，只保留一个id最小的唯一电子邮件。
 以 任意顺序 返回结果表。 （注意： 仅需要写删除语句，将自动对剩余结果进行查询）
 查询结果格式如下所示。
 输入： Person 表：
-id email 1 john@example.com 2 bob@example.com 3 john@example.</description>
+   id email     1 john@example.com   2 bob@example.com   3 john@example.com    输出:
+   id email     1 john@example.</description>
     </item>
     
     <item>
@@ -117,8 +155,10 @@ id email 1 john@example.com 2 bob@example.com 3 john@example.</description>
       <guid>https://www.jytype.cn/leetcode/database/rising-temperature/</guid>
       <description>题目链接
 使用到下面的 Weather 表，id 是这个表的主键，该表包含特定日期的温度信息，表的结构如下：
-Column Name Type id int recordDate date temperature int 创建和填充数据：
-Create table If Not Exists Weather (id int, recordDate date, temperature int) Truncate table Weather insert into Weather (id, recordDate, temperature) values (&amp;#39;1&amp;#39;, &amp;#39;2015-01-01&amp;#39;, &amp;#39;10&amp;#39;) insert into Weather (id, recordDate, temperature) values (&amp;#39;2&amp;#39;, &amp;#39;2015-01-02&amp;#39;, &amp;#39;25&amp;#39;) insert into Weather (id, recordDate, temperature) values (&amp;#39;3&amp;#39;, &amp;#39;2015-01-03&amp;#39;, &amp;#39;20&amp;#39;) insert into Weather (id, recordDate, temperature) values (&amp;#39;4&amp;#39;, &amp;#39;2015-01-04&amp;#39;, &amp;#39;30&amp;#39;) 编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 id 。 返回结果 不要求顺序 。 查询结果格式如下例。</description>
+   Column Name Type     id int   recordDate date   temperature int    创建和填充数据：
+CreatetableIfNotExistsWeather(idint,recordDatedate,temperatureint)TruncatetableWeatherinsertintoWeather(id,recordDate,temperature)values(&amp;#39;1&amp;#39;,&amp;#39;2015-01-01&amp;#39;,&amp;#39;10&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;2&amp;#39;,&amp;#39;2015-01-02&amp;#39;,&amp;#39;25&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;3&amp;#39;,&amp;#39;2015-01-03&amp;#39;,&amp;#39;20&amp;#39;)insertintoWeather(id,recordDate,temperature)values(&amp;#39;4&amp;#39;,&amp;#39;2015-01-04&amp;#39;,&amp;#39;30&amp;#39;)编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 id 。 返回结果 不要求顺序 。 查询结果格式如下例。
+输入： Weather 表：
+   id recordDate Temperature     1 2015-01-01 10   2 2015-01-02 25   3 2015-01-03 20   4 2015-01-04 30    输出：</description>
     </item>
     
   </channel>

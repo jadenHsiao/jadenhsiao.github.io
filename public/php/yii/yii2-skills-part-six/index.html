@@ -18,9 +18,9 @@
 
 <meta property="og:title" content="Yii2使用技巧（六）- 文件上传兼容WPS" />
 <meta property="og:description" content="在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
-通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
+ 通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
 一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
-&lt;?php namespace app\validators; use yii\validators\FileValidator as Base; use yii\helpers\FileHelper; class FileValidator extends Base { protected $extra = [ &#34;docx&#34; =&gt; &#34;application/zip&#34;, &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;, &#34;xlsx&#34; =&gt; &#34;application/zip&#34;, &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34; ]; protected function validateExtension($file) { $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;); if ($this-&gt;checkExtensionByMimeType) { $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false); if ($mimeType === null) { return false; } $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType); if($this-&gt;extra[$extension] == $mimeType){ return true; } if (!" />
+&lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &#34;docx&#34; =&gt; &#34;application/zip&#34;,  &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;,  &#34;xlsx&#34; =&gt; &#34;application/zip&#34;,  &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;);   if ($this-&gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&gt;extra[$extension] == $mimeType){  return true;  }   if (!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.jytype.cn/php/yii/yii2-skills-part-six/" /><meta property="article:section" content="php" />
 <meta property="article:published_time" content="2022-07-20T14:00:28+08:00" />
@@ -34,9 +34,9 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Yii2使用技巧（六）- 文件上传兼容WPS"/>
 <meta name="twitter:description" content="在业务开发中，对于用户上传的文件需要进行安全校验，Yii本身提供了FileValidator的文件校验类；但是文件校验类对于word、excel、powerpoint的校验只是针对Microsoft，而wps的文件格式并不支持，因此需要重写文件校验类来达到我们的需求。
-通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
+ 通过断点调试，得知FileValidator是通过获取上传文件的MimeType和后缀，然后将后置通过yiisoft/yii2/helpers/mimeTypes.php中返回的数组获取到对应Yii设定的MimeType，对比是否一致，如果不一致则抛出校验错误。
 一、重写上传校验类 因此重写的思路就是在Yii进行系统判断前，我们新增WPS特殊的格式的校验，如果命中就直接返回验证通过，代码如下：
-&lt;?php namespace app\validators; use yii\validators\FileValidator as Base; use yii\helpers\FileHelper; class FileValidator extends Base { protected $extra = [ &#34;docx&#34; =&gt; &#34;application/zip&#34;, &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;, &#34;xlsx&#34; =&gt; &#34;application/zip&#34;, &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34; ]; protected function validateExtension($file) { $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;); if ($this-&gt;checkExtensionByMimeType) { $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false); if ($mimeType === null) { return false; } $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType); if($this-&gt;extra[$extension] == $mimeType){ return true; } if (!"/>
+&lt;?php  namespace app\validators;  use yii\validators\FileValidator as Base; use yii\helpers\FileHelper;  class FileValidator extends Base {   protected $extra = [  &#34;docx&#34; =&gt; &#34;application/zip&#34;,  &#34;et&#34; =&gt; &#34;application/vnd.ms-excel&#34;,  &#34;xlsx&#34; =&gt; &#34;application/zip&#34;,  &#34;ett&#34; =&gt; &#34;application/vnd.ms-excel&#34;  ];   protected function validateExtension($file)  {  $extension = mb_strtolower($file-&gt;extension, &#39;UTF-8&#39;);   if ($this-&gt;checkExtensionByMimeType) {   $mimeType = FileHelper::getMimeType($file-&gt;tempName, null, false);  if ($mimeType === null) {  return false;  }   $extensionsByMimeType = FileHelper::getExtensionsByMimeType($mimeType);   if($this-&gt;extra[$extension] == $mimeType){  return true;  }   if (!"/>
 
 
 
