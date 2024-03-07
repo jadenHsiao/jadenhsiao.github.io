@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-03-07T08:30:10.221Z</updated>
+  <updated>2024-03-07T09:12:20.422Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Layui表单项标签添加必填标识</title>
+    <link href="http://example.com/2024/03/07/Layui%E8%A1%A8%E5%8D%95%E9%A1%B9%E6%A0%87%E7%AD%BE%E6%B7%BB%E5%8A%A0%E5%BF%85%E5%A1%AB%E6%A0%87%E8%AF%86/"/>
+    <id>http://example.com/2024/03/07/Layui表单项标签添加必填标识/</id>
+    <published>2024-03-07T09:07:12.022Z</published>
+    <updated>2024-03-07T09:12:20.422Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-class">.layui-form-label</span><span class="selector-class">.required</span><span class="selector-pseudo">:after</span> &#123;</span></span><br><span class="line"><span class="language-css"><span class="attribute">content</span>: <span class="string">&#x27; *&#x27;</span>;</span></span><br><span class="line"><span class="language-css"><span class="attribute">color</span>: red;</span></span><br><span class="line"><span class="language-css">&#125; </span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;代码块&quot;&gt;&lt;a href=&quot;#代码块&quot; class=&quot;headerlink&quot; title=&quot;代码块&quot;&gt;&lt;/a&gt;代码块&lt;/h3&gt;&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;sp
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://example.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="HTML" scheme="http://example.com/tags/HTML/"/>
+    
+      <category term="CSS" scheme="http://example.com/tags/CSS/"/>
+    
+      <category term="Web前端" scheme="http://example.com/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="Layui" scheme="http://example.com/tags/Layui/"/>
+    
+  </entry>
   
   <entry>
     <title>修改滚动条样式</title>
