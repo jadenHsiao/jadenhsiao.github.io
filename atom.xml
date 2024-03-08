@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2024-03-08T07:06:34.437Z</updated>
+  <updated>2024-03-08T08:20:56.049Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://example.com/2024/03/08/Postman%E6%A8%A1%E6%8B%9Fajax/"/>
     <id>http://example.com/2024/03/08/Postman模拟ajax/</id>
     <published>2024-03-08T06:41:18.105Z</published>
-    <updated>2024-03-08T07:06:34.437Z</updated>
+    <updated>2024-03-08T08:20:56.049Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="修改请求头"><a href="#修改请求头" class="headerlink" title="修改请求头"></a>修改请求头</h3><p>在“Header”中修改“Content-Type”的值为“application&#x2F;x-www-form-urlencoded”，“X-Requested-With”的值为“xmlhttprequest”。</p><p><img src="https://gitee.com/jadenhsiao/image-hosting/raw/master/image/image-20240308145217342.png" alt="image-20240308145217342"></p><h3 id="修改请求体"><a href="#修改请求体" class="headerlink" title="修改请求体"></a>修改请求体</h3><p>在“Body”中设置内容类型为“x-www-form-urlencoded”。</p><p><img src="https://gitee.com/jadenhsiao/image-hosting/raw/master/image/image-20240308150556492.png" alt="image-20240308150556492"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="修改请求头"><a href="#修改请求头" class="headerlink" title="修改请求头"></a>修改请求头</h3><p>在“Header”中修改“Content-Type”的值为“application&#x2F;x-www-form-urlencoded”，“X-Requested-With”的值为“xmlhttprequest”。</p><p><img src="https://cdn.jsdelivr.net/gh/jadenHsiao/imageHosting@latest/image/image-20240308145217342.png" alt="修改请求头"></p><h3 id="修改请求体"><a href="#修改请求体" class="headerlink" title="修改请求体"></a>修改请求体</h3><p>在“Body”中设置内容类型为“x-www-form-urlencoded”。</p><p><img src="https://cdn.jsdelivr.net/gh/jadenHsiao/imageHosting@latest/image/image-20240308150556492.png" alt="修改请求体"></p>]]></content>
     
     <summary type="html">
     
